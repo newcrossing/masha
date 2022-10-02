@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig authType="PASSWORD" host="ovz1.newcrossing.pqr7m.vps.myjino.ru" id="9e031b96-e4cf-498b-871e-ab4e73745318" port="49473" nameFormat="DESCRIPTIVE" username="root" />
-    </configs>
-  </component>
-</project>
