@@ -1,0 +1,324 @@
+@extends('frontend.layouts.index')
+
+@section('title',$board->name)
+
+@section('vendor-styles')
+
+@endsection
+
+@section('page-styles')
+    <!-- Light Box Css -->
+    <link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css">
+@endsection
+
+
+@section('content')
+
+    <!-- Start home -->
+    <section class="page-title-box">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="text-center text-white">
+                        <h3 class="mb-4">{{$board->name}}</h3>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!-- end home -->
+
+    <!-- START SHAPE -->
+    <div class="position-relative" style="z-index: 1">
+        <div class="shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
+                <path fill="#FFFFFF" fill-opacity="1"
+                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+            </svg>
+        </div>
+    </div>
+    <!-- END SHAPE -->
+
+
+    <!-- START JOB-DEATILS -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <!--start side-bar-->
+                    <div class="side-bar ms-lg-4">
+                        <div class="card job-overview">
+                            <div class="card-body p-4">
+
+                                <div class="mt-3">
+                                    <h4 class="fs-22 " style="text-align: center">Связаться с хозяином</h4>
+                                    <br>
+                                    @if(isset($board->user->tel) && $board->user->notify_tel)
+                                        <a href="tel:{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                            Позвонить    <i class="uil uil-arrow-right"></i>
+                                        </a>
+                                    @endif
+                                    @if(isset($board->user->tel) && $board->user->notify_whatsup)
+                                        <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
+                                            Написать в  Whats Up<i class="uil uil-arrow-right"></i>
+                                        </a>
+                                    @endif
+
+                                    @if(isset($board->user->email) && $board->user->notify_email)
+                                        <a href="#applyNow" data-bs-toggle="modal" class="btn btn-primary btn-hover w-100 mt-2">
+                                            Написать автору <i class="uil uil-arrow-right"></i>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end job-overview-->
+
+
+                    </div>
+                    <!--end side-bar-->
+                </div><!--end col-->
+                <div class="col-lg-8">
+                    <div class="card job-detail overflow-hidden">
+                        <div class="col-lg-12">
+                            <div class="candidate-portfolio mb-5">
+                                <div class="row g-3">
+                                    <div class="col-lg-12">
+                                        <div class="swiper testimonialSlider pb-5">
+                                            <div class="swiper-wrapper">
+                                                @foreach($board->fotos as $foto)
+                                                    <div class="swiper-slide">
+                                                        <img src="{{ Storage::url('/boards/1400/'.$foto->file) }}"
+                                                             alt="" class="img-fluid rounded-3" height="300">
+                                                    </div><!--end swiper-slide-->
+                                                @endforeach
+                                            </div>
+                                            <!--end swiper-wrapper-->
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- end row -->
+                            </div><!-- end portfolio -->
+
+                        </div><!-- end col -->
+                        <div class="card-body p-4">
+                            <div>
+                                <div class="row">
+                                    <ul class="list-inline mb-0 mt-3 text-muted">
+                                        <li class="list-inline-item">
+                                            <div class="d-flex align-items-center">
+                                                <h1 class="mb-0">{{$board->name}}</h1>
+                                            </div>
+
+                                        </li>
+                                        @auth()
+                                            @if($board->user_id== Auth::user()->id )
+                                                <li class="list-inline-item">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-shrink-0">
+
+                                                            <i class="uil uil-edit"></i>
+                                                        </div>
+                                                        <div class="ms-2">
+                                                            <a href="{{route('board.edit',$board->id)}}">Изменить </a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endauth
+                                    </ul>
+
+                                    <div class="col-lg-2">
+                                        <ul class="list-inline mb-0 text-lg-end mt-3 mt-lg-0">
+                                            <li class="list-inline-item">
+                                                <div class="favorite-icon">
+                                                    @auth()
+
+
+                                                    @endauth
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div><!--end col-->
+                                </div><!--end row-->
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="row g-2">
+                                    @isset($board->money)
+                                        <div class="col-lg-4">
+                                            <div class="border rounded-start p-3">
+                                                <p class="text-muted mb-0 fs-13">Вознаграждение</p>
+                                                <p class="fw-medium fs-15 mb-0">{{$board->money}} руб.</p>
+                                            </div>
+                                        </div>
+                                    @endisset
+                                    <div class="col-lg-4">
+                                        <div class="border p-3">
+                                            <p class="text-muted fs-13 mb-0">Дата размещения</p>
+                                            <p class="fw-medium mb-0">{{$board->created_at->translatedFormat('j F Y').' г.'}}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><!--end Experience-->
+
+                            <div class="mt-4">
+                                <h5 class="mb-3">Описание</h5>
+                                <div class="job-detail-desc">
+                                    <p class="text-muted mb-0">{{$board->text}}</p>
+                                </div>
+                            </div>
+
+
+
+                        </div><!--end card-body-->
+                    </div><!--end job-detail-->
+
+
+                </div><!--end col-->
+
+
+            </div><!--end row-->
+        </div><!--end container-->
+    </section>
+    <!-- START JOB-DEATILS -->
+
+    <!-- START APPLY MODAL -->
+    <div class="modal fade" id="applyNow" tabindex="-1" aria-labelledby="applyNow" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                  <div class="alert  bg-soft-success" id="messagesentok" role="alert" style="display: none">
+                Сообщение отправлено
+                  </div>
+
+
+                    <form id="emailform">
+                    @csrf
+                        <input type="hidden" name="id" id="idControlInput" value="{{$board->user->id}}">
+                        <div class="text-center mb-4">
+                        <h5 class="modal-title" id="staticBackdropLabel">Сообщение автору на email</h5>
+                    </div>
+                    <div class="position-absolute end-0 top-0 p-3">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nameControlInput" class="form-label">Ваше имя</label>
+                        <input type="text" class="form-control" id="nameControlInput" placeholder="Введите ваше имя" required>
+                        <span class="badge bg-soft-danger name_err "></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailControlInput" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailControlInput" placeholder="Введите ваше email" required>
+                  <span class="badge bg-soft-danger email_err "></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="messageControlTextarea" class="form-label">Сообщение</label>
+                        <textarea
+                                class="form-control" id="messageControlTextarea" rows="4"
+                                placeholder="Напишите как можно с вами связаться" required></textarea>
+                             <span class="badge bg-soft-danger text_err "></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="submitmail">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- END APPLY MODAL -->
+
+
+@endsection
+
+
+
+
+
+{{-- vendor scripts --}}
+@section('vendor-scripts')
+    <!-- BEGIN: Page Vendor JS-->
+
+    <!-- END: Page Vendor JS-->
+@endsection
+
+{{-- page scripts --}}
+@section('page-scripts')
+    <!-- Light Box Js -->
+    <script src="/assets/libs/glightbox/js/glightbox.min.js"></script>
+
+    <script src="/assets/js/pages/lightbox.init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+       $(document).ready(function () {
+           $("#submitmail").click(function (e) {
+               e.preventDefault();
+
+               var _token = $("input[name='_token']").val();
+               var email = $("#emailControlInput").val();
+               var id = $("#idControlInput").val();
+               var name = $("#nameControlInput").val();
+               var text = $("#messageControlTextarea").val();
+
+               $.ajax({
+                   url: "{{ route('board.send') }}",
+                   type: 'POST',
+                   data: {_token: _token, email: email, name: name, text: text, id: id},
+                   success: function (data) {
+                       console.log(data.error)
+                       if ($.isEmptyObject(data.error)) {
+                           // alert(data.success);
+                           $('#messagesentok').show();
+                           $('#emailform').hide();
+                       } else {
+                           printErrorMsg(data.error);
+                       }
+                   }
+               });
+           });
+
+           function printErrorMsg(msg) {
+               $.each(msg, function (key, value) {
+                   //console.log(key);
+                   $('.' + key + '_err').text(value);
+               });
+           }
+
+
+           const form = document.querySelector('.form');
+           const number = '7911352392';
+
+           function sendToWhatsapp(text, phone) {
+
+               text = encodeURIComponent(text);
+
+               let url = `https://web.whatsapp.com/send?phone=${phone}&text=${text}&source=&data=`;
+
+               window.open(url);
+           }
+
+           $("#clickwhatsup").click(function (e) {
+               var tel = {{  $board->user->tel }};
+               var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
+
+               //alert(text)
+               e.preventDefault();
+
+               let url = `https://api.whatsapp.com/send/?phone=${tel}&text=${text}`;
+               // let url = `https://web.whatsapp.com/send?phone=${tel}&text=${text}&source=&data=`;
+
+               window.open(url);
+
+           });
+
+
+       });
+
+
+
+    </script>
+@endsection
+

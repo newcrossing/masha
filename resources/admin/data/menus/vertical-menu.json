@@ -1,0 +1,79 @@
+{
+  "menu": [
+    {
+      "url": "#",
+      "name": "Главная",
+      "i18n": "Dashboard",
+      "icon": "bx-desktop",
+      "tag": "2",
+      "tagcustom": "badge badge-light-danger badge-pill badge-round float-right mr-2",
+      "submenu": [
+        {
+          "url": "admin",
+          "name": "Статистика",
+          "i18n": "eCommerce",
+          "icon": "bx-stats"
+        },
+        {
+          "url": "/",
+          "name": "На сайт",
+          "i18n": "Analytics",
+          "icon": "bx-analyse"
+        }
+      ]
+    },
+    {
+      "navheader": "Пользователи"
+    },
+    {
+      "url": "#",
+      "name": "Пользователи",
+      "i18n": "Invoice",
+      "icon": "bxs-user",
+      "submenu": [
+        {
+          "url": "admin/user",
+          "name": "Список",
+          "i18n": "Invoice List",
+          "icon": "bx-list-ol"
+        },
+        {
+          "url": "admin/user/create",
+          "name": "Добавить",
+          "i18n": "Invoice",
+          "icon": "bx-user-plus"
+        }
+      ]
+    },
+    {
+      "navheader": "Документы"
+    },
+    {
+      "url": "#",
+      "name": "Документы",
+      "i18n": "Invoice",
+      "icon": "bxs-notepad",
+      "submenu": [
+        {
+          "url": "admin/doc",
+          "name": "Список документов",
+          "i18n": "Invoice List",
+          "icon": "bx-list-ol"
+        },
+        {
+          "url": "admin/doc/create",
+          "name": "Добавить документ",
+          "i18n": "Invoice",
+          "icon": "bxs-file-plus"
+        }
+      ]
+    },
+    {
+      "url": "https://pixinvent.ticksy.com/",
+      "name": "Raise Support",
+      "i18n": "Raise Support",
+      "icon": "help",
+      "newTab": "_blank"
+    }
+  ]
+}
