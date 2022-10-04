@@ -45,6 +45,7 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::get('/', [\App\Http\Controllers\Adm\HomeController::class, 'index'])->name('admin.home');
         // Route::resource('post', App\Http\Controllers\Adm\PostController::class);
         Route::resource('doc', App\Http\Controllers\Adm\DocController::class);
+        Route::resource('content', App\Http\Controllers\Adm\ContentController::class);
         Route::resource('user', App\Http\Controllers\Adm\UserController::class);
     }
 );
