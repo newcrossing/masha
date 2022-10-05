@@ -87,7 +87,8 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
-        $user->notify_sms = $request->boolean('notify_sms');
+        $user->notify_whatsup = $request->boolean('notify_whatsup');
+        $user->notify_telegram = $request->boolean('notify_telegram');
         $user->save();
         $user->board()->create([
             'name' => 'Название вашего объявления',
@@ -168,7 +169,8 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
-        $user->notify_sms = $request->boolean('notify_sms');
+        $user->notify_whatsup = $request->boolean('notify_whatsup');
+        $user->notify_telegram = $request->boolean('notify_telegram');
         $user->save();
 
         if ($request->redirect == 'apply') {

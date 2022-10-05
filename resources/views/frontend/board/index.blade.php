@@ -57,19 +57,28 @@
                                     <h4 class="fs-22 " style="text-align: center">Связаться с хозяином</h4>
                                     <br>
                                     @if(isset($board->user->tel) && $board->user->notify_tel)
-                                        <a href="tel:{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
-                                            Позвонить    <i class="uil uil-arrow-right"></i>
-                                        </a>
-                                    @endif
-                                    @if(isset($board->user->tel) && $board->user->notify_whatsup)
-                                        <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
-                                            Написать в  Whats Up<i class="uil uil-arrow-right"></i>
+                                        <a href="tel:{{$board->user->tel}}"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-phone"></i> Позвонить
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->email) && $board->user->notify_email)
-                                        <a href="#applyNow" data-bs-toggle="modal" class="btn btn-primary btn-hover w-100 mt-2">
-                                            Написать автору <i class="uil uil-arrow-right"></i>
+                                        <a href="#applyNow" data-bs-toggle="modal"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-envelope"></i> Написать автору
+                                        </a>
+                                    @endif
+
+                                    @if(isset($board->user->tel) && $board->user->notify_whatsup)
+                                        <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-whatsapp"></i> Написать в Whats Up
+                                        </a>
+                                    @endif
+
+                                    @if(isset($board->user->tel) && $board->user->notify_telegram)
+                                        <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-telegram"></i> Написать в Telegram
                                         </a>
                                     @endif
                                 </div>
@@ -191,39 +200,41 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body p-5">
-                  <div class="alert  bg-soft-success" id="messagesentok" role="alert" style="display: none">
-                Сообщение отправлено
-                  </div>
+                    <div class="alert  bg-soft-success" id="messagesentok" role="alert" style="display: none">
+                        Сообщение отправлено
+                    </div>
 
 
                     <form id="emailform">
-                    @csrf
+                        @csrf
                         <input type="hidden" name="id" id="idControlInput" value="{{$board->user->id}}">
                         <div class="text-center mb-4">
-                        <h5 class="modal-title" id="staticBackdropLabel">Сообщение автору на email</h5>
-                    </div>
-                    <div class="position-absolute end-0 top-0 p-3">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nameControlInput" class="form-label">Ваше имя</label>
-                        <input type="text" class="form-control" id="nameControlInput" placeholder="Введите ваше имя" required>
-                        <span class="badge bg-soft-danger name_err "></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="emailControlInput" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="emailControlInput" placeholder="Введите ваше email" required>
-                  <span class="badge bg-soft-danger email_err "></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="messageControlTextarea" class="form-label">Сообщение</label>
-                        <textarea
-                                class="form-control" id="messageControlTextarea" rows="4"
-                                placeholder="Напишите как можно с вами связаться" required></textarea>
-                             <span class="badge bg-soft-danger text_err "></span>
-                    </div>
+                            <h5 class="modal-title" id="staticBackdropLabel">Сообщение автору на email</h5>
+                        </div>
+                        <div class="position-absolute end-0 top-0 p-3">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nameControlInput" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="nameControlInput" placeholder="Введите ваше имя"
+                                   required>
+                            <span class="badge bg-soft-danger name_err "></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailControlInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailControlInput"
+                                   placeholder="Введите ваше email" required>
+                            <span class="badge bg-soft-danger email_err "></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageControlTextarea" class="form-label">Сообщение</label>
+                            <textarea
+                                    class="form-control" id="messageControlTextarea" rows="4"
+                                    placeholder="Напишите как можно с вами связаться" required></textarea>
+                            <span class="badge bg-soft-danger text_err "></span>
+                        </div>
 
-                    <button type="submit" class="btn btn-primary w-100" id="submitmail">Отправить</button>
+                        <button type="submit" class="btn btn-primary w-100" id="submitmail">Отправить</button>
                     </form>
                 </div>
             </div>
@@ -253,69 +264,69 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
 
-       $(document).ready(function () {
-           $("#submitmail").click(function (e) {
-               e.preventDefault();
+        $(document).ready(function () {
+            $("#submitmail").click(function (e) {
+                e.preventDefault();
 
-               var _token = $("input[name='_token']").val();
-               var email = $("#emailControlInput").val();
-               var id = $("#idControlInput").val();
-               var name = $("#nameControlInput").val();
-               var text = $("#messageControlTextarea").val();
+                var _token = $("input[name='_token']").val();
+                var email = $("#emailControlInput").val();
+                var id = $("#idControlInput").val();
+                var name = $("#nameControlInput").val();
+                var text = $("#messageControlTextarea").val();
 
-               $.ajax({
-                   url: "{{ route('board.send') }}",
-                   type: 'POST',
-                   data: {_token: _token, email: email, name: name, text: text, id: id},
-                   success: function (data) {
-                       console.log(data.error)
-                       if ($.isEmptyObject(data.error)) {
-                           // alert(data.success);
-                           $('#messagesentok').show();
-                           $('#emailform').hide();
-                       } else {
-                           printErrorMsg(data.error);
-                       }
-                   }
-               });
-           });
+                $.ajax({
+                    url: "{{ route('board.send') }}",
+                    type: 'POST',
+                    data: {_token: _token, email: email, name: name, text: text, id: id},
+                    success: function (data) {
+                        console.log(data.error)
+                        if ($.isEmptyObject(data.error)) {
+                            // alert(data.success);
+                            $('#messagesentok').show();
+                            $('#emailform').hide();
+                        } else {
+                            printErrorMsg(data.error);
+                        }
+                    }
+                });
+            });
 
-           function printErrorMsg(msg) {
-               $.each(msg, function (key, value) {
-                   //console.log(key);
-                   $('.' + key + '_err').text(value);
-               });
-           }
-
-
-           const form = document.querySelector('.form');
-           const number = '7911352392';
-
-           function sendToWhatsapp(text, phone) {
-
-               text = encodeURIComponent(text);
-
-               let url = `https://web.whatsapp.com/send?phone=${phone}&text=${text}&source=&data=`;
-
-               window.open(url);
-           }
-
-           $("#clickwhatsup").click(function (e) {
-               var tel = {{  $board->user->tel }};
-               var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
-
-               //alert(text)
-               e.preventDefault();
-
-               let url = `https://api.whatsapp.com/send/?phone=${tel}&text=${text}`;
-               // let url = `https://web.whatsapp.com/send?phone=${tel}&text=${text}&source=&data=`;
-
-               window.open(url);
-
-           });
+            function printErrorMsg(msg) {
+                $.each(msg, function (key, value) {
+                    //console.log(key);
+                    $('.' + key + '_err').text(value);
+                });
+            }
 
 
-       });
+            const form = document.querySelector('.form');
+            const number = '7911352392';
+
+            function sendToWhatsapp(text, phone) {
+
+                text = encodeURIComponent(text);
+
+                let url = `https://web.whatsapp.com/send?phone=${phone}&text=${text}&source=&data=`;
+
+                window.open(url);
+            }
+
+            $("#clickwhatsup").click(function (e) {
+                var tel = {{  $board->user->tel }};
+                var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
+
+                //alert(text)
+                e.preventDefault();
+
+                let url = `https://api.whatsapp.com/send/?phone=${tel}&text=${text}`;
+                // let url = `https://web.whatsapp.com/send?phone=${tel}&text=${text}&source=&data=`;
+
+                window.open(url);
+
+            });
+
+
+        });
 
 
 

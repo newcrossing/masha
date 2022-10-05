@@ -119,13 +119,9 @@
 
                     @if ($errors->any())
                         <div class="alert  bg-soft-danger" role="alert">
-
-
-
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
-
                         </div>
                     @endif
 
@@ -156,9 +152,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="tel" class="form-label">Телефон </label> <input
-                                                type="tel" class="form-control" name="tel" id="phone_2"
-                                                value="{{Auth::user()->tel}}"/>
+                                        <label for="tel" class="form-label">Телефон </label> <input type="tel"
+                                                                                                    class="form-control"
+                                                                                                    name="tel"
+                                                                                                    id="phone_2"
+                                                                                                    value="{{Auth::user()->tel}}"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -184,16 +182,15 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_email"
                                                id="notify_email" {{ Auth::user()->notify_email  ? 'checked' : '' }}>
-                                        <label
-                                                class="form-check-label" for="notify_email">Уведомление на email</label>
+                                        <label class="form-check-label" for="notify_email">Уведомление на email</label>
 
                                     </div>
                                 </div><!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_tel"
-                                               id="notify_tel" {{ Auth::user()->notify_tel ? 'checked' : '' }}> <label
-                                                class="form-check-label" for="notify_tel">Звонок на телефон</label>
+                                               id="notify_tel" {{ Auth::user()->notify_tel ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="notify_tel">Звонок на телефон</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -201,7 +198,18 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_whatsup"
                                                id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_whatsup">Сообщение в Whats Up</label>
+                                        <label class="form-check-label" for="notify_whatsup">Сообщение в Whats
+                                                                                             Up</label>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <!--end col-->
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <input class="form-check-input" type="checkbox" name="notify_telegram"
+                                               id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="notify_telegram">Сообщение в
+                                                                                              Telegramm</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -228,8 +236,7 @@
 
                         <div class="mt-4">
                             <h5 class="fs-17 fw-semibold mb-3 mb-3">
-                                Изменение пароля
-                            </h5>
+                                Изменение пароля </h5>
                             <div class="row">
 
                                 <!--end col-->
@@ -244,10 +251,11 @@
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Повторите пароль</label> <input type="password"
-                                                                                                  class="form-control"
-                                                                                                  name="password_c"
-                                                                                                  placeholder="Повторите пароль"/>
+                                        <label class="form-label">Повторите пароль</label>
+                                        <input type="password"
+                                               class="form-control"
+                                               name="password_c"
+                                               placeholder="Повторите пароль"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -259,9 +267,9 @@
                         <!--end Change-password-->
                         <div class="mt-4 text-end">
                             <button type="submit" class="btn btn-primary">Изменить</button>
-                            <a href="{{route('board.edit')}}" class="btn btn-primary btn-hover w-100 mt-2">
-                                            Перейти к объявлению    <i class="uil uil-arrow-right"></i>
-                                        </a>
+                            <a href="{{route('board.edit')}}" class="btn btn-info btn-hover w-100 mt-2">
+                                Перейти к объявлению <i class="uil uil-arrow-right"></i>
+                            </a>
                         </div>
                     </form>
                 </div>

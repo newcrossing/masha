@@ -32,7 +32,6 @@ class ProfileController extends Controller
             $newFileName = time() . '.' . $data['image']->extension();
             Image::make($data['image'])->widen(300)->save(Storage::path('/public/avatars/300/') . $newFileName);
             Image::make($data['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
-
             $user->foto = $newFileName;
         }
         if ($request->password && $request->password_c & $request->password_c == $request->password) {
@@ -45,9 +44,8 @@ class ProfileController extends Controller
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
         $user->notify_whatsup = $request->boolean('notify_whatsup');
-
+        $user->notify_telegram = $request->boolean('notify_telegram');
         $user->save();
-
 
         return redirect()->back()->with('success', 'Профиль изменен');
     }
