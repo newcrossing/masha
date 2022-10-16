@@ -22,12 +22,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="text-center text-white">
-                        <h3 class="mb-4">Потеряшка</h3>
+                        <h3 class="mb-4">Мое объявление</h3>
                         <div class="page-next">
                             <nav class="d-inline-block" aria-label="breadcrumb text-center">
                                 <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="{{route('home')}}">Главная</a></li>
-                                    <li class="breadcrumb-item"><a href="{{route('board.list')}}">Мои потеряшки</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Редактирование</li>
                                 </ol>
                             </nav>
@@ -157,7 +155,7 @@
                             <button type="submit"
                                     class="btn btn-primary"> {{ (isset($board->id))? 'Изменить':'Создать'  }}</button>
                             @isset($board->id)
-                                <a href="{{route('board.single',$board->id)}}" target="_blank" class="btn btn-success">Просмотреть
+                                <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success">Просмотреть
                                     <i class="mdi mdi-send"></i></a>
                             @endisset
                         </div>

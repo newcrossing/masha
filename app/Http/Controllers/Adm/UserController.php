@@ -93,7 +93,7 @@ class UserController extends Controller
         $user->board()->create([
             'name' => 'Название вашего объявления',
             'active' => 1,
-            'slug' => 'qr' . Str::lower(Str::random(5)) . $user->id . Str::lower(Str::random(5)),
+            'slug' => 'qr-' . rand(1000,9999) . $user->id . Str::lower(Str::random(5)),
             'user_id' => $user->id
         ]);
 

@@ -23,7 +23,7 @@ Route::get('/agreement', [AgreementController::class, 'index'])->name('agreement
 Route::get('/contact', [AgreementController::class, 'contact'])->name('contact');;
 Route::get('/privacy-policy', [AgreementController::class, 'privacy'])->name('privacy-policy');;
 Route::get('/board/{id}', [BoardController::class, 'single'])->where('id', '[0-9]+')->name('board.single');
-Route::get('/{slug}', [BoardController::class, 'qr'])->where('slug', 'qr[A-Za-z0-9]+')->name('board.qr');
+Route::get('/{slug}', [BoardController::class, 'qr'])->where('slug', 'qr-[A-Za-z0-9]+')->name('qr');
 Route::post('/sendmail', [BoardController::class, 'sendmail'])->name('board.send');
 
 Route::middleware(['role:admin|user'])->group(
