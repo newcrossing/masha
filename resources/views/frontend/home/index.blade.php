@@ -192,6 +192,8 @@
 
     <!-- Switcher Js -->
     <script src="/assets/js/pages/switcher.init.js"></script>
+    <script src="/assets/js/pages/index.init.js"></script>
+    <script src="/assets/js/app.js"></script>
 
 @endsection
 
