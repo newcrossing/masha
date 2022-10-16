@@ -61,7 +61,7 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'login' => 'required|string|max:255|min:3|regex:/^[a-z]+$/i|unique:users',
+            'login' => 'required|string|max:255|min:3|regex:/^[a-z][a-z0-9]+$/i|unique:users',
             'password' => 'required|max:30|min:3',
         ], [
             'login.unique' => 'Поле ЛОГИН должно быть уникально!',
@@ -93,7 +93,7 @@ class UserController extends Controller
         $user->board()->create([
             'name' => 'Название вашего объявления',
             'active' => 1,
-            'slug' => Str::lower(Str::random(5)) . '-' . time(),
+            'slug' => 'qr' . Str::lower(Str::random(5)) . $user->id . Str::lower(Str::random(5)),
             'user_id' => $user->id
         ]);
 
