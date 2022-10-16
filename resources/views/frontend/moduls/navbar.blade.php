@@ -35,7 +35,7 @@
                 <li class="list-inline-item dropdown">
 					<a href="javascript:void(0)" class="header-item" id="userdropdown" data-bs-toggle="dropdown"
                        aria-expanded="false">
-						<img src="{{ Storage::url('/avatars/300/'.Auth::user()->foto) }}" width="35" height="35"
+						<img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}" width="35" height="35"
                              class="rounded-circle me-1">
 						<span class="d-none d-md-inline-block fw-medium">{{Auth::user()->name}}</span>
 					</a>

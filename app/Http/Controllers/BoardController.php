@@ -13,6 +13,7 @@ use Mail;
 use Validator;
 
 use App\Mail\NotifyMail;
+use Illuminate\Support\Facades\DB;
 
 
 class BoardController extends Controller
@@ -46,6 +47,13 @@ class BoardController extends Controller
     public function single($id)
     {
         $board = Board::find($id);
+        return view('frontend.board.index', compact('board'));
+    }
+
+    public function qr($slug)
+    {
+       // $board = DB::table('boards')->where('slug', $slug)->first();
+        $board = Board::where('slug', $slug)->firstOrFail();
         return view('frontend.board.index', compact('board'));
     }
 

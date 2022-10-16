@@ -61,7 +61,7 @@
                     <div class="card profile-sidebar me-lg-4">
                         <div class="card-body p-4">
                             <div class="text-center pb-4 border-bottom">
-                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->foto) }}" alt=""
+                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}" alt=""
                                      class="avatar-lg img-thumbnail rounded-circle mb-4">
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
                                 <p class="text-muted">{{Auth::user()->login}}</p>

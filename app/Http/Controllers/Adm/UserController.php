@@ -97,6 +97,9 @@ class UserController extends Controller
             'user_id' => $user->id
         ]);
 
+        // добил роль
+        $user->assignRole('user');
+
 
         if ($request->redirect == 'apply') {
             return redirect()->route('user.edit', $user->id)->with('success', 'Сохранено');
