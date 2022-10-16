@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
 	<div class="container-fluid custom-container">
-		<a class="navbar-brand text-dark fw-bold me-auto" href="index.blade.php">
+		<a class="navbar-brand text-dark fw-bold me-auto" href="{{route('home')}}">
 			<img src="/assets/images/logo-dark.png" height="22" alt="" class="logo-dark"/>
 			<img src="/assets/images/logo-light.png" height="22" alt="" class="logo-light"/>
 		</a>

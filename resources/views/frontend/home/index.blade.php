@@ -72,23 +72,19 @@
                             <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home"
                                role="tab" aria-controls="v-pills-home" aria-selected="true">
                                 <div class="d-flex">
-                                    <div class="number flex-shrink-0">
-                                        1
-                                    </div>
+                                    <div class="number flex-shrink-0"> 1</div>
                                     <div class="flex-grow-1 text-start ms-3">
                                         <h5 class="fs-18">В нашем офисе вы заказываете брелок</h5>
-                                        <p class="text-muted mb-0">Due to its widespread use as filler text for layouts,
-                                                                   non-readability
-                                                                   is of great importance.</p>
+                                        <p class="text-muted mb-0">
+                                            Due to its widespread use as filler text for layouts,
+                                            non-readability is of great importance.</p>
                                     </div>
                                 </div>
                             </a>
                             <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile"
                                role="tab" aria-controls="v-pills-profile" aria-selected="false">
                                 <div class="d-flex">
-                                    <div class="number flex-shrink-0">
-                                        2
-                                    </div>
+                                    <div class="number flex-shrink-0"> 2</div>
                                     <div class="flex-grow-1 text-start ms-3">
                                         <h5 class="fs-18">Заводим акаунт на нашем сайте</h5>
                                         <p class="text-muted mb-0">There are many variations of passages of
@@ -100,9 +96,7 @@
                             <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages"
                                role="tab" aria-controls="v-pills-messages" aria-selected="false">
                                 <div class=" d-flex">
-                                    <div class="number flex-shrink-0">
-                                        3
-                                    </div>
+                                    <div class="number flex-shrink-0"> 3</div>
                                     <div class="flex-grow-1 text-start ms-3">
                                         <h5 class="fs-18">Теряем</h5>
                                         <p class="text-muted mb-0">а кто то находит.</p>
@@ -116,15 +110,15 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                              aria-labelledby="v-pills-home-tab">
-                            <img src="assets/images/process-01.png" alt="" class="img-fluid">
+                            <img src="/assets/images/process-01.png" alt="" class="img-fluid">
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
                              aria-labelledby="v-pills-profile-tab">
-                            <img src="assets/images/process-02.png" alt="" class="img-fluid">
+                            <img src="/assets/images/process-02.png" alt="" class="img-fluid">
                         </div>
                         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
                              aria-labelledby="v-pills-messages-tab">
-                            <img src="assets/images/process-03.png" alt="" class="img-fluid">
+                            <img src="/assets/images/process-03.png" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -132,13 +126,6 @@
         </div><!--end container-->
     </section>
     <!-- END PROCESS -->
-
-
-
-
-
-
-
 
     <!-- START APPLY MODAL -->
     <div class="modal fade" id="applyNow" tabindex="-1" aria-labelledby="applyNow" aria-hidden="true">
