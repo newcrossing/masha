@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.index');
+        $users_chek = DB::table('users')->whereNotNull('tel')->count();
+        return view('frontend.home.index', compact('users_chek'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider {
     /**
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        URL::forceScheme('https');
 
 
         setlocale(LC_ALL, 'ru_RU.UTF-8');

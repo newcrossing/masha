@@ -21,7 +21,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <div class="mb-4 pb-3 me-lg-5">
-                        <h6 class="sub-title">Нас уже 1500 человек</h6>
+                        <h6 class="sub-title">Нас уже {{$users_chek + 1000}} человек</h6>
                         <h1 class="display-5 fw-semibold mb-3">С нами Ваши вещи найдутся и вернуться к Вам.</h1>
                         <p class="fs-18 text-muted mb-0">Закажи свой набор от бюро находок по QR-коду</p>
                     </div>
@@ -37,13 +37,16 @@
                         <div class="swiper blogdetailSlider">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-04.png"  style="width: 100%" alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-04.png" style="width: 100%" alt=""
+                                         class="img-fluid rounded-3">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-02.png" style="width: 100%"  alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-02.png" style="width: 100%" alt=""
+                                         class="img-fluid rounded-3">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-03.png" style="width: 100%"  alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-03.png" style="width: 100%" alt=""
+                                         class="img-fluid rounded-3">
                                 </div>
                             </div>
                         </div>
@@ -167,21 +170,13 @@
 
 {{-- vendor scripts --}}
 @section('vendor-scripts')
-    <!-- BEGIN: Page Vendor JS-->
 
-    <!-- END: Page Vendor JS-->
 @endsection
 
 {{-- page scripts --}}
 @section('page-scripts')
     <!-- Blog Init Js -->
     <script src="/assets/js/pages/blog-details.init.js"></script>
-
-    <!-- Switcher Js -->
-    <script src="/assets/js/pages/switcher.init.js"></script>
-
-
-
 @endsection
 
 
