@@ -19,7 +19,7 @@
     <section class="bg-home3" id="home">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-7">
+                <div class="col-lg-8">
                     <div class="mb-4 pb-3 me-lg-5">
                         <h6 class="sub-title">Нас уже 1500 человек</h6>
                         <h1 class="display-5 fw-semibold mb-3">С нами Ваши вещи найдутся и вернуться к Вам.</h1>
@@ -28,22 +28,22 @@
 
                 </div>
                 <!--end col-->
-                <div class="col-lg-5">
-                    <div class="mt-5 mt-lg-0 ms-xl-5">
+                <div class="col-lg-4">
+                    <div class="mt-4 mt-lg-0 ms-xl-4">
                         <div class="quote-icon">
                             <i class="mdi mdi-format-quote-open icon"></i>
                             <i class="mdi mdi-format-quote-open icon-2 text-primary"></i>
                         </div>
-                        <div class="swiper homeslider">
+                        <div class="swiper blogdetailSlider">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-04.png" alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-04.png"  style="width: 100%" alt="" class="img-fluid rounded-3">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-02.png" alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-02.png" style="width: 100%"  alt="" class="img-fluid rounded-3">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-03.png" alt="" class="img-fluid rounded-3">
+                                    <img src="/assets/images/home/img-03.png" style="width: 100%"  alt="" class="img-fluid rounded-3">
                                 </div>
                             </div>
                         </div>
@@ -179,8 +179,8 @@
 
     <!-- Switcher Js -->
     <script src="/assets/js/pages/switcher.init.js"></script>
-    <script src="/assets/js/pages/index.init.js"></script>
-    <script src="/assets/js/app.js"></script>
+
+
 
 @endsection
 
