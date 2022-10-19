@@ -77,7 +77,7 @@
                                     @endif
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
-                                        <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="https://t.me/{{$board->user->tel}}"  class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-telegram"></i> Написать в Telegram
                                         </a>
                                     @endif
