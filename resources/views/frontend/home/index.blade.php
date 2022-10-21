@@ -31,23 +31,21 @@
                 <div class="col-lg-4">
                     <div class="mt-4 mt-lg-0 ms-xl-4">
                         <div class="quote-icon">
-                            <i class="mdi mdi-format-quote-open icon"></i>
-                            <i class="mdi mdi-format-quote-open icon-2 text-primary"></i>
+                            {{---<i class="mdi mdi-format-quote-open icon"></i>
+                            <i class="mdi mdi-format-quote-open icon-2 text-primary"></i>---}}
                         </div>
                         <div class="swiper blogdetailSlider">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-04.png" style="width: 100%" alt=""
-                                         class="img-fluid rounded-3">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-02.png" style="width: 100%" alt=""
-                                         class="img-fluid rounded-3">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="/assets/images/home/img-03.png" style="width: 100%" alt=""
-                                         class="img-fluid rounded-3">
-                                </div>
+                                @foreach ($sliders as $slider)
+
+                                    <div class="swiper-slide">
+                                        <img src="{{ Storage::url('/sliders/400/'.$slider->file) }}" style="width: 100%" alt=""
+                                             class="img-fluid rounded-3">
+                                    </div>
+                                @endforeach
+
+
+
                             </div>
                         </div>
                     </div>
