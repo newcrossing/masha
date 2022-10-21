@@ -1,80 +1,80 @@
 {
-  "menu": [
-    {
-      "url": "#",
-      "name": "Главная",
-      "i18n": "Dashboard",
-      "icon": "bx-desktop",
-      "tag": "2",
-      "tagcustom": "badge badge-light-danger badge-pill badge-round float-right mr-2",
-      "submenu": [
+    "menu": [
         {
-          "url": "admin",
-          "name": "Администратор",
-          "i18n": "eCommerce",
-          "icon": "bx-stats"
+            "url": "#",
+            "name": "Главная",
+            "i18n": "Dashboard",
+            "icon": "bx-desktop",
+            "tag": "2",
+            "tagcustom": "badge badge-light-danger badge-pill badge-round float-right mr-2",
+            "submenu": [
+                {
+                    "url": "admin",
+                    "name": "Администратор",
+                    "i18n": "eCommerce",
+                    "icon": "bx-stats"
+                },
+                {
+                    "url": "/",
+                    "name": "На сайт",
+                    "i18n": "Analytics",
+                    "icon": "bx-analyse"
+                }
+            ]
         },
         {
-          "url": "/",
-          "name": "На сайт",
-          "i18n": "Analytics",
-          "icon": "bx-analyse"
-        }
-      ]
-    },
-    {
-      "navheader": "Пользователи"
-    },
-    {
-      "url": "#",
-      "name": "Пользователи",
-      "i18n": "Invoice",
-      "icon": "bxs-user",
-      "submenu": [
-        {
-          "url": "admin/user",
-          "name": "Список",
-          "i18n": "Invoice List",
-          "icon": "bx-list-ol"
+            "navheader": "Пользователи"
         },
         {
-          "url": "admin/user/create",
-          "name": "Добавить",
-          "i18n": "Invoice",
-          "icon": "bx-user-plus"
-        }
-      ]
-    },
-    {
-      "navheader": "Контент"
-    },
-    {
-      "url": "#",
-      "name": "Контент",
-      "i18n": "Invoice",
-      "icon": "bxs-notepad",
-      "submenu": [
+            "url": "#",
+            "name": "Пользователи",
+            "i18n": "Invoice",
+            "icon": "bxs-user",
+            "submenu": [
+                {
+                    "url": "admin/user",
+                    "name": "Список",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                },
+                {
+                    "url": "admin/user/create",
+                    "name": "Добавить",
+                    "i18n": "Invoice",
+                    "icon": "bx-user-plus"
+                }
+            ]
+        },
         {
-          "url": "admin/content",
-          "name": "Список",
-          "i18n": "Invoice List",
-          "icon": "bx-list-ol"
-        }
-      ]
-    },
-    {
-      "url": "#",
-      "name": "Слайдер",
-      "i18n": "Invoice",
-      "icon": "bxs-notepad",
-      "submenu": [
+            "navheader": "Контент"
+        },
         {
-          "url": "admin/slider",
-          "name": "Фото",
-          "i18n": "Invoice List",
-          "icon": "bx-list-ol"
+            "url": "#",
+            "name": "Контент",
+            "i18n": "Invoice",
+            "icon": "bxs-notepad",
+            "submenu": [
+                {
+                    "url": "admin/content",
+                    "name": "Список",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "Слайдер",
+            "i18n": "Invoice",
+            "icon": "bxs-notepad",
+            "submenu": [
+                {
+                    "url": "admin/slider",
+                    "name": "Фото",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

@@ -7,14 +7,10 @@
 @endsection
 
 @section('page-styles')
-    <!-- Light Box Css -->
     <link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css">
 @endsection
 
 @section('content')
-
-
-
     <!-- START HOME -->
     <section class="bg-home3" id="home">
         <div class="container">
@@ -22,10 +18,9 @@
                 <div class="col-lg-8">
                     <div class="mb-4 pb-3 me-lg-5">
                         <h6 class="sub-title">Нас уже {{$users_chek + 1000}} человек</h6>
-                        <h1 class="display-5 fw-semibold mb-3">С нами Ваши вещи найдутся и вернуться к Вам.</h1>
-                        <p class="fs-18 text-muted mb-0">Закажи свой набор от бюро находок по QR-коду</p>
+                        <h1 class="display-5 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
+                        <p class="fs-18 text-muted mb-0">{!! \App\Models\Content::where('type', 'slidertext2')->first()->text!!}</p>
                     </div>
-
                 </div>
                 <!--end col-->
                 <div class="col-lg-4">
@@ -37,15 +32,12 @@
                         <div class="swiper blogdetailSlider">
                             <div class="swiper-wrapper">
                                 @foreach ($sliders as $slider)
-
                                     <div class="swiper-slide">
-                                        <img src="{{ Storage::url('/sliders/400/'.$slider->file) }}" style="width: 100%" alt=""
+                                        <img src="{{ Storage::url('/sliders/400/'.$slider->file) }}" style="width: 100%"
+                                             alt=""
                                              class="img-fluid rounded-3">
                                     </div>
                                 @endforeach
-
-
-
                             </div>
                         </div>
                     </div>
@@ -56,9 +48,6 @@
         <!--end container-->
     </section>
     <!-- End Home -->
-
-
-
 
     <!-- START PROCESS -->
     <section class="section">
@@ -89,8 +78,8 @@
                                     <div class="flex-grow-1 text-start ms-3">
                                         <h5 class="fs-18">Заводим акаунт на нашем сайте</h5>
                                         <p class="text-muted mb-0">There are many variations of passages of
-                                                                   avaibookmark-label, but the majority
-                                                                   alteration in some form.</p>
+                                            avaibookmark-label, but the majority
+                                            alteration in some form.</p>
                                     </div>
                                 </div>
                             </a>
@@ -165,15 +154,12 @@
     <!-- End Page-content -->
 @endsection
 
-
 {{-- vendor scripts --}}
 @section('vendor-scripts')
-
 @endsection
 
 {{-- page scripts --}}
 @section('page-scripts')
-    <!-- Blog Init Js -->
     <script src="/assets/js/pages/blog-details.init.js"></script>
 @endsection
 

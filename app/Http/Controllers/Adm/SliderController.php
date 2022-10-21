@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adm;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content;
 use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -108,4 +109,7 @@ class SliderController extends Controller
     {
         //
     }
+
+
+
 }
