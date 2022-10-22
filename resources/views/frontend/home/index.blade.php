@@ -3,7 +3,6 @@
 @section('title','Главная')
 
 @section('vendor-styles')
-
 @endsection
 
 @section('page-styles')

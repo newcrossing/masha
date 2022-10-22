@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\Post;
 use App\Models\Slider;
+use App\Models\Social;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ class HomeController extends Controller
     {
         $users_chek = DB::table('users')->whereNotNull('tel')->count();
         $sliders = Slider::where('active', 1)->get();
-        return view('frontend.home.index', compact('users_chek', 'sliders'));
+        $socials = Social::where('active', 1)->get();
+        return view('frontend.home.index', compact('users_chek', 'sliders', 'socials'));
     }
 }

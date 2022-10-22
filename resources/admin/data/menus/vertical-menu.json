@@ -64,6 +64,20 @@
         },
         {
             "url": "#",
+            "name": "Соц сети",
+            "i18n": "Invoice",
+            "icon": "bxs-notepad",
+            "submenu": [
+                {
+                    "url": "admin/social",
+                    "name": "Список",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                }
+            ]
+        },
+        {
+            "url": "#",
             "name": "Слайдер",
             "i18n": "Invoice",
             "icon": "bxs-notepad",

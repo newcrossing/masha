@@ -49,6 +49,7 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::resource('content', App\Http\Controllers\Adm\ContentController::class);
         Route::resource('user', App\Http\Controllers\Adm\UserController::class);
         Route::resource('slider', App\Http\Controllers\Adm\SliderController::class);
+        Route::resource('social', App\Http\Controllers\Adm\SocialController::class);
     }
 );
 

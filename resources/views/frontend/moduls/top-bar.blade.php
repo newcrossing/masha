@@ -7,16 +7,13 @@
 
                     <li class="list-inline-item">
                         <ul class="topbar-social-menu list-inline mb-0">
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="social-link"><i
-                                            class="uil uil-whatsapp"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="social-link"><i
-                                            class="uil uil-facebook-messenger-alt"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="social-link"><i
-                                            class="uil uil-instagram"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="social-link"><i
-                                            class="uil uil-envelope"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="social-link"><i
-                                            class="uil uil-twitter-alt"></i></a></li>
+                            @foreach ($socials as $social)
+                                <li class="list-inline-item">
+                                    <a href="{{$social->link}}" class="social-link">
+                                        <i class="{{$social->ico}}"></i>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                 </ul>
