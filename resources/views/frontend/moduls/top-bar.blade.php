@@ -7,7 +7,7 @@
 
                     <li class="list-inline-item">
                         <ul class="topbar-social-menu list-inline mb-0">
-                            @foreach ($socials as $social)
+                            @foreach (\App\Models\Social::where('active', 1)->get() as $social)
                                 <li class="list-inline-item">
                                     <a href="{{$social->link}}" class="social-link">
                                         <i class="{{$social->ico}}"></i>
