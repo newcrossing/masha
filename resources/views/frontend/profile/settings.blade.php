@@ -3,7 +3,6 @@
 @section('title','Мой профиль')
 
 @section('vendor-styles')
-
 @endsection
 
 @section('page-styles')
@@ -11,10 +10,7 @@
     <link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css">
 @endsection
 
-
 @section('content')
-
-
     <!-- Start home -->
     <section class="page-title-box">
         <div class="container">
@@ -22,15 +18,6 @@
                 <div class="col-md-6">
                     <div class="text-center text-white">
                         <h3 class="mb-4">Мой профиль</h3>
-                        <div class="page-next">
-                            <nav class="d-inline-block" aria-label="breadcrumb text-center">
-                                <ol class="breadcrumb justify-content-center">
-                                    <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Мой профиль</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Настройки</li>
-                                </ol>
-                            </nav>
-                        </div>
                     </div>
                 </div>
                 <!--end col-->
@@ -61,8 +48,7 @@
                     <div class="card profile-sidebar me-lg-4">
                         <div class="card-body p-4">
                             <div class="text-center pb-4 border-bottom">
-                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}" alt=""
-                                     class="avatar-lg img-thumbnail rounded-circle mb-4">
+                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}" class="avatar-lg img-thumbnail rounded-circle mb-4">
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
                                 <p class="text-muted">{{Auth::user()->login}}</p>
                             </div>
@@ -134,39 +120,37 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Имя</label> <input type="text"
-                                                                                                class="form-control"
-                                                                                                name="name"
-                                                                                                value="{{Auth::user()->name}}"/>
+                                        <label for="name" class="form-label">Имя</label>
+                                        <input type="text" class="form-control" name="name"
+                                               value="{{Auth::user()->name}}"/>
+                                    </div>
+                                </div>
+                                <!--end col-->
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">Город</label>
+                                        <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="tel" class="form-label">Телефон </label>
+                                        <input type="tel" class="form-control" name="tel" id="phone_2" value="{{Auth::user()->tel}}"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="tel2" class="form-label">Дополнительный телефон </label>
+                                        <input type="tel" class="form-control" name="tel2" id="phone_22" value="{{Auth::user()->tel2}}"/>
+                                    </div>
+                                </div>
+                                <!--end col-->
 
-                                    </div>
-                                </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="city" class="form-label">Город</label> <input type="text"
-                                                                                                  class="form-control"
-                                                                                                  name="city"
-                                                                                                  value="{{Auth::user()->city}}"/>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="tel" class="form-label">Телефон </label> <input type="tel"
-                                                                                                    class="form-control"
-                                                                                                    name="tel"
-                                                                                                    id="phone_2"
-                                                                                                    value="{{Auth::user()->tel}}"/>
-                                    </div>
-                                </div>
-                                <!--end col-->
-
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Email</label> <input type="email" class="form-control"
-                                                                                       name="email"
-                                                                                       value="{{Auth::user()->email}}"/>
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -199,7 +183,7 @@
                                         <input class="form-check-input" type="checkbox" name="notify_whatsup"
                                                id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
                                         <label class="form-check-label" for="notify_whatsup">Сообщение в Whats
-                                                                                             Up</label>
+                                            Up</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -209,7 +193,7 @@
                                         <input class="form-check-input" type="checkbox" name="notify_telegram"
                                                id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
                                         <label class="form-check-label" for="notify_telegram">Сообщение в
-                                                                                              Telegramm</label>
+                                            Telegramm</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -225,8 +209,8 @@
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="attachmentscv" class="form-label">Прикрепите фото</label> <input
-                                                class="form-control" type="file" name="image" id="attachmentscv"
-                                                accept="image/png, image/bmp, image/jpeg"/>
+                                            class="form-control" type="file" name="image" id="attachmentscv"
+                                            accept="image/png, image/bmp, image/jpeg"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -281,10 +265,6 @@
     </section>
     <!-- END PROFILE -->
 
-
-
-
-
 @endsection
 
 
@@ -314,9 +294,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#phone_2").mask("+7(999)999-99-99");
+            $("#phone_22").mask("+7(999)999-99-99");
         });
     </script>
-
 
 @endsection
 

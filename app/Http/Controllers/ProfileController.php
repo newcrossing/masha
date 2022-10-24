@@ -40,6 +40,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->city = $request->city;
         $user->tel = Str::remove(['(', ')', '-', ' '], $request->tel);
+        $user->tel2 = Str::remove(['(', ')', '-', ' '], $request->tel2);
         $user->email = $request->email;
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
