@@ -24,6 +24,7 @@
                                 <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
                                     <li><a class="dropdown-item" href="{{route('agreement')}}">Пользовательское соглашение</a></li>
                                     <li><a class="dropdown-item" href="{{route('privacy-policy')}}">Политика конфиденциальности</a></li>
+                                    <li><a class="dropdown-item" href="{{route('help')}}">Помошь</a></li>
 
                                 </ul>
 				</li><!--end dropdown-->

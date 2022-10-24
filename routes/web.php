@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');;
 Route::get('/agreement', [AgreementController::class, 'index'])->name('agreement');;
 Route::get('/contact', [AgreementController::class, 'contact'])->name('contact');;
+Route::get('/help', [AgreementController::class, 'help'])->name('help');;
 Route::get('/privacy-policy', [AgreementController::class, 'privacy'])->name('privacy-policy');;
 Route::get('/board/{id}', [BoardController::class, 'single'])->where('id', '[0-9]+')->name('board.single');
 Route::get('/{slug}', [BoardController::class, 'qr'])->where('slug', 'qr-[A-Za-z0-9]+')->name('qr');
@@ -50,6 +51,7 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::resource('user', App\Http\Controllers\Adm\UserController::class);
         Route::resource('slider', App\Http\Controllers\Adm\SliderController::class);
         Route::resource('social', App\Http\Controllers\Adm\SocialController::class);
+        Route::resource('point', App\Http\Controllers\Adm\PointController::class);
     }
 );
 
