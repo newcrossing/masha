@@ -3,7 +3,7 @@
     <span class="sidebar-close-icon">
       <i class="bx bx-x"></i>
     </span>
-    <!-- todo app menu -->
+    <!--  app menu -->
     <div class="todo-app-menu">
       <div class="form-group text-center add-task">
         <!-- new task button -->
@@ -74,7 +74,7 @@
       <!-- sidebar list end -->
     </div>
   </div>
-  <!-- todo new task sidebar -->
+  <!--  new task sidebar -->
   <div class="todo-new-task-sidebar">
     <div class="card shadow-none p-0 m-0">
       <div class="card-header border-bottom py-75">

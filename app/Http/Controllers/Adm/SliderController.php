@@ -12,9 +12,26 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Validator;
 
 class SliderController extends Controller
 {
+
+    public function delete(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            Slider::destroy($request->id);
+            return response()->json(['success' => 'Удалено']);
+        }
+
+        return response()->json(['error' => $validator->errors()]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -109,7 +126,6 @@ class SliderController extends Controller
     {
         //
     }
-
 
 
 }

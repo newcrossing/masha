@@ -42,8 +42,6 @@ class UserController extends Controller
         ];
         //создаем объект чтобы было что отправить в форму.
         // Она же форма редактирования, надо что то отправить.
-
-
         $user = new User();
         return view('backend.pages.user.edit', compact('breadcrumbs', 'user'));
     }
@@ -79,21 +77,17 @@ class UserController extends Controller
             Image::make($request['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
         }
-        $user->login = $request->login;
-        $user->password = Hash::make($request->password);
-        $user->name = ($request->name) ?: $user->login;
-        $user->tel = $request->tel;
-        $user->email = $request->email;
-        $user->city = $request->city;
-        $user->notify_email = $request->boolean('notify_email');
-        $user->notify_tel = $request->boolean('notify_tel');
-        $user->notify_whatsup = $request->boolean('notify_whatsup');
-        $user->notify_telegram = $request->boolean('notify_telegram');
+        $request['notify_email'] = $request['notify_email'] ? '1' : null;
+        $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
+        $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
+        $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
+
+        $user->fill($request->all());
         $user->save();
         $user->board()->create([
-            'name' => 'Название вашего объявления',
+            'name' => 'Моя страница',
             'active' => 1,
-            'slug' => 'qr-' . rand(1000,9999) . $user->id . Str::lower(Str::random(5)),
+            'slug' => 'qr-' . rand(1000, 9999) . $user->id . Str::lower(Str::random(5)),
             'user_id' => $user->id
         ]);
 
@@ -101,7 +95,6 @@ class UserController extends Controller
         $user->assignRole('user');
 
         Log::info('Новый пользователь добавлен');
-
 
         if ($request->redirect == 'apply') {
             return redirect()->route('user.edit', $user->id)->with('success', 'Сохранено');
@@ -166,16 +159,12 @@ class UserController extends Controller
             Image::make($request['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
         }
-        $user->login = $request->login;
-        $user->password = Hash::make($request->password);
-        $user->name = $request->name;
-        $user->tel = $request->tel;
-        $user->email = $request->email;
-        $user->city = $request->city;
-        $user->notify_email = $request->boolean('notify_email');
-        $user->notify_tel = $request->boolean('notify_tel');
-        $user->notify_whatsup = $request->boolean('notify_whatsup');
-        $user->notify_telegram = $request->boolean('notify_telegram');
+        $request['notify_email'] = $request['notify_email'] ? '1' : null;
+        $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
+        $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
+        $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
+
+        $user->fill($request->all());
         $user->save();
 
         if ($request->redirect == 'apply') {

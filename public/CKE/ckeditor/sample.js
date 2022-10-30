@@ -9,7 +9,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 // Firebug has been presented some bugs with console. It must be "initialized"
 // before the page load to work.
-// FIXME: Remove the following in the future, if Firebug gets fixed.
+// : Remove the following in the future, if Firebug gets fixed.
 if ( typeof console != 'undefined' )
 	console.log();
 

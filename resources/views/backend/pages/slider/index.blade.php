@@ -41,7 +41,8 @@
                                             <fieldset class="form-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
-                                                    <label class="custom-file-label" for="inputGroupFile01">Выберите файл</label>
+                                                    <label class="custom-file-label" for="inputGroupFile01">Выберите
+                                                        файл</label>
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -62,7 +63,7 @@
         <!-- Basic File Browser end -->
         <div class="row">
             @foreach ($sliders as $slide)
-                <div class="col-xl-4 col-md-4 col-sm-6">
+                <div class="col-xl-4 col-md-4 col-sm-6" id="slider{{ $slide->id }}">
                     <div class="card text-center">
                         <div class="card-content">
                             <div class="card-body">
@@ -71,7 +72,7 @@
                                 </div>
                                 <p class="text-muted mb-0 line-ellipsis">
                                     <a class="todo-item-favorite ml-75"><i class="bx bx-star"></i></a>
-                                    <a class="todo-item-delete ml-75" href=""><i class="bx bx-trash"></i></a>
+                                    <a class="todo-item-delete ml-75 delete" href="" slideid="{{ $slide->id }}"><i class="bx bx-trash"></i></a>
                                 </p>
                                 <h2 class="mb-0"></h2>
                             </div>
@@ -85,8 +86,6 @@
     </section>
     <!-- Widgets Statistics End -->
 
-
-
 @endsection
 {{-- vendor scripts --}}
 @section('vendor-scripts')
@@ -98,5 +97,47 @@
 @endsection
 {{-- page scripts --}}
 @section('page-scripts')
-    <script src="{{asset('/adm/app-assets/js/scripts/cards/widgets.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $(".delete").click(function (e) {
+                e.preventDefault();
+                var id = $(this).attr('slideid');
+
+               // console.log('Начали');
+                $.ajax({
+                    url: "{{ route('ajax-slider-del') }}",
+                    type: 'POST',
+                    data: {id: id},
+                    success: function (data) {
+                       // console.log(data);
+
+                        if ($.isEmptyObject(data.error)) {
+                            //alert(data.success);
+                             $('#slider'+id).hide();
+                            //$('#emailform').hide();
+                        } else {
+                            printErrorMsg(data.error);
+                        }
+                    }
+                });
+            });
+
+            function printErrorMsg(msg) {
+                $.each(msg, function (key, value) {
+                    //console.log(key);
+                    $('.' + key + '_err').text(value);
+                });
+            }
+
+
+        });
+    </script>
 @endsection

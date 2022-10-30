@@ -18,7 +18,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'login',
         'email',
+        'tel',
+        'tel2',
+        'city',
+        'foto',
+        'notify_email',
+        'notify_tel',
+        'notify_whatsup',
+        'notify_telegram',
+        'active',
         'password',
     ];
 
@@ -28,7 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        // 'password',
         'remember_token',
     ];
 
@@ -43,7 +53,7 @@ class User extends Authenticatable
 
     public function getFoto()
     {
-        return ($this->foto) ? $this->foto : '000.png';
+        return ($this->foto) ?: '000.png';
     }
 
     /**

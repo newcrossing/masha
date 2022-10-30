@@ -52,6 +52,7 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::resource('slider', App\Http\Controllers\Adm\SliderController::class);
         Route::resource('social', App\Http\Controllers\Adm\SocialController::class);
         Route::resource('point', App\Http\Controllers\Adm\PointController::class);
+        Route::post('/ajax-slider-del', [App\Http\Controllers\Adm\SliderController::class, 'delete'])->name('ajax-slider-del');
     }
 );
 

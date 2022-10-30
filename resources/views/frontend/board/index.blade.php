@@ -14,7 +14,7 @@
 
 @section('content')
 
-    <!-- Start home -->
+    <!-- Start home  уменьшить title-->
     <section class="page-title-box" style="padding-top: 150px; padding-bottom: 85px">
         <div class="container">
             <div class="row justify-content-center">
@@ -77,7 +77,7 @@
                                     @endif
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
-                                        <a href="https://t.me/{{$board->user->tel}}"  class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="https://t.me/{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-telegram"></i> Написать в Telegram
                                         </a>
                                     @endif
@@ -164,23 +164,25 @@
                                             </div>
                                         </div>
                                     @endisset
+                                    {{---
                                     <div class="col-lg-4">
-                                        <div class="border p-3">
-                                            <p class="text-muted fs-13 mb-0">Дата размещения</p>
-                                            <p class="fw-medium mb-0">{{$board->created_at->translatedFormat('j F Y').' г.'}}</p>
-                                        </div>
-                                    </div>
+                                         <div class="border p-3">
+                                             <p class="text-muted fs-13 mb-0">Дата размещения</p>
+                                             <p class="fw-medium mb-0">{{$board->created_at->translatedFormat('j F Y').' г.'}}</p>
+                                         </div>
+                                     </div>
+                                     ---}}
 
                                 </div>
                             </div><!--end Experience-->
-
-                            <div class="mt-4">
-                                <h5 class="mb-3">Описание</h5>
-                                <div class="job-detail-desc">
-                                    <p class="text-muted mb-0">{{$board->text}}</p>
+                            @if($board->text)
+                                <div class="mt-4">
+                                    <h5 class="mb-3">Описание</h5>
+                                    <div class="job-detail-desc">
+                                        <p class="text-muted mb-0">{{$board->text}}</p>
+                                    </div>
                                 </div>
-                            </div>
-
+                            @endif
 
 
                         </div><!--end card-body-->
@@ -229,8 +231,8 @@
                         <div class="mb-3">
                             <label for="messageControlTextarea" class="form-label">Сообщение</label>
                             <textarea
-                                    class="form-control" id="messageControlTextarea" rows="4"
-                                    placeholder="Напишите как можно с вами связаться" required></textarea>
+                                class="form-control" id="messageControlTextarea" rows="4"
+                                placeholder="Напишите как можно с вами связаться" required></textarea>
                             <span class="badge bg-soft-danger text_err "></span>
                         </div>
 
@@ -241,21 +243,11 @@
         </div>
     </div><!-- END APPLY MODAL -->
 
-
 @endsection
 
-
-
-
-
-{{-- vendor scripts --}}
 @section('vendor-scripts')
-    <!-- BEGIN: Page Vendor JS-->
-
-    <!-- END: Page Vendor JS-->
 @endsection
 
-{{-- page scripts --}}
 @section('page-scripts')
     <!-- Light Box Js -->
     <script src="/assets/libs/glightbox/js/glightbox.min.js"></script>
@@ -263,11 +255,9 @@
     <script src="/assets/js/pages/lightbox.init.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
             $("#submitmail").click(function (e) {
                 e.preventDefault();
-
                 var _token = $("input[name='_token']").val();
                 var email = $("#emailControlInput").val();
                 var id = $("#idControlInput").val();
@@ -314,22 +304,12 @@
             $("#clickwhatsup").click(function (e) {
                 var tel = {{  $board->user->tel }};
                 var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
-
-                //alert(text)
                 e.preventDefault();
 
                 let url = `https://api.whatsapp.com/send/?phone=${tel}&text=${text}`;
-                // let url = `https://web.whatsapp.com/send?phone=${tel}&text=${text}&source=&data=`;
-
                 window.open(url);
-
             });
-
-
         });
-
-
-
     </script>
 @endsection
 

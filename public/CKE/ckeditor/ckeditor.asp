@@ -315,7 +315,7 @@ Class CKEditor
 		listeners(size) = javascriptCode
 
 		oAllInstancesEvents( eventName ) = listeners
-'		'' Avoid duplicates. fixme...
+'		'' Avoid duplicates. ...
 '		if (!in_array($javascriptCode, $this->_events[$event])) {
 '			$this->_events[$event][] = $javascriptCode;
 '		}
@@ -362,7 +362,7 @@ Class CKEditor
 		listeners(size) = javascriptCode
 
 		oInstanceEvents( eventName ) = listeners
-'		'' Avoid duplicates. fixme...
+'		'' Avoid duplicates. ...
 '		if (!in_array($javascriptCode, $this->_events[$event])) {
 '			$this->_events[$event][] = $javascriptCode;
 '		}

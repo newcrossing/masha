@@ -350,7 +350,7 @@ class PEAR_Builder extends PEAR_Common
         }
         // }}} end of interactive part
 
-        // FIXME make configurable
+        //  make configurable
         if (!$user=getenv('USER')) {
             $user='defaultuser';
         }

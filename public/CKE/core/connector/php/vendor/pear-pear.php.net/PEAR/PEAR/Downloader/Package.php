@@ -1372,7 +1372,7 @@ class PEAR_Downloader_Package
                     continue;
                 }
 
-                // FIXME do symlink check
+                //  do symlink check
 
                 fwrite($fp, $filecontents, strlen($filecontents));
                 fclose($fp);
@@ -1615,7 +1615,7 @@ class PEAR_Downloader_Package
                     $this->_downloader->log(0, $pf->getMessage());
                 }
 
-                ///FIXME need to pass back some error code that we can use to match with to cancel all further operations
+                /// need to pass back some error code that we can use to match with to cancel all further operations
                 /// At least stop all deps of this package from being installed
                 $out = $saveparam ? $saveparam : $param;
                 $err = PEAR::raiseError('Download of "' . $out . '" succeeded, but it is not a valid package archive');
