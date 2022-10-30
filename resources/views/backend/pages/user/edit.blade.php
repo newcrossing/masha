@@ -192,14 +192,14 @@
                                                             Применить
                                                         </button>
 
-                                                        <button type="submit" name="redirect" value="save"
-                                                                class="btn btn-primary glow mr-sm-1 mb-1">
-                                                            Сохранить
-                                                        </button>
-
                                                         <button type="submit" name="redirect" value="saveadd"
                                                                 class="btn btn-primary glow mr-sm-1 mb-1">
                                                             Сохранить & Добавить
+                                                        </button>
+
+                                                        <button type="submit" name="redirect" value="delete"
+                                                                class="btn btn-danger glow mr-sm-1 mb-1">
+                                                            Удалить
                                                         </button>
 
                                                         <button type="submit" name="redirect" value="cancel"

@@ -145,6 +145,10 @@ class UserController extends Controller
         if ($request->redirect == 'cancel') {
             return redirect()->route('user.index');
         }
+        if ($request->redirect == 'delete') {
+            $user->delete();
+            return redirect()->route('user.index');
+        }
 
         //сброс фото
         if ($request->reset_foto) {
