@@ -103,6 +103,20 @@
                     "icon": "bx-list-ol"
                 }
             ]
+        },
+        {
+            "url": "#",
+            "name": "Алгоритм",
+            "i18n": "Invoice",
+            "icon": "bxs-notepad",
+            "submenu": [
+                {
+                    "url": "admin/step",
+                    "name": "Шаги",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                }
+            ]
         }
     ]
 }

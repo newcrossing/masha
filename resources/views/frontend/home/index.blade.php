@@ -49,7 +49,7 @@
     <!-- End Home -->
 
     <!-- START PROCESS -->
-    <section class="section">
+    <section class="section" style="padding-top: 50px">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -58,57 +58,35 @@
                         <p class="text-muted">Инструкция очень простая и очевиданая.</p>
                         <div class="process-menu nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home"
-                               role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                <div class="d-flex">
-                                    <div class="number flex-shrink-0"> 1</div>
-                                    <div class="flex-grow-1 text-start ms-3">
-                                        <h5 class="fs-18">В нашем офисе вы заказываете брелок</h5>
-                                        <p class="text-muted mb-0">
-                                            Due to its widespread use as filler text for layouts,
-                                            non-readability is of great importance.</p>
+                            @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
+
+                                <a class="nav-link @if ($loop->first) active @endif" id="v-pills-{{$step->id}}-tab" data-bs-toggle="pill" href="#v-pills-{{$step->id}}"
+                                   role="tab" aria-controls="v-pills-{{$step->id}}" aria-selected="true">
+                                    <div class="d-flex">
+                                        <div class="number flex-shrink-0">{{$step->number}}</div>
+                                        <div class="flex-grow-1 text-start ms-3">
+                                            <h5 class="fs-18">{{$step->name}}</h5>
+                                            <p class="text-muted mb-0"> {{$step->text}}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile"
-                               role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                                <div class="d-flex">
-                                    <div class="number flex-shrink-0"> 2</div>
-                                    <div class="flex-grow-1 text-start ms-3">
-                                        <h5 class="fs-18">Заводим акаунт на нашем сайте</h5>
-                                        <p class="text-muted mb-0">There are many variations of passages of
-                                            avaibookmark-label, but the majority
-                                            alteration in some form.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages"
-                               role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                                <div class=" d-flex">
-                                    <div class="number flex-shrink-0"> 3</div>
-                                    <div class="flex-grow-1 text-start ms-3">
-                                        <h5 class="fs-18">Теряем</h5>
-                                        <p class="text-muted mb-0">а кто то находит.</p>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div><!--end col-->
                 <div class="col-lg-6">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                             aria-labelledby="v-pills-home-tab">
-                            <img src="/assets/images/process-01.png" alt="" class="img-fluid">
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                             aria-labelledby="v-pills-profile-tab">
-                            <img src="/assets/images/process-02.png" alt="" class="img-fluid">
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                             aria-labelledby="v-pills-messages-tab">
-                            <img src="/assets/images/process-03.png" alt="" class="img-fluid">
-                        </div>
+                        @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
+
+
+
+                            <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel"
+                                 aria-labelledby="v-pills-{{$step->id}}-tab">
+                                <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
+                            </div>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div> <!--end row-->
@@ -116,39 +94,6 @@
     </section>
     <!-- END PROCESS -->
 
-    <!-- START APPLY MODAL -->
-    <div class="modal fade" id="applyNow" tabindex="-1" aria-labelledby="applyNow" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body p-5">
-                    <div class="text-center mb-4">
-                        <h5 class="modal-title" id="staticBackdropLabel">Apply For This Job</h5>
-                    </div>
-                    <div class="position-absolute end-0 top-0 p-3">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="mb-3">
-                        <label for="nameControlInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="nameControlInput" placeholder="Enter your name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="emailControlInput2" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="emailControlInput2" placeholder="Enter your email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="messageControlTextarea" class="form-label">Message</label>
-                        <textarea class="form-control" id="messageControlTextarea" rows="4"
-                                  placeholder="Enter your message"></textarea>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label" for="inputGroupFile01">Resume Upload</label>
-                        <input type="file" class="form-control" id="inputGroupFile01">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Send Application</button>
-                </div>
-            </div>
-        </div>
-    </div><!-- END APPLY MODAL -->
 
     <!-- End Page-content -->
 @endsection

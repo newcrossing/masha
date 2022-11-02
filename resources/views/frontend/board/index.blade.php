@@ -3,17 +3,13 @@
 @section('title',$board->name)
 
 @section('vendor-styles')
-
 @endsection
 
 @section('page-styles')
-    <!-- Light Box Css -->
     <link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css">
 @endsection
 
-
 @section('content')
-
     <!-- Start home  уменьшить title-->
     <section class="page-title-box" style="padding-top: 150px; padding-bottom: 85px">
         <div class="container">
