@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -81,6 +82,10 @@ class UserController extends Controller
         $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
         $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
         $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
+        $request['password'] = Hash::make($request['password']);
+        $request['name'] = ($request['name']) ?: $request['login'];
+
+
 
         $user->fill($request->all());
         $user->save();
@@ -167,6 +172,7 @@ class UserController extends Controller
         $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
         $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
         $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
+        $request['password'] = Hash::make($request['password']);
 
         $user->fill($request->all());
         $user->save();

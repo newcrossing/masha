@@ -15,9 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         $breadcrumbs = [
-            ['link' => "/", 'name' => "Главная"],
-            ['link' => "/admin/user", 'name' => "Пользователи"],
-            ['name' => " Новый пользователь"]
+
+
         ];
         $users = DB::table('users')->count();
         $users_chek = DB::table('users')->whereNotNull('tel')->count();

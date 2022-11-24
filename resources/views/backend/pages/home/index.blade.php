@@ -18,7 +18,7 @@
     <section id="widgets-Statistics">
         <div class="row">
             <div class="col-12 mt-1 mb-2">
-                <h4>Статистика</h4>
+                <h4>Пользователи </h4>
                 <hr>
             </div>
         </div>

@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Adm;
 
 use App\Http\Controllers\Controller;
 use App\Models\Step;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class StepController extends Controller
@@ -25,11 +23,7 @@ class StepController extends Controller
         return view('backend.pages.step.index', compact('steps', 'breadcrumbs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $breadcrumbs = [
@@ -43,12 +37,7 @@ class StepController extends Controller
         return view('backend.pages.step.edit', compact('breadcrumbs', 'step'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         if ($request->redirect == 'cancel') {
@@ -83,12 +72,7 @@ class StepController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
@@ -99,7 +83,7 @@ class StepController extends Controller
     {
         $breadcrumbs = [
             ['link' => "/", 'name' => "Главная"],
-            ['link' => "/admin/social", 'name' => "Алгоритм"],
+            ['link' => "/admin/step", 'name' => "Алгоритм"],
             ['name' => " Изменить"]
         ];
 
@@ -114,7 +98,7 @@ class StepController extends Controller
         }
         if ($request->redirect == 'delete') {
             $step->delete();
-            return redirect()->route('step.index');
+            return redirect()->route('step.index')->with('success', 'Удалено');
         }
 
         //сброс фото
@@ -128,16 +112,17 @@ class StepController extends Controller
             $newFileName = time() . '.' . $request['image']->extension();
             Image::make($request['image'])->widen(650)->save(Storage::path('/public/steps/') . $newFileName);
             $request['image'] = $newFileName;
+            $path = $request->image->store('images');
 
         }
-
+//return $request;
         $request['active'] = $request['active'] ? '1' : null;
 
         $step->fill($request->all());
         $step->save();
         if ($request->hasFile('image')) {
             $step->image = $newFileName;
-            $step->save();
+           $step->save();
         }
 
         if ($request->redirect == 'apply') {
@@ -147,12 +132,7 @@ class StepController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

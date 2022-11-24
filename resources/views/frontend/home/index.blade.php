@@ -59,7 +59,6 @@
                         <div class="process-menu nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
                             @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
-
                                 <a class="nav-link @if ($loop->first) active @endif" id="v-pills-{{$step->id}}-tab" data-bs-toggle="pill" href="#v-pills-{{$step->id}}"
                                    role="tab" aria-controls="v-pills-{{$step->id}}" aria-selected="true">
                                     <div class="d-flex">
@@ -77,16 +76,11 @@
                 <div class="col-lg-6">
                     <div class="tab-content" id="v-pills-tabContent">
                         @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
-
-
-
                             <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel"
                                  aria-labelledby="v-pills-{{$step->id}}-tab">
                                 <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
                             </div>
                         @endforeach
-
-
                     </div>
                 </div>
             </div> <!--end row-->
@@ -94,15 +88,11 @@
     </section>
     <!-- END PROCESS -->
 
-
-    <!-- End Page-content -->
 @endsection
 
-{{-- vendor scripts --}}
 @section('vendor-scripts')
 @endsection
 
-{{-- page scripts --}}
 @section('page-scripts')
     <script src="/assets/js/pages/blog-details.init.js"></script>
 @endsection
