@@ -10,9 +10,9 @@
                         <div class="row g-0">
                             <div class="col-lg-6 text-center">
                                 <div class="card-body p-4">
-                                    <a href="index.html"> <img src="/assets/images/logo-light.png" alt=""
-                                                               class="logo-light"> <img
-                                                src="/assets/images/logo-dark.png" alt="" class="logo-dark"> </a>
+                                    <a href="index.html">
+                                        <img src="/assets/images/logo.png" alt=""                                                               class="">
+                                    </a>
                                     <div class="mt-5">
                                         <img src="/assets/images/auth/sign-in.png" alt="" class="img-fluid">
                                     </div>
