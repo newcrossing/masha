@@ -31,7 +31,7 @@ class StepController extends Controller
             ['link' => "/admin/social", 'name' => $this->name],
             ['name' => " Новая"]
         ];
-        // Cоздаем объект чтобы было что отправить в форму.
+        // Создаем объект чтобы было что отправить в форму.
         // Она же форма редактирования, надо что-то отправить.
         $step = new Step();
         return view('backend.pages.step.edit', compact('breadcrumbs', 'step'));

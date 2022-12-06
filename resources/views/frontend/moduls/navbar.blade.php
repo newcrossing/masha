@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
 	<div class="container-fluid custom-container">
 		<a class="navbar-brand text-dark fw-bold me-auto" href="{{route('home')}}">
-			<img src="/assets/images/logo-dark.png" height="22" alt="" class="logo-dark"/>
-			<img src="/assets/images/logo-light.png" height="22" alt="" class="logo-light"/>
+			<img src="/assets/images/logo.png" height="60" alt="" class="logo-dark"/>
 		</a>
 		<div>
 			<button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
