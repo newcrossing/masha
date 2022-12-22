@@ -12,10 +12,7 @@
     <link rel="stylesheet" href="/assets/libs/glightbox/css/glightbox.min.css">
 @endsection
 
-
 @section('content')
-
-
     <!-- Start home -->
     <section class="page-title-box">
         <div class="container">
@@ -44,13 +41,11 @@
     <div class="position-relative" style="z-index: 1">
         <div class="shape">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1"
-                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+                <path fill="#FFFFFF" fill-opacity="1" d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
             </svg>
         </div>
     </div>
     <!-- END SHAPE -->
-
 
     <!-- START PROFILE -->
     <section class="section">
@@ -70,12 +65,15 @@
                                         <div class="flex-grow-1 text-truncate ms-3">
                                             <a href="{{route('foto.delete',$foto->id)}}" class="text-dark">
                                                 <span class="badge bg-danger">
-                                                    <i class="uil uil-trash-alt"></i></span></a> <span
-                                                    class="d-block text-muted fs-14">{{$foto->file}}</span>
+                                                    <i class="uil uil-trash-alt"></i>
+                                                </span>
+                                            </a>
+                                            <span class="d-block text-muted fs-14">{{$foto->file}}</span>
                                         </div>
                                     </li>
                                 @endforeach
                             </ul>
+                            {!! QrCode::size(300)->color(255, 0, 0)->style('dot')->eye('circle')->encoding('UTF-8')->generate('https://маша-растеряша.рф/'.$board->slug) !!}
                         </div>
                         <!--end card-body-->
                     </div>
@@ -106,8 +104,8 @@
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label for="attachmentscv" class="form-label">Прикрепите фото</label> <input
-                                                class="form-control" type="file" name="image" id="attachmentscv"
-                                                accept="image/png, image/bmp, image/jpeg"/>
+                                            class="form-control" type="file" name="image" id="attachmentscv"
+                                            accept="image/png, image/bmp, image/jpeg"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -170,31 +168,17 @@
     </section>
     <!-- END PROFILE -->
 
-
-
-
-
 @endsection
 
 
 
-
-
-{{-- vendor scripts --}}
 @section('vendor-scripts')
-    <!-- BEGIN: Page Vendor JS-->
 
-    <!-- END: Page Vendor JS-->
 @endsection
 
-{{-- page scripts --}}
 @section('page-scripts')
     <!-- Light Box Js -->
     <script src="/assets/libs/glightbox/js/glightbox.min.js"></script>
-
     <script src="/assets/js/pages/lightbox.init.js"></script>
-
-
-
 @endsection
 
