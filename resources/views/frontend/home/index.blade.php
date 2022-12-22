@@ -3,6 +3,7 @@
 @section('title','Главная')
 
 @section('vendor-styles')
+
 @endsection
 
 @section('page-styles')
@@ -25,8 +26,7 @@
                 <div class="col-lg-4">
                     <div class="mt-4 mt-lg-0 ms-xl-4">
                         <div class="quote-icon">
-                            {{---<i class="mdi mdi-format-quote-open icon"></i>
-                            <i class="mdi mdi-format-quote-open icon-2 text-primary"></i>---}}
+
                         </div>
                         <div class="swiper blogdetailSlider">
                             <div class="swiper-wrapper">
@@ -86,6 +86,7 @@
             </div> <!--end row-->
         </div><!--end container-->
     </section>
+
     <!-- END PROCESS -->
 
 @endsection
