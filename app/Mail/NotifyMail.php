@@ -30,7 +30,7 @@ class NotifyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('krestossss@yandex.ru', 'Маша-растеряша')->view('frontend.mail.mail')
+        return $this->from('robot@masha-rasteryasha.online', 'Маша-растеряша')->view('frontend.mail.mail')
             ->subject(' Потеряшка нашлась ');
     }
 }
