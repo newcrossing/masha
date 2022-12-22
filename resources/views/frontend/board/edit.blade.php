@@ -73,28 +73,28 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            {!! QrCode::size(300)->color(255, 0, 0)->style('dot')->eye('circle')->encoding('UTF-8')->generate('https://маша-растеряша.рф/'.$board->slug) !!}
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end profile-sidebar-->
-                </div>
+                            {{-- {!! QrCode::size(300)->color(255, 0, 0)->style('dot')->eye('circle')->encoding('UTF-8')->generate('https://маша-растеряша.рф/'.$board->slug) !!} --}}
+                         </div>
+                         <!--end card-body-->
+                     </div>
+                     <!--end profile-sidebar-->
+                 </div>
 
 
-                <!--end col-->
-                <div class="col-lg-8">
-                    @if(session('success'))
-                        <div class="alert  bg-soft-success" role="alert">
-                            {{session('success')}}
-                        </div>
-                    @endif
+                 <!--end col-->
+                 <div class="col-lg-8">
+                     @if(session('success'))
+                         <div class="alert  bg-soft-success" role="alert">
+                             {{session('success')}}
+                         </div>
+                     @endif
 
 
-                    <form action="{{ (isset($board->id))? route('board.update',$board->id):route('board.insert')  }}"
-                          method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @if(isset($board->id))
-                            {{--@method('PUT')--}}
+                     <form action="{{ (isset($board->id))? route('board.update',$board->id):route('board.insert')  }}"
+                           method="POST" enctype="multipart/form-data">
+                         @csrf
+                         @if(isset($board->id))
+                             {{--@method('PUT')--}}
                         @endif
                         <div>
                             <h5 class="fs-17 fw-semibold mb-3 mb-0">Основное</h5>
