@@ -205,7 +205,7 @@
 
                     <form id="emailform">
                         @csrf
-                        <input type="hidden" name="id" id="idControlInput" value="{{$board->user->id}}">
+                        <input type="hidden" name="id" id="idControlInput" value="{{$board->user_id}}">
                         <div class="text-center mb-4">
                             <h5 class="modal-title" id="staticBackdropLabel">Сообщение автору на email</h5>
                         </div>
@@ -298,7 +298,8 @@
             }
 
             $("#clickwhatsup").click(function (e) {
-                var tel = {{  $board->user->tel }};
+
+                var tel = "{{  $board->user->tel }}";
                 var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
                 e.preventDefault();
 
