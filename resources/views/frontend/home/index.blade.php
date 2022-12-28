@@ -59,7 +59,7 @@
                 <div class="col-lg-6">
                     <div class="section-title me-5">
                         <h3 class="title">Как это работает</h3>
-                        <p class="text-muted">Инструкция очень простая и очевиданая.</p>
+                        <p class="text-muted">Инструкция очень простая и очевидная.</p>
                         <div class="process-menu nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
                             @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
@@ -82,7 +82,9 @@
                         @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
                             <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel"
                                  aria-labelledby="v-pills-{{$step->id}}-tab">
-                                <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
+                                @if($step->id)
+                                    <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
+                                @endif
                             </div>
                         @endforeach
                     </div>
