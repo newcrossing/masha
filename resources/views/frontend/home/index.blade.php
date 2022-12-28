@@ -21,7 +21,8 @@
                         <h1 class="display-5 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
                         <p class="fs-18 text-muted mb-0">{!! \App\Models\Content::where('type', 'slidertext2')->first()->text!!}</p>
 
-                        <a href="#signupModal"  data-bs-toggle="modal" class="btn btn-danger">Заказать набор с доставкой <i class="uil uil-message ms-1"></i></a>
+                        <a href="#signupModal" data-bs-toggle="modal" class="btn btn-danger">Заказать набор с доставкой
+                            <i class="uil uil-message ms-1"></i></a>
                     </div>
                 </div>
                 <!--end col-->
@@ -47,8 +48,6 @@
             <!--end row-->
         </div>
         <!--end container-->
-
-
     </section>
     <!-- End Home -->
 
@@ -80,8 +79,7 @@
                 <div class="col-lg-6">
                     <div class="tab-content" id="v-pills-tabContent">
                         @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
-                            <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel"
-                                 aria-labelledby="v-pills-{{$step->id}}-tab">
+                            <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel" aria-labelledby="v-pills-{{$step->id}}-tab">
                                 @if($step->id)
                                     <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
                                 @endif

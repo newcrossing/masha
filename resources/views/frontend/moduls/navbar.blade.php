@@ -12,7 +12,7 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="navbar-nav mx-auto navbar-center">
 				<li class="nav-item">
-					<a href="{{route('home')}}" class="nav-link">Главная</a>
+					<a href="{{route('home')}}" class="nav-link" style="margin-top: 1px">Главная</a>
 				</li>
 
 				<li class="nav-item dropdown dropdown-hover">
