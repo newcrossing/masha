@@ -12,27 +12,35 @@
                             <h5>Форма заказа</h5>
                             <p class="text-muted">Оформление заказа и доставки в один клик</p>
                         </div>
-                        <form action="#" class="auth-form">
+                        <div class="alert  bg-soft-success" id="messagesentok" role="alert" style="display: none">
+                            Сообщение отправлено
+                        </div>
+                        <form class="auth-form" id="orderform">
+                            @csrf
                             <div class="mb-3">
-                                <label for="usernameInput" class="form-label">Имя</label>
-                                <input type="text" class="form-control" id="usernameInput" placeholder="Укажите имя для связи" required>
+                                <label for="nameInputOreder" class="form-label">Имя</label>
+                                <input type="text" name="name" class="form-control" id="nameInputOreder" placeholder="Ваше имя" required>
                             </div>
                             <div class="mb-3">
-                                <label for="passwordInput" class="form-label">Телефон</label>
-                                <input type="text" class="form-control" id="emailInput" placeholder="Укажите номер телефона" required>
+                                <label for="telInputOreder" class="form-label">Телефон</label>
+                                <input type="tel" name="tel" class="form-control" id="telInputOreder" placeholder="Номер телефона" required>
                             </div>
                             <div class="mb-3">
-                                <label for="emailInput" class="form-label">Сообщение</label>
-                                <textarea type="text" class="form-control" id="passwordInput" placeholder="Предмет заказа"></textarea>
+                                <label for="textInputOreder" class="form-label">Сообщение</label>
+                                <textarea type="text" name="message" class="form-control" id="textInputOreder" placeholder="Предмет заказа"></textarea>
                             </div>
                             <div class="mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="flexCheckDefault" required>
-                                    <label class="form-check-label" for="flexCheckDefault">Согласен с  <a href="{{route('privacy-policy')}}" class="text-primary form-text text-decoration-underline">Политикой конфиденциальности</a></label>
+                                    <label class="form-check-label" for="flexCheckDefault">Согласен с
+                                        <a href="{{route('privacy-policy')}}" target="_blank" class="text-primary form-text text-decoration-underline">
+                                            Политикой конфиденциальности
+                                        </a>
+                                    </label>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-100">Заказать</button>
+                                <button type="submit" class="btn btn-primary w-100" id="submitorder">Заказать</button>
                             </div>
                         </form>
 
@@ -43,3 +51,43 @@
     </div><!--end modal-dialog-->
 </div>
 <!-- END SIGN-UP MODAL -->
+
+@section('page-scripts')
+    @parent
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#submitorder").click(function (e) {
+                e.preventDefault();
+                var _token = $("input[name='_token']").val();
+                var tel = $("#telInputOreder").val();
+                var name = $("#nameInputOreder").val();
+                var text = $("#telInputOreder").val();
+
+                $.ajax({
+                    url: "{{ route('board.sendorder') }}",
+                    type: 'POST',
+                    data: {_token: _token, tel: tel, name: name, text: text},
+                    success: function (data) {
+                        console.log(data.error)
+
+                        if ($.isEmptyObject(data.error)) {
+                            //alert(data.success);
+                            $('#messagesentok').show();
+                            $('#orderform').hide();
+                        } else {
+                            printErrorMsg(data.error);
+                        }
+                    }
+                });
+            });
+
+            function printErrorMsg(msg) {
+                $.each(msg, function (key, value) {
+                    $('.' + key + '_err').text(value);
+                });
+            }
+        });
+    </script>
+@endsection

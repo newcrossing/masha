@@ -245,6 +245,7 @@
 @endsection
 
 @section('page-scripts')
+
     <!-- Light Box Js -->
     <script src="/assets/libs/glightbox/js/glightbox.min.js"></script>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
 use App\Models\Board;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,10 @@ use Illuminate\Support\Facades\DB;
 class BoardController extends Controller
 {
 
-
+    /***
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendmail(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -35,10 +39,35 @@ class BoardController extends Controller
                 'email' => $request->email,
                 'text' => $request->text,
             ];
-
-
             Mail::to(User::find($request->id)->email)->send(new NotifyMail($data));
             return response()->json(['success' => 'Сообщение отправлено']);
+        }
+
+        return response()->json(['error' => $validator->errors()]);
+    }
+
+    /***
+     * Обработка заказа в один клик с главной
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function sendorder(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'tel' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+            $data = [
+                'name' => $request->name,
+                'tel' => $request->tel,
+                'text' => $request->text,
+            ];
+
+            Mail::to(env('MAIL_SUPPORT', 'support@masha-rasteryasha.online'))
+                ->send(new OrderShipped($data));
+            return response()->json(['success' => 'Заказ отправлен']);
         }
 
         return response()->json(['error' => $validator->errors()]);
@@ -52,7 +81,7 @@ class BoardController extends Controller
 
     public function qr($slug)
     {
-       // $board = DB::table('boards')->where('slug', $slug)->first();
+        // $board = DB::table('boards')->where('slug', $slug)->first();
         $board = Board::where('slug', $slug)->firstOrFail();
         return view('frontend.board.index', compact('board'));
     }

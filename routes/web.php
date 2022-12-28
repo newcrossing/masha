@@ -26,6 +26,7 @@ Route::get('/privacy-policy', [AgreementController::class, 'privacy'])->name('pr
 Route::get('/board/{id}', [BoardController::class, 'single'])->where('id', '[0-9]+')->name('board.single');
 Route::get('/{slug}', [BoardController::class, 'qr'])->where('slug', 'qr-[A-Za-z0-9]+')->name('qr');
 Route::post('/sendmail', [BoardController::class, 'sendmail'])->name('board.send');
+Route::post('/sendorder', [BoardController::class, 'sendorder'])->name('board.sendorder');
 
 Route::middleware(['role:admin|user'])->group(
     function () {

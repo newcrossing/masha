@@ -99,6 +99,7 @@
 @endsection
 
 @section('page-scripts')
+    @parent
     <script src="/assets/js/pages/blog-details.init.js"></script>
 @endsection
 
