@@ -27,11 +27,11 @@
     <!-- App Css-->
     <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
     <!--Custom Css-->
-@yield('vendor-styles')
+    @yield('vendor-styles')
 
-<!-- END: Page CSS-->
-@yield('page-styles')
-<!-- END: Page CSS-->
+    <!-- END: Page CSS-->
+    @yield('page-styles')
+    <!-- END: Page CSS-->
 
 </head>
 
@@ -42,16 +42,14 @@
 <div>
 
     <!-- START TOP-BAR -->
-@include('frontend.moduls.top-bar')
-<!-- END TOP-BAR -->
+    @include('frontend.moduls.top-bar')
+    <!-- END TOP-BAR -->
 
     <!--Navbar Start-->
-@include('frontend.moduls.navbar')
-<!-- Navbar End -->
+    @include('frontend.moduls.navbar')
+    <!-- Navbar End -->
 
-    <!-- START SIGN-UP MODAL -->
-
-<!-- START SIGN-UP MODAL -->
+    @include('frontend.moduls.modal')
 
 
     <div class="main-content">
@@ -63,9 +61,9 @@
 
 
         <!-- START FOOTER -->
-    @include('frontend.moduls.footer')
+        @include('frontend.moduls.footer')
 
-    <!-- END FOOTER -->
+        <!-- END FOOTER -->
 
         <!-- START FOOTER-ALT -->
         <div class="footer-alt">
@@ -113,7 +111,6 @@
 
 <!--App Js -->
 <script src="/assets/js/pages/index.init.js"></script>
-
 
 
 <!-- BEGIN: Page JS-->

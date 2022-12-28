@@ -11,7 +11,7 @@
                             <div class="col-lg-6 text-center">
                                 <div class="card-body p-4">
                                     <a href="index.html">
-                                        <img src="/assets/images/logo.png" alt=""                                                               class="">
+                                        <img src="/assets/images/logo.png" alt="" class="">
                                     </a>
                                     <div class="mt-5">
                                         <img src="/assets/images/auth/sign-in.png" alt="" class="img-fluid">
@@ -47,13 +47,22 @@
 
                                             <div class="mb-4">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox"
-                                                           id="flexCheckDefault" required> <label
-                                                            class="form-check-label" for="flexCheckDefault">Согласен с
-                                                        <a href="{{route('privacy-policy')}}"
-                                                           style="color: #f7ffef; text-decoration: hotpink solid underline">политикой конфиденциальности</a> и
-                                                        <a href="{{route('agreement')}}"
-                                                           style="color: #f7ffef; text-decoration: hotpink solid underline">пользовательским соглашением</a></label>
+                                                    <input class="form-check-input" type="checkbox" id="privacy_policy" name="privacy_policy" required>
+                                                    <label class="form-check-label" for="privacy_policy">Согласен с
+                                                        <a href="{{route('privacy-policy')}}" target="_blank"
+                                                           style="color: #f7ffef; text-decoration: #fffdfe solid underline">
+                                                            политикой конфиденциальности
+                                                        </a>
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="agreement"  name="agreement" required>
+                                                    <label class="form-check-label" for="agreement">Согласен с
+                                                        <a href="{{route('agreement')}}" target="_blank"
+                                                           style="color: #f7ffef; text-decoration: #fffdfe  solid underline">
+                                                            пользовательским соглашением
+                                                        </a>
+                                                    </label>
                                                 </div>
 
                                             </div>

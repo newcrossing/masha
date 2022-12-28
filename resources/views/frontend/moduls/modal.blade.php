@@ -9,34 +9,33 @@
                 <div class="auth-content">
                     <div class="w-100">
                         <div class="text-center mb-4">
-                            <h5>Sign Up</h5>
-                            <p class="text-muted">Sign Up and get access to all the features of Jobcy</p>
+                            <h5>Форма заказа</h5>
+                            <p class="text-muted">Оформление заказа и доставки в один клик</p>
                         </div>
                         <form action="#" class="auth-form">
                             <div class="mb-3">
-                                <label for="usernameInput" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="usernameInput" placeholder="Enter your username">
+                                <label for="usernameInput" class="form-label">Имя</label>
+                                <input type="text" class="form-control" id="usernameInput" placeholder="Укажите имя для связи" required>
                             </div>
                             <div class="mb-3">
-                                <label for="passwordInput" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email">
+                                <label for="passwordInput" class="form-label">Телефон</label>
+                                <input type="text" class="form-control" id="emailInput" placeholder="Укажите номер телефона" required>
                             </div>
                             <div class="mb-3">
-                                <label for="emailInput" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                                <label for="emailInput" class="form-label">Сообщение</label>
+                                <textarea type="text" class="form-control" id="passwordInput" placeholder="Предмет заказа"></textarea>
                             </div>
                             <div class="mb-4">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">I agree to the <a href="javascript:void(0)" class="text-primary form-text text-decoration-underline">Terms and conditions</a></label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" required>
+                                    <label class="form-check-label" for="flexCheckDefault">Согласен с  <a href="{{route('privacy-policy')}}" class="text-primary form-text text-decoration-underline">Политикой конфиденциальности</a></label>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                                <button type="submit" class="btn btn-primary w-100">Заказать</button>
                             </div>
                         </form>
-                        <div class="mt-3 text-center">
-                            <p class="mb-0">Already a member ? <a href="sign-in.html" class="form-text text-primary text-decoration-underline"> Sign-in </a></p>
-                        </div>
+
                     </div>
                 </div>
             </div><!--end modal-body-->

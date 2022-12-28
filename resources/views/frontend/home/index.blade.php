@@ -20,6 +20,8 @@
                         <h6 class="sub-title">Нас уже {{$users_chek + 1000}} человек</h6>
                         <h1 class="display-5 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
                         <p class="fs-18 text-muted mb-0">{!! \App\Models\Content::where('type', 'slidertext2')->first()->text!!}</p>
+
+                        <a href="#signupModal"  data-bs-toggle="modal" class="btn btn-danger">Заказать набор с доставкой <i class="uil uil-message ms-1"></i></a>
                     </div>
                 </div>
                 <!--end col-->
@@ -45,6 +47,8 @@
             <!--end row-->
         </div>
         <!--end container-->
+
+
     </section>
     <!-- End Home -->
 
