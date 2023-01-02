@@ -80,7 +80,7 @@
                     <div class="tab-content" id="v-pills-tabContent">
                         @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
                             <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel" aria-labelledby="v-pills-{{$step->id}}-tab">
-                                @if($step->id)
+                                @if($step->image)
                                     <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
                                 @endif
                             </div>
