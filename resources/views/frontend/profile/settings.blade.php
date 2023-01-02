@@ -177,6 +177,13 @@
                                         <label class="form-check-label" for="notify_tel">Звонок на телефон</label>
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <input class="form-check-input" type="checkbox" name="notify_sms"
+                                               id="notify_sms" {{ Auth::user()->notify_sms ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="notify_sms">СМС на телефон</label>
+                                    </div>
+                                </div>
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
@@ -226,20 +233,15 @@
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Новый пароль</label> <input type="password"
-                                                                                              class="form-control"
-                                                                                              name="password"
-                                                                                              placeholder="Введите новый пароль"/>
+                                        <label class="form-label">Новый пароль</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Введите новый пароль"/>
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Повторите пароль</label>
-                                        <input type="password"
-                                               class="form-control"
-                                               name="password_c"
-                                               placeholder="Повторите пароль"/>
+                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -250,7 +252,7 @@
                         </div>
                         <!--end Change-password-->
                         <div class="mt-4 text-end">
-                            <button type="submit" class="btn btn-primary">Изменить</button>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
                             <a href="{{route('board.edit')}}" class="btn btn-info btn-hover w-100 mt-2">
                                 Перейти к объявлению <i class="uil uil-arrow-right"></i>
                             </a>

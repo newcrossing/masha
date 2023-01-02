@@ -85,8 +85,6 @@ class UserController extends Controller
         $request['password'] = Hash::make($request['password']);
         $request['name'] = ($request['name']) ?: $request['login'];
 
-
-
         $user->fill($request->all());
         $user->save();
         $user->board()->create([

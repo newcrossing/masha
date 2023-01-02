@@ -63,7 +63,7 @@
                 var _token = $("input[name='_token']").val();
                 var tel = $("#telInputOreder").val();
                 var name = $("#nameInputOreder").val();
-                var text = $("#telInputOreder").val();
+                var text = $("#textInputOreder").val();
 
                 $.ajax({
                     url: "{{ route('board.sendorder') }}",

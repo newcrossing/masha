@@ -30,7 +30,7 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
-        return $this->from('krestossss@yandex.ru', 'Маша-растеряша')->view('frontend.mail.order')
+        return $this->from('support@masha-rasteryasha.online', 'Маша-растеряша')->view('frontend.mail.order')
             ->subject('Заказ с сайта');
     }
 }

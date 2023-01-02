@@ -59,6 +59,13 @@
                                         </a>
                                     @endif
 
+                                    @if(isset($board->user->tel) && $board->user->notify_sms)
+                                        <a href="sms:{{$board->user->tel}}?body=Здравствуйте, я нашел вашу вещь"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil  uil-comment-alt-lines"></i> Написать СМС
+                                        </a>
+                                    @endif
+
                                     @if(isset($board->user->email) && $board->user->notify_email)
                                         <a href="#applyNow" data-bs-toggle="modal"
                                            class="btn btn-primary btn-hover w-100 mt-2">

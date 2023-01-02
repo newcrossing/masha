@@ -1,10 +1,15 @@
 <section class="bg-footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="footer-item mt-4 mt-lg-0 me-lg-5">
                     <h4 class="text-white mb-4">Маша-растеряша</h4>
                     <p class="text-white-50">Поиск пропавших вещей</p>
+                </div>
+            </div><!--end col-->
+            <div class="col-lg-4">
+                <div class="footer-item mt-4 mt-lg-0 me-lg-5">
+                    <p class="text-white-50">support@masha-rasteryasha.online</p>
                 </div>
             </div><!--end col-->
             <div class="col-lg-4 col-6">
