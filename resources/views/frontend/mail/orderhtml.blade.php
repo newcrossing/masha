@@ -105,9 +105,7 @@
 
 
     <!--[if mso | IE]>
-    <table
-        align="center" border="0" cellpadding="0" cellspacing="0" style="width:600px;" width="600"
-    >
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:600px;" width="600">
     <tr>
         <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
     <![endif]-->
@@ -168,7 +166,7 @@
                                         <tr>
                                             <td style="width:64px;">
 
-                                                <img height="auto" src="https://masha/assets/images/logo.png" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="64"/>
+                                                <img height="auto" src="https://masha/assets/images/logo.png" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="64" alt="Маша-растеряша"/>
 
                                             </td>
                                         </tr>
@@ -192,7 +190,7 @@
                                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
 
                                     <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;color:#555;">
-                                        Здравствуйте администратор.  !<br><br>
+                                        Здравствуйте администратор. !<br><br>
 
                                         Имя клиента: <b>{{ $data['name'] }} </b><br>
                                         Телефон: <b>{{ $data['tel'] }}</b><br>
@@ -202,7 +200,6 @@
 
                                 </td>
                             </tr>
-
 
 
                             <tr>
@@ -282,7 +279,6 @@
 
                                             </td>
                                         </tr>
-
 
 
                                     </table>
