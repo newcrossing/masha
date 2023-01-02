@@ -56,6 +56,7 @@ class BoardController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'tel' => 'required',
+            'check' => 'required',
         ]);
 
         if ($validator->passes()) {

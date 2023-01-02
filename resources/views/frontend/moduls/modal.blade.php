@@ -56,31 +56,51 @@
     @parent
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#submitorder").click(function (e) {
                 e.preventDefault();
                 var _token = $("input[name='_token']").val();
                 var tel = $("#telInputOreder").val();
+                var check = ($('#flexCheckDefault').is(':checked')) ? 1 : null;
                 var name = $("#nameInputOreder").val();
                 var text = $("#textInputOreder").val();
+                var err = false;
 
-                $.ajax({
-                    url: "{{ route('board.sendorder') }}",
-                    type: 'POST',
-                    data: {_token: _token, tel: tel, name: name, text: text},
-                    success: function (data) {
-                        console.log(data.error)
 
-                        if ($.isEmptyObject(data.error)) {
-                            //alert(data.success);
-                            $('#messagesentok').show();
-                            $('#orderform').hide();
-                        } else {
-                            printErrorMsg(data.error);
+                if (!tel) {
+                    $("#telInputOreder").effect("shake");
+                    err = true;
+                }
+                if (!name) {
+                    $("#nameInputOreder").effect("shake");
+                    err = true;
+                }
+                if (!check) {
+                    $("#flexCheckDefault").effect("shake");
+                    err = true;
+                }
+                if (!err) {
+                    $.ajax({
+                        url: "{{ route('board.sendorder') }}",
+                        type: 'POST',
+                        data: {_token: _token, tel: tel, name: name, text: text, check: check},
+                        success: function (data) {
+                            console.log(data.error)
+
+                            if ($.isEmptyObject(data.error)) {
+                                //alert(data.success);
+                                $('#messagesentok').show();
+                                $('#orderform').hide();
+                            } else {
+                                printErrorMsg(data.error);
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
             });
 
             function printErrorMsg(msg) {
