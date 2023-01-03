@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class DocController extends Controller
 {
+
     public function index()
     {
         $users = DB::table('content')->where('Id_Content', '129')->first();
