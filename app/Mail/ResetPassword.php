@@ -7,20 +7,25 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderShipped extends Mailable
+class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+
+    public $name;
+    public $token;
+    public $url;
+
+    public function __construct($name, $token,$url)
     {
-        $this->data = $data;
+        $this->name = $name;
+        $this->token = $token;
+        $this->url = $url;
     }
 
     /**
@@ -30,8 +35,12 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
+        $user['name'] = $this->name;
+        $user['token'] = $this->token;
+        $user['url'] = $this->url;
+
         return $this->from('support@masha-rasteryasha.online', 'Маша-растеряша')
-            ->view('frontend.mail.orderhtml2')
-            ->subject('Заказ с сайта');
+            ->subject('Сброс пароля')
+            ->view('frontend.mail.reset-password', ['user' => $user]);
     }
 }

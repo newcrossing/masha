@@ -1,5 +1,4 @@
 {
-
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
@@ -20,9 +19,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
-        "spatie/laravel-permission": "^5.5.0",
-        "simplesoftwareio/simple-qrcode": "*"
-
+        "simplesoftwareio/simple-qrcode": "*",
+        "spatie/laravel-permission": "^5.5.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

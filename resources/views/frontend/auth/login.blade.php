@@ -10,7 +10,7 @@
                         <div class="row g-0">
                             <div class="col-lg-6 text-center">
                                 <div class="card-body p-4">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <img src="/assets/images/logo.png" alt="" class="">
                                     </a>
                                     <div class="mt-5">
@@ -47,16 +47,21 @@
 
                                             <div class="mb-4">
                                                 <div class="form-check">
+                                                    <a href="{{route('forgot-password')}}" class="float-end text-white">Забыли пароль?</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="privacy_policy" name="privacy_policy" required>
                                                     <label class="form-check-label" for="privacy_policy">Согласен с
-                                                        <a href="{{route('privacy-policy')}}" target="_blank"
-                                                           style="color: #f7ffef; text-decoration: #fffdfe solid underline">
+                                                        <a href="{{route('privacy-policy')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">
                                                             политикой конфиденциальности
                                                         </a>
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="agreement"  name="agreement" required>
+                                                    <input class="form-check-input" type="checkbox" id="agreement" name="agreement" required>
                                                     <label class="form-check-label" for="agreement">Согласен с
                                                         <a href="{{route('agreement')}}" target="_blank"
                                                            style="color: #f7ffef; text-decoration: #fffdfe  solid underline">
