@@ -292,7 +292,6 @@
                                                         </td>
                                                     </tr>
                                                 </table>
-
                                             </td>
                                             <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
                                         </tr>
@@ -311,49 +310,8 @@
 
                         <!-- END Top Bar -->
 
-                        <!-- Header -->
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
-                            <tr>
-                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                        <tr>
-                                            <td height="32" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <div class="fluid-img-logo" style="font-size:0pt; line-height:0pt; text-align:left">
-                                        <div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center">
-                                            <a href="#" target="_blank"><img alt="Маша" height="auto" src="https://masha/assets/images/logo.png" style="border:0;display:block;outline:none;text-decoration:none;width:100%;" width="64"/></a>
-                                        </div>
-                                    </div>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                        <tr>
-                                            <td height="32" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                                &nbsp;
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </td>
-                                <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                            </tr>
-                        </table>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                            <tr>
-                                <td height="20" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </table>
-
-                        <!-- END Header -->
 
                         <repeater>
-
-
                             <!-- Section 3 -->
                             <layout label='Section 3'>
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
@@ -370,7 +328,6 @@
 
                                             <div class="section-title" style="color:#2c2c2c; font-family:Arial,sans-serif; font-size:18px; line-height:24px; text-align:left; text-transform:uppercase">
                                                 Сброс пароля
-
                                             </div>
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
                                                 <tr>
@@ -401,7 +358,6 @@
                                                 </tr>
                                             </table>
 
-
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
                                                 <tr>
                                                     <td height="22" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
@@ -414,9 +370,9 @@
                                                 Здравствуйте {{ $user ? $user['name'] : '' }}<br><br>
                                                 Вы запросили сброс пароля. Для этого перейдите по ссылке ниже и действуйте по дальнейшим инструкциям.
                                                 <br>
-                                                <p style="text-align: center;">
+                                                <h3 style="text-align: center;">
                                                     <a href="{{$user['url']}}/forgot-password/{{$user['token']}}" class="btn">Сбросить пароль</a>
-                                                </p>
+                                                </h3>
                                             </div>
                                             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
                                                 <tr>

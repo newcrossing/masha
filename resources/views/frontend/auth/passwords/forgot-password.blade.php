@@ -23,7 +23,7 @@
                                 <div class="auth-content card-body p-5 h-100 text-white">
                                     <div class="text-center mb-4">
                                         <h5>Сброс пароля</h5>
-                                        <p class="text-white-50">Введите свой e-mail и мы отправим инструкцию по сбросу пароля.</p>
+                                        <p class="text-white-50">Введите свой e-mail, мы отправим инструкцию по сбросу пароля.</p>
                                     </div>
 
                                     @if (Session::has("success"))

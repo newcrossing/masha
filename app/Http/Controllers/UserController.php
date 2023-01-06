@@ -89,7 +89,8 @@ class UserController extends Controller
             $user['token'] = null;
             $user['password'] = Hash::make($request->password);
             $user->save();
-            return redirect()->route('login')->with('success', 'Выполнено! Новый пароль сохранен');
+            return redirect()->route('login')
+                ->with('success', 'Выполнено! Новый пароль сохранен. Выполните вход с новым паролем.');
         }
         return redirect()->route('forgot-password')->with('failed', 'Failed! something went wrong');
     }

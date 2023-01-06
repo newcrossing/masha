@@ -23,7 +23,7 @@
                                 <div class="auth-content card-body p-5 h-100 text-white">
                                     <div class="text-center mb-4">
                                         <h5>Новый пароль</h5>
-                                        <p class="text-white-50">Придумайте новый пароль</p>
+                                        <p class="text-white-50">Минимальная длинна пароля 6 символов. Пароли должны совпадать.</p>
                                     </div>
 
                                     @if (Session::has("success"))
