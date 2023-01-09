@@ -58,6 +58,7 @@ Route::middleware(['role:admin|user'])->group(
 Route::middleware(['role:admin'])->prefix('admin')->group(
     function () {
         Route::get('/', [\App\Http\Controllers\Adm\HomeController::class, 'index'])->name('admin.home');
+        Route::get('/log', [\App\Http\Controllers\Adm\LogController::class, 'list'])->name('admin.log.list');
         // Route::resource('post', App\Http\Controllers\Adm\PostController::class);
         Route::resource('doc', App\Http\Controllers\Adm\DocController::class);
         Route::resource('content', App\Http\Controllers\Adm\ContentController::class);

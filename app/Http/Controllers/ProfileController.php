@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Activity;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,8 +22,6 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = User::find(Auth::user()->id);
-       // Log::info(1213);
-        //Log::channel('slack')->info('Something happened!2');
 
         $request->validate([
             'email' => 'sometimes|nullable|email:rfc,dns',
@@ -41,12 +40,12 @@ class ProfileController extends Controller
             Image::make($data['image'])->widen(300)->save(Storage::path('/public/avatars/300/') . $newFileName);
             Image::make($data['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
-            Log::info('Проьзователь '. Auth::user()->login.' изменил фото');
+
         }
 
         if ($request->password && $request->password_confirmation && ($request->password_confirmation == $request->password)) {
             $user->password = Hash::make($request->password);
-            Log::info('Проьзователь '. Auth::user()->login.' изменил пароль');
+            Activity::add('Пользователь изменил пароль');
         }
         $user->name = $request->name;
         $user->city = $request->city;
@@ -59,6 +58,7 @@ class ProfileController extends Controller
         $user->notify_whatsup = $request->boolean('notify_whatsup');
         $user->notify_telegram = $request->boolean('notify_telegram');
         $user->save();
+        Activity::add('Пользователь изменил профиль');
 
         return redirect()->back()->with('success', 'Профиль изменен');
     }

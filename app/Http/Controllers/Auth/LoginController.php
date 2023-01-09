@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\Activity;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -53,14 +54,16 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->tel) {
-                   return redirect()->intended('/board/edit/');
-                //return redirect()->intended('/profile/settings/');
+
+            Activity::add('Авторизация на сайте');
+
+            if (Auth::user()->email) {
+                return redirect()->intended('/board/edit/');
             } else {
                 return redirect()->intended('/profile/settings/');
             }
         }
-
+        Activity::add('Авторизации на сайте. Неверные данные.', 'error');
         return back()->withErrors([
             'email' => 'Неверный логин или пароль.',
         ]);
@@ -76,9 +79,11 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        Activity::add('Вышел из сайта');
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
 
         return redirect('/');
     }

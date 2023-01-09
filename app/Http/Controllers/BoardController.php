@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Activity;
 use App\Mail\OrderShipped;
 use App\Models\Board;
 use App\Models\User;
@@ -40,6 +41,7 @@ class BoardController extends Controller
                 'text' => $request->text,
             ];
             Mail::to(User::find($request->id)->email)->send(new NotifyMail($data));
+            Activity::add('Отправлено сообщение на почту о находке');
             return response()->json(['success' => 'Сообщение отправлено']);
         }
 
@@ -68,9 +70,9 @@ class BoardController extends Controller
 
             Mail::to(env('MAIL_SUPPORT', 'support@masha-rasteryasha.online'))
                 ->send(new OrderShipped($data));
+            Activity::add('Выполнен заказ на сайте');
             return response()->json(['success' => 'Заказ отправлен']);
         }
-
         return response()->json(['error' => $validator->errors()]);
     }
 
@@ -95,15 +97,6 @@ class BoardController extends Controller
 
     public function edit()
     {
-        // Mail::to('newcrossing@gmail.com')->send(new NotifyMail());
-
-        /*if (Mail::failures()) {
-            return response()->Fail('Sorry! Please try again latter');
-        } else {
-            return response()->success('Great! Successfully send in your mail');
-        }*/
-
-        //$i =  $sms->print();
 
 
         $user = User::find(Auth::user()->id);
@@ -143,11 +136,13 @@ class BoardController extends Controller
         $board->money = $request->money;
         $board->text = $request->text;
         $board->save();
-        return redirect()->back()->with('success', 'Статья изменена.');
+        Activity::add('Пользователь изменил объявление');
+        return redirect()->back()->with('success', 'Объявление изменено');
     }
 
     public function insert(Request $request)
     {
+       // TODOO Удалить этот блок?
         /*  $request->validate([
               'name' => 'required|max:255|min:3'
           ], [
@@ -156,7 +151,6 @@ class BoardController extends Controller
               'name.max' => 'Максимальная длина поля 255 символов!',
           ]);*/
         $board = new Board();
-
 
         $board->name = $request->name;
         $board->money = $request->money;

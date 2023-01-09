@@ -117,6 +117,20 @@
                     "icon": "bx-list-ol"
                 }
             ]
+        },
+        {
+            "url": "#",
+            "name": "Логирование",
+            "i18n": "Invoice",
+            "icon": "bxs-notepad",
+            "submenu": [
+                {
+                    "url": "admin/log",
+                    "name": "Лог",
+                    "i18n": "Invoice List",
+                    "icon": "bx-list-ol"
+                }
+            ]
         }
     ]
 }
