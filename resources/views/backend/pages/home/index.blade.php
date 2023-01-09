@@ -72,6 +72,63 @@
     </section>
     <!-- Widgets Statistics End -->
 
+    <!-- Zero configuration table -->
+    <section id="basic-datatable">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Действия посетителей</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body card-dashboard">
+                            <div class="table-responsive">
+                                <table class="table zero-configuration">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Действие</th>
+                                        <th>Пользователь</th>
+
+                                        <th>Дата</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach ($logs as $log)
+                                        <tr>
+                                            <td>{{$log->id }}</td>
+                                            <td style="width: 400px" class="@if($log->result== 'error') text-danger @endif ">
+                                                {{$log->subject}}
+                                            </td>
+                                            <td>
+                                                {{$log->user_login}}
+                                            </td>
+
+                                            <td>
+                                                {{$log->created_at->format('d.m.y H:m:s')}}
+                                            </td>
+                                            <td>
+
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Zero configuration table -->
+
 
 
 @endsection
