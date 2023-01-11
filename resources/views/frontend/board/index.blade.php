@@ -53,35 +53,56 @@
                                     <h4 class="fs-22 " style="text-align: center">Связаться с хозяином</h4>
                                     <br>
                                     @if(isset($board->user->tel) && $board->user->notify_tel)
-                                        <a href="tel:{{$board->user->tel}}"
-                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="tel:{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-phone"></i> Позвонить
                                         </a>
                                     @endif
 
+                                    @if(isset($board->user->tel2) && $board->user->notify_tel)
+                                        <a href="tel:{{$board->user->tel2}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-phone"></i> Позвонить на доп. номер
+                                        </a>
+                                    @endif
+
                                     @if(isset($board->user->tel) && $board->user->notify_sms)
-                                        <a href="sms:{{$board->user->tel}}?body=Здравствуйте, я нашел вашу вещь"
-                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="sms:{{$board->user->tel}}?body=Здравствуйте, я нашел вашу вещь" class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil  uil-comment-alt-lines"></i> Написать СМС
                                         </a>
                                     @endif
 
+                                    @if(isset($board->user->tel2) && $board->user->notify_sms)
+                                        <a href="sms:{{$board->user->tel2}}?body=Здравствуйте, я нашел вашу вещь" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil  uil-comment-alt-lines"></i> Написать СМС (доп. номер)
+                                        </a>
+                                    @endif
+
                                     @if(isset($board->user->email) && $board->user->notify_email)
-                                        <a href="#applyNow" data-bs-toggle="modal"
-                                           class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="#applyNow" data-bs-toggle="modal" class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-envelope"></i> Написать автору
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel) && $board->user->notify_whatsup)
                                         <a href="#" id="clickwhatsup" class="btn btn-primary btn-hover w-100 mt-2">
-                                            <i class="uil uil-whatsapp"></i> Написать в Whats Up
+                                            <i class="uil uil-whatsapp"></i> Написать в WhatsUp
+                                        </a>
+                                    @endif
+
+                                    @if(isset($board->user->tel2) && $board->user->notify_whatsup)
+                                        <a href="#" id="clickwhatsup2" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-whatsapp"></i> Написать в WhatsUp (доп. номер)
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
                                         <a href="https://t.me/{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-telegram"></i> Написать в Telegram
+                                        </a>
+                                    @endif
+
+                                    @if(isset($board->user->tel2) && $board->user->notify_telegram)
+                                        <a href="https://t.me/{{$board->user->tel2}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                            <i class="uil uil-telegram"></i> Написать в Telegram (доп. номер)
                                         </a>
                                     @endif
                                 </div>
@@ -308,6 +329,16 @@
             $("#clickwhatsup").click(function (e) {
 
                 var tel = "{{  $board->user->tel }}";
+                var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
+                e.preventDefault();
+
+                let url = `https://api.whatsapp.com/send/?phone=${tel}&text=${text}`;
+                window.open(url);
+            });
+
+            $("#clickwhatsup2").click(function (e) {
+
+                var tel = "{{  $board->user->tel2 }}";
                 var text = encodeURIComponent("Я нашел вашу вещь как вам ее вернуть?");
                 e.preventDefault();
 

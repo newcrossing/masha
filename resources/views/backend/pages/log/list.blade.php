@@ -1,6 +1,6 @@
 @extends('backend.layouts.contentLayoutMaster')
 {{-- page title --}}
-@section('title','Контент')
+@section('title','Логирование')
 {{-- vendor style --}}
 @section('vendor-styles')
     <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/vendors.min.css">
@@ -20,7 +20,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Логирование</h4>
+                        <h4 class="card-title">Активность </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
@@ -29,12 +29,10 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th >Действие</th>
-                                        <th>Пользователь</th>
-                                        <th>URL</th>
+                                        <th>Логин</th>
+                                        <th>Действие</th>
+
                                         <th>Дата</th>
-
-
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -42,29 +40,22 @@
                                     @foreach ($logs as $log)
                                         <tr>
                                             <td>{{$log->id }}</td>
-                                            <td style="width: 400px" class="@if($log->result== 'error') text-danger @endif ">
-                                                {{$log->subject}}
-                                            </td>
                                             <td>
-                                                {{$log->user_login}}
-                                            </td>
-                                            <td>
-                                                {{$log->url }}<br>
-                                                {{$log->method }}<br>
-                                                {{$log->ip}}
-                                            </td>
-
-                                            <td>
-                                                {{$log->created_at->format('d.m.y')}}
-                                            </td>
-                                            <td>
+                                                @isset($log->user_login)
+                                                    <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
+                                                        <i class="bx bx-user    font-size-small mr-25"></i>
+                                                        <span>{{$log->user_login}}</span>
+                                                    </div>
+                                                @endisset
 
                                             </td>
-
+                                            <td>
+                                                <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
+                                                <small class="text-muted">{{$log->url}}</small>
+                                            </td>
+                                            <td class="font-small-1">{{$log->created_at->format('H:m:s d.m.Y ')}}</td>
                                         </tr>
                                     @endforeach
-
-
                                     </tfoot>
                                 </table>
                             </div>

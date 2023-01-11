@@ -3,10 +3,8 @@
 @section('title','Статьи')
 {{-- vendor style --}}
 @section('vendor-styles')
-
     <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/tables/datatable/datatables.min.css">
-
 @endsection
 {{-- page style --}}
 @section('page-styles')

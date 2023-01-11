@@ -26,7 +26,7 @@ $(document).ready(function() {
             "targets": 2
         }],
         "order": [
-            [1, 'asc']
+            [1, 'desc']
         ],
         "displayLength": 10,
         "drawCallback": function(settings) {
