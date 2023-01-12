@@ -8,6 +8,10 @@
 @endsection
 {{-- page style --}}
 @section('page-styles')
+    <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/adm/app-assets/vendors/css/extensions/sweetalert2.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{asset('/adm/app-assets/css/pages/app-invoice.css')}}">
 @endsection
 
@@ -51,7 +55,8 @@
                                             </td>
                                             <td>
                                                 <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
-                                                <small class="text-muted">{{$log->url}}</small>
+                                                <small class="">{{$log->url}}</small>
+                                                <a href="#" class="font-small-1 basic-alert" dtext = "{{$log->parametrs}}">параметры</a>
                                             </td>
                                             <td class="font-small-1">{{$log->created_at->format('H:m:s d.m.Y ')}}</td>
                                         </tr>
@@ -84,6 +89,21 @@
 @endsection
 {{-- page scripts --}}
 @section('page-scripts')
-    <script src="/adm/app-assets/js/scripts/datatables/datatable.js"></script>
+    <script src="/adm/app-assets/js/datatable-log.js"></script>
+
+    <script src="/adm/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.basic-alert').on('click', function () {
+                var text = $(this).attr('dtext')
+                Swal.fire({
+                    title: 'Параметры',
+                    text: text,
+                    confirmButtonClass: 'btn btn-primary',
+                    buttonsStyling: false,
+                })
+            });
+        });
+    </script>
 
 @endsection

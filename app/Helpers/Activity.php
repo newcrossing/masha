@@ -14,12 +14,22 @@ class Activity
     public static function add($subject, $result = 'info')
     {
         $log = [];
+
+        $req = Request::collect();
+        $req = $req->forget('_token');
+
+        if ($req->get('password')) {
+            $req = $req->replace(['password' => '********']);
+        }
+
+        if ($req->get('password_confirmation')) {
+            $req = $req->replace(['password_confirmation' => '********']);
+        }
+
         $log['subject'] = $subject;
         $log['url'] = Request::fullUrl();
         $log['method'] = Request::method();
-        $log['parametrs'] = Request::collect()->get('password')
-            ? Request::collect()->replace(['password' => '********'])
-            : Request::collect();
+        $log['parametrs'] = $req->toJson(JSON_UNESCAPED_UNICODE);;;
         $log['ip'] = Request::ip();
         $log['result'] = $result;
         $log['agent'] = Request::header('user-agent');
