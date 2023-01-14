@@ -150,8 +150,10 @@
 
                         <!--end Change-password-->
                         <div class="mt-4 text-end">
+                            <a href="{{route('profile.settings')}}"  class="btn btn-info">Перейти в настройки
+                                <i class="mdi mdi-cog"></i></a>
                             <button type="submit"
-                                    class="btn btn-primary"> {{ (isset($board->id))? 'Изменить':'Создать'  }}</button>
+                                    class="btn btn-primary"> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}</button>
                             @isset($board->id)
                                 <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success">Просмотреть
                                     <i class="mdi mdi-send"></i></a>

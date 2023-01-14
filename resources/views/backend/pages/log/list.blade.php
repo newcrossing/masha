@@ -56,7 +56,8 @@
                                             <td>
                                                 <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
                                                 <small class="">{{$log->url}}</small>
-                                                <a href="#" class="font-small-1 basic-alert" dtext = "{{$log->parametrs}}">параметры</a>
+                                                <a href="#" class="font-small-1 basic-alert"
+                                                   dtext = "IP:{{$log->ip}}, Метод:{{$log->method}}, Браузер: {{$log->agent}}, {{$log->parametrs}}">параметры</a>
                                             </td>
                                             <td class="font-small-1">{{$log->created_at->format('H:m:s d.m.Y ')}}</td>
                                         </tr>

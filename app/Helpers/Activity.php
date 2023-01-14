@@ -29,7 +29,7 @@ class Activity
         $log['subject'] = $subject;
         $log['url'] = Request::fullUrl();
         $log['method'] = Request::method();
-        $log['parametrs'] = $req->toJson(JSON_UNESCAPED_UNICODE);;;
+        $log['parametrs'] = $req->toJson(JSON_UNESCAPED_UNICODE);
         $log['ip'] = Request::ip();
         $log['result'] = $result;
         $log['agent'] = Request::header('user-agent');
