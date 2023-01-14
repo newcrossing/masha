@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Adm;
 
 use App\Http\Controllers\Controller;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -27,6 +28,60 @@ class UserController extends Controller
             ['name' => " Пользователи"]
         ];
         return view('backend.pages.user.index', compact('users', 'breadcrumbs'));
+    }
+
+    public function create_many()
+    {
+        $breadcrumbs = [
+            ['link' => "/", 'name' => "Главная"],
+            ['name' => " Массовое добавление"]
+        ];
+        return view('backend.pages.user.create_many', compact('breadcrumbs'));
+    }
+
+    public function create_many_do(Request $request)
+    {
+        $breadcrumbs = [
+            ['link' => "/", 'name' => "Главная"],
+            ['name' => " Массовое добавление "]
+        ];
+
+        $arr = array();
+
+        for ($i = 1; $i <= $request['number']; $i++) {
+            $ar = [];
+            $temp = rand(1000000, 9000000);
+            $user = new User();
+
+            $user->login = 'mr' . $temp;
+            $ar['login'] = $user->login;
+
+            $pass = Str::random(8);
+            $user->password = Hash::make($pass);
+            $ar['password'] = $pass;
+
+            $user->name = 'mr' . $temp;
+
+
+            //$user->fill($request->all());
+            $user->save();
+            $q = 'qr-' . rand(1000, 9999) . $user->id . Str::lower(Str::random(5));
+            $ar['qr'] = $q;
+            $user->board()->create([
+                'name' => 'Моя страница',
+                'active' => 1,
+                'slug' => $q,
+                'user_id' => $user->id
+            ]);
+
+            // добил роль
+            $user->assignRole('user');
+
+            $arr[] = $ar;
+        }
+
+
+        return view('backend.pages.user.create_many', compact('breadcrumbs', 'arr'));
     }
 
     /**

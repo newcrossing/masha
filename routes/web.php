@@ -39,7 +39,6 @@ Route::post('forgot-password', [UserController::class, 'resetPassword'])->name('
 Route::put('reset-password', [UserController::class, 'updatePassword'])->name('reset-password');
 
 
-
 Route::middleware(['role:admin|user'])->group(
     function () {
         Route::get('/foto/delete/{id}', [FotoController::class, 'destroy'])->name('foto.delete');
@@ -63,6 +62,10 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::resource('doc', App\Http\Controllers\Adm\DocController::class);
         Route::resource('content', App\Http\Controllers\Adm\ContentController::class);
         Route::resource('user', App\Http\Controllers\Adm\UserController::class);
+        Route::get('create_many', [\App\Http\Controllers\Adm\UserController::class, 'create_many'])->name('admin.user.create_many');
+        Route::post('create_many', [\App\Http\Controllers\Adm\UserController::class, 'create_many_do']);
+
+
         Route::resource('slider', App\Http\Controllers\Adm\SliderController::class);
         Route::resource('social', App\Http\Controllers\Adm\SocialController::class);
         Route::resource('point', App\Http\Controllers\Adm\PointController::class);
@@ -70,8 +73,6 @@ Route::middleware(['role:admin'])->prefix('admin')->group(
         Route::post('/ajax-slider-del', [App\Http\Controllers\Adm\SliderController::class, 'delete'])->name('ajax-slider-del');
     }
 );
-
-
 
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');

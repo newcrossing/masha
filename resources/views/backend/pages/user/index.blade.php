@@ -13,11 +13,28 @@
 
 @section('content')
 
-    <div class="invoice-create-btn mb-1">
-        <a href="/admin/user/create" class="btn btn-primary glow invoice-create" role="button"
-           aria-pressed="true">
-            Создать пользователя</a>
+    <div class="container">
+
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <div class="invoice-create-btn mb-1">
+                    <a href="/admin/user/create" class="btn btn-primary glow invoice-create" role="button"
+                       aria-pressed="true">
+                        Создать пользователя</a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="invoice-create-btn mb-1">
+                    <a href="{{route('admin.user.create_many')}}" class="btn btn-primary glow invoice-create" role="button"
+                       aria-pressed="true">
+                        Массовое добавление </a>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
     <!-- Zero configuration table -->
     <section id="basic-datatable">
         <div class="row">
