@@ -73,6 +73,9 @@
 
                                                 </div>
                                                 @isset($arr)
+                                                    <div class="alert alert-warning mb-2" role="alert">
+                                                        Будьте внимательны. Эти данные показываются один раз. Скопируйте их при необходимости.
+                                                    </div>
 
                                                     @foreach ($arr as $ar)
                                                         <h6>{{$ar['login']}}|{{$ar['password']}}|{{$ar['qr']}}</h6>
