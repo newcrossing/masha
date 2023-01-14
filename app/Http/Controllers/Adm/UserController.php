@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Adm;
 
+use App\Helpers\Activity;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Database\Eloquent\Model;
@@ -80,7 +81,7 @@ class UserController extends Controller
             $arr[] = $ar;
         }
 
-
+        Activity::add('Массово добавил ' . $request['number'] . ' пользователей.');
         return view('backend.pages.user.create_many', compact('breadcrumbs', 'arr'));
     }
 
