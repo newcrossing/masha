@@ -43,10 +43,12 @@
                         <li><a class="dropdown-item" href="{{route('board.edit')}}">Моё объявлениe</a></li>
                         <li><a class="dropdown-item" href="{{route('profile.settings')}}">Настройки</a></li>
                         @role('admin')
-                        <li><a class="dropdown-item" href="{{route('admin.home')}}" target="_blank">Перейти в
-                                админку</a></li>
+
+                        <li>
+                            <a class="dropdown-item text-primary" href="{{route('admin.home')}}" target="_blank">Перейти в админку</a>
+                        </li>
                         @endrole
-                        <li><a class="dropdown-item" href="{{route('logout')}}">Выйти</a></li>
+                        <li><a class="dropdown-item text-danger" href="{{route('logout')}}">Выйти</a></li>
                     </ul>
                 </li>
             @endauth

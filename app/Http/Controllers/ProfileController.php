@@ -49,8 +49,8 @@ class ProfileController extends Controller
         }
         $user->name = $request->name;
         $user->city = $request->city;
-        $user->tel = Str::remove(['(', ')', '-', ' '], $request->tel);
-        $user->tel2 = Str::remove(['(', ')', '-', ' '], $request->tel2);
+        $user->tel = !empty(Str::remove(['(', ')', '-', ' '], $request->tel)) ? Str::remove(['(', ')', '-', ' '], $request->tel) : null;
+        $user->tel2 = !empty(Str::remove(['(', ')', '-', ' '], $request->tel2)) ? Str::remove(['(', ')', '-', ' '], $request->tel2) : null;
         $user->email = $request->email;
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
@@ -60,6 +60,6 @@ class ProfileController extends Controller
         $user->save();
         Activity::add('Пользователь изменил профиль');
 
-        return redirect()->back()->with('success', 'Профиль изменен');
+        return redirect()->back()->with('success', 'Сохранено');
     }
 }
