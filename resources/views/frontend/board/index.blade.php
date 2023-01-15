@@ -226,7 +226,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body p-5">
-                    <div class="alert  bg-soft-success" id="messagesentok" role="alert" style="display: none">
+                    <div class="alert  bg-soft-success" id="messagesentok2" role="alert" style="display: none">
                         Сообщение отправлено
                     </div>
 
@@ -297,7 +297,7 @@
                         console.log(data.error)
                         if ($.isEmptyObject(data.error)) {
                             // alert(data.success);
-                            $('#messagesentok').show();
+                            $('#messagesentok2').show();
                             $('#emailform').hide();
                         } else {
                             printErrorMsg(data.error);
