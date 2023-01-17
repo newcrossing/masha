@@ -60,7 +60,7 @@
                                     <ul class="list-unstyled mb-0">
                                         <li>
                                             <div class="d-flex">
-                                                <label>Email</label>
+                                                <label>E-mail</label>
                                                 <div>
                                                     <p class="text-muted text-break mb-0">
                                                         {{Auth::user()->email}}
@@ -116,22 +116,27 @@
                         @csrf
                         <div>
                             <h5 class="fs-17 fw-semibold mb-3 mb-0">Мой профиль #{{Auth::user()->login}}</h5>
+                            @empty(Auth::user()->email)
+                                <div class="alert  bg-soft-warning" role="alert">
+                                    Для начала публикации объявления необходимо указать e-mail.
+                                </div>
+                            @endempty
 
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Имя</label>
-                                        <input type="text" class="form-control" name="name"
-                                               value="{{Auth::user()->name}}"/>
-                                    </div>
-                                </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="city" class="form-label">Город</label>
-                                        <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
+                                        <label class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}"/>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Имя</label>
+                                        <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}"/>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="tel" class="form-label">Телефон </label>
@@ -144,13 +149,12 @@
                                         <input type="tel" class="form-control" name="tel2" id="phone_22" value="{{Auth::user()->tel2}}"/>
                                     </div>
                                 </div>
-                                <!--end col-->
 
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}"/>
+                                        <label for="city" class="form-label">Город</label>
+                                        <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -166,7 +170,7 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_email"
                                                id="notify_email" {{ Auth::user()->notify_email  ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_email">Уведомление на email</label>
+                                        <label class="form-check-label" for="notify_email">Уведомление на e-mail</label>
 
                                     </div>
                                 </div><!--end col-->
@@ -189,8 +193,7 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_whatsup"
                                                id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_whatsup">Сообщение в Whats
-                                            Up</label>
+                                        <label class="form-check-label" for="notify_whatsup">Сообщение в WhatsUp</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -199,8 +202,7 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_telegram"
                                                id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_telegram">Сообщение в
-                                            Telegramm</label>
+                                        <label class="form-check-label" for="notify_telegram">Сообщение в Telegramm</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -210,14 +212,12 @@
                         <div class="mt-4">
                             <h5 class="fs-17 fw-semibold mb-3">Фото профиля</h5>
                             <div class="row">
-
-
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <label for="attachmentscv" class="form-label">Прикрепите фото</label> <input
-                                            class="form-control" type="file" name="image" id="attachmentscv"
-                                            accept="image/png, image/bmp, image/jpeg"/>
+                                        <label for="attachmentscv" class="form-label">Прикрепите фото</label>
+                                        <input class="form-control" type="file" name="image" id="attachmentscv"
+                                               accept="image/png, image/bmp, image/jpeg"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -234,7 +234,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Новый пароль</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Введите новый пароль" autocomplete="off"/>
+                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="off"/>
                                     </div>
                                 </div>
                                 <!--end col-->
