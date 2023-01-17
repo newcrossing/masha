@@ -21,7 +21,7 @@ class ResetPassword extends Mailable
     public $token;
     public $url;
 
-    public function __construct($name, $token,$url)
+    public function __construct($name, $token, $url)
     {
         $this->name = $name;
         $this->token = $token;
@@ -39,8 +39,7 @@ class ResetPassword extends Mailable
         $user['token'] = $this->token;
         $user['url'] = $this->url;
 
-        return $this->from('support@masha-rasteryasha.online', 'Маша-растеряша')
-            ->subject('Сброс пароля')
+        return $this->subject('Сброс пароля')
             ->view('frontend.mail.reset-password', ['user' => $user]);
     }
 }
