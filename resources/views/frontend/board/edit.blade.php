@@ -50,6 +50,7 @@
     <!-- START PROFILE -->
     <section class="section">
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card profile-sidebar me-lg-4">
@@ -74,27 +75,34 @@
                                 @endforeach
                             </ul>
                             {{-- {!! QrCode::size(300)->color(255, 0, 0)->style('dot')->eye('circle')->encoding('UTF-8')->generate('https://маша-растеряша.рф/'.$board->slug) !!} --}}
-                         </div>
-                         <!--end card-body-->
-                     </div>
-                     <!--end profile-sidebar-->
-                 </div>
+                        </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end profile-sidebar-->
+                </div>
 
 
-                 <!--end col-->
-                 <div class="col-lg-8">
-                     @if(session('success'))
-                         <div class="alert  bg-soft-success" role="alert">
-                             {{session('success')}}
-                         </div>
-                     @endif
+                <!--end col-->
+                <div class="col-lg-8">
+                    @if ($errors->any())
+                        <div class="alert  bg-soft-danger" role="alert">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </div>
+                    @endif
+                    @if(session('success'))
+                        <div class="alert  bg-soft-success" role="alert">
+                            {{session('success')}}
+                        </div>
+                    @endif
 
 
-                     <form action="{{ (isset($board->id))? route('board.update',$board->id):route('board.insert')  }}"
-                           method="POST" enctype="multipart/form-data">
-                         @csrf
-                         @if(isset($board->id))
-                             {{--@method('PUT')--}}
+                    <form action="{{ (isset($board->id))? route('board.update',$board->id):route('board.insert')  }}"
+                          method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @if(isset($board->id))
+                            {{--@method('PUT')--}}
                         @endif
                         <div>
                             <h5 class="fs-17 fw-semibold mb-3 mb-0">Основное</h5>
@@ -103,37 +111,28 @@
                                 <!--end col-->
                                 <div class="col-lg-12">
                                     <div class="mb-3">
-                                        <label for="attachmentscv" class="form-label">Прикрепите фото</label> <input
-                                            class="form-control" type="file" name="image" id="attachmentscv"
-                                            accept="image/png, image/bmp, image/jpeg"/>
+                                        <label for="attachmentscv" class="form-label">Прикрепите фото</label>
+                                        <input class="form-control" type="file" name="image" id="attachmentscv"
+                                               accept="image/png, image/bmp, image/jpeg"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Название</label> <input type="text"
-                                                                                                     class="form-control"
-                                                                                                     name="name"
-                                                                                                     value="{{$board->name}}"/>
+                                        <label for="name" class="form-label">Название</label>
+                                        <input type="text" class="form-control" name="name" value="{{$board->name}}"/>
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="city" class="form-label">Вознаграждение</label> <input type="number"
-                                                                                                           class="form-control"
-                                                                                                           name="money"
-                                                                                                           value="{{$board->money}}"/>
+                                        <label for="city" class="form-label">Вознаграждение</label>
+                                        <input type="number" class="form-control" name="money" value="{{$board->money}}"/>
                                     </div>
                                 </div>
-
-                                <!--end col-->
-
-
                             </div>
                             <!--end row-->
                         </div>
                         <div class="mt-4">
-
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
@@ -150,13 +149,14 @@
 
                         <!--end Change-password-->
                         <div class="mt-4 text-end">
-                            <a href="{{route('profile.settings')}}"  class="btn btn-info">Перейти в настройки
+                            <a href="{{route('profile.settings')}}" class="btn btn-info">Перейти в настройки
                                 <i class="mdi mdi-cog"></i></a>
                             <button type="submit"
                                     class="btn btn-primary"> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}</button>
                             @isset($board->id)
-                                <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success">Просмотреть
-                                    <i class="mdi mdi-send"></i></a>
+                                <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success">
+                                    Просмотреть <i class="mdi mdi-send"></i>
+                                </a>
                             @endisset
                         </div>
                     </form>

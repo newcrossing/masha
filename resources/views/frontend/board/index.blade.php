@@ -60,7 +60,7 @@
 
                                     @if(isset($board->user->tel2) && $board->user->notify_tel)
                                         <a href="tel:{{$board->user->tel2}}" class="btn btn-primary btn-hover w-100 mt-2">
-                                            <i class="uil uil-phone"></i> Позвонить на доп. номер
+                                            <i class="uil uil-phone"></i> Позвонить на рабочий номер
                                         </a>
                                     @endif
 
@@ -70,11 +70,7 @@
                                         </a>
                                     @endif
 
-                                    @if(isset($board->user->tel2) && $board->user->notify_sms)
-                                        <a href="sms:{{$board->user->tel2}}?body=Здравствуйте, я нашел вашу вещь" class="btn btn-primary btn-hover w-100 mt-2">
-                                            <i class="uil  uil-comment-alt-lines"></i> Написать СМС (доп. номер)
-                                        </a>
-                                    @endif
+
 
                                     @if(isset($board->user->email) && $board->user->notify_email)
                                         <a href="#applyNow" data-bs-toggle="modal" class="btn btn-primary btn-hover w-100 mt-2">
@@ -88,11 +84,7 @@
                                         </a>
                                     @endif
 
-                                    @if(isset($board->user->tel2) && $board->user->notify_whatsup)
-                                        <a href="#" id="clickwhatsup2" class="btn btn-primary btn-hover w-100 mt-2">
-                                            <i class="uil uil-whatsapp"></i> Написать в WhatsUp (доп. номер)
-                                        </a>
-                                    @endif
+
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
                                         <a href="https://t.me/{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
@@ -100,11 +92,7 @@
                                         </a>
                                     @endif
 
-                                    @if(isset($board->user->tel2) && $board->user->notify_telegram)
-                                        <a href="https://t.me/{{$board->user->tel2}}" class="btn btn-primary btn-hover w-100 mt-2">
-                                            <i class="uil uil-telegram"></i> Написать в Telegram (доп. номер)
-                                        </a>
-                                    @endif
+
                                 </div>
                             </div><!--end card-body-->
                         </div><!--end job-overview-->
@@ -151,7 +139,6 @@
                                                 <li class="list-inline-item">
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-shrink-0">
-
                                                             <i class="uil uil-edit"></i>
                                                         </div>
                                                         <div class="ms-2">

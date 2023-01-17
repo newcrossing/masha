@@ -65,19 +65,7 @@
 
         <!-- END FOOTER -->
 
-        <!-- START FOOTER-ALT -->
-        <div class="footer-alt">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p class="text-white-50 text-center mb-0">
-                            <script>document.write(new Date().getFullYear())</script> &copy; Маша-растеряша
-                        </p>
-                    </div><!--end col-->
-                </div><!--end row-->
-            </div><!--end container-->
-        </div>
-        <!-- END FOOTER -->
+
 
 
         <!--start back-to-top-->

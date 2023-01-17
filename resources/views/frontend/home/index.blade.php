@@ -1,6 +1,6 @@
 @extends('frontend.layouts.index')
 
-@section('title','Главная')
+@section('title','Маша-растеряша.рф - бюро находок пропавших вещей по QR коду')
 
 @section('vendor-styles')
 
@@ -21,7 +21,7 @@
                         <h1 class="display-5 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
                         <p class="fs-18 text-muted mb-0">{!! \App\Models\Content::where('type', 'slidertext2')->first()->text!!}</p>
 
-                        <a href="#signupModal" data-bs-toggle="modal" class="btn btn-danger">Заказать набор с доставкой
+                        <a href="#signupModal" data-bs-toggle="modal" class="btn btn-info">Заказать набор с доставкой
                             <i class="uil uil-message ms-1"></i></a>
                     </div>
                 </div>
@@ -36,7 +36,6 @@
                                 @foreach ($sliders as $slider)
                                     <div class="swiper-slide">
                                         <img src="{{ Storage::url('/sliders/400/'.$slider->file) }}" style="width: 100%"
-                                             alt=""
                                              class="img-fluid rounded-3">
                                     </div>
                                 @endforeach

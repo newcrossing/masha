@@ -113,12 +113,14 @@ class BoardController extends Controller
 
     public function update(Request $request, $id)
     {
-        /*  $request->validate([
-              'name' => 'required|max:255|min:3'
+          $request->validate([
+             // 'name' => 'required|max:255|min:3'
+              'image' => 'image|max:2000|mimes:jpeg,png,bmp',
+             // 'image' => 'file|mimetypes:image/png,image/bmp,image/jpeg'
           ], [
-              'name.required' => 'Название должно быть заполнено!',
-              'name.min' => 'Минимальная длина поля 3 символа!',
-          ]);*/
+              'image.max' => 'Максимальный размер фото 2 Мб!',
+             // 'name.min' => 'Минимальная длина поля 3 символа!',
+          ]);
 
 
         $board = Board::find($id);

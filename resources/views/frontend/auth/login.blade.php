@@ -22,13 +22,12 @@
                                 <div class="auth-content card-body p-5 h-100 text-white">
                                     <div class="w-100">
                                         <div class="text-center mb-4">
-                                            <h5>Добро пожаловать !</h5>
-                                            <p class="text-white-70">В сервис Маша-растеряша.</p>
+                                            <h5>Добро пожаловать!</h5>
+                                            <p class="text-white-70">бюро находок по QR коду</p>
                                         </div>
                                         @if (Session::has("success"))
                                             <div class="alert alert-success text-center mb-4" role="alert">{{ Session::get('success') }}</div>
                                         @endif
-
 
                                         <form action="{{ route('login') }}" method="POST" class="auth-form">
                                             @csrf

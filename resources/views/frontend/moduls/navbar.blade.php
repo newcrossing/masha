@@ -21,8 +21,11 @@
                         <div class="arrow-down"></div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
-                        <li><a class="dropdown-item" href="{{route('agreement')}}">Публичная оферта</a></li>
-                        <li><a class="dropdown-item" href="{{route('privacy-policy')}}">Безопасность</a></li>
+                        <li><a class="dropdown-item" href="{{route('public-offer')}}">Публичная оферта</a></li>
+                        <li><a class="dropdown-item" href="{{route('security')}}">Безопасность</a></li>
+                        <li><a class="dropdown-item" href="{{route('agreement')}}">Пользовательское соглашение</a></li>
+                        <li><a class="dropdown-item" href="{{route('privacy-policy')}}">Политика конфиденциальности</a>
+                        </li>
                         <li><a class="dropdown-item" href="{{route('help')}}">Служба поддержки</a></li>
 
                     </ul>
@@ -40,10 +43,14 @@
                         <span class="d-none d-md-inline-block fw-medium">{{Auth::user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown">
-                        <li><a class="dropdown-item" href="{{route('board.edit')}}">Моё объявлениe</a></li>
-                        <li><a class="dropdown-item" href="{{route('profile.settings')}}">Настройки</a></li>
-                        @role('admin')
 
+                        <li><a class="dropdown-item" href="{{route('profile.settings')}}">Настройки</a></li>
+                        @if(Auth::user()->email)
+                            <li><a class="dropdown-item" href="{{route('board.edit')}}">Моё объявлениe</a></li>
+                        @endif
+
+
+                        @role('admin')
                         <li>
                             <a class="dropdown-item text-primary" href="{{route('admin.home')}}" target="_blank">Перейти в админку</a>
                         </li>

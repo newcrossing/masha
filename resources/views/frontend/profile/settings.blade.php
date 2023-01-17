@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="tel2" class="form-label">Дополнительный телефон </label>
+                                        <label for="tel2" class="form-label">Рабочий телефон </label>
                                         <input type="tel" class="form-control" name="tel2" id="phone_22" value="{{Auth::user()->tel2}}"/>
                                     </div>
                                 </div>
