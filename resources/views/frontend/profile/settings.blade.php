@@ -239,14 +239,14 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Новый пароль</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="off"/>
+                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="false"/>
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Повторите пароль</label>
-                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль" autocomplete="off"/>
+                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль" autocomplete="false"/>
                                     </div>
                                 </div>
                                 <!--end col-->
