@@ -8,6 +8,7 @@ use App\Models\Slider;
 use App\Models\Social;
 use App\Models\Tag;
 use App\Helpers\Activity;
+use QrCode;
 use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+       // QrCodeQRCode::text('QR Code Generator for !')->setOutfile('/dd.svg');
         $users_chek = DB::table('users')->where('deleted_at', '!=', null)->whereNotNull('tel')->count();
         $sliders = Slider::where('active', 1)->get();
         $socials = Social::where('active', 1)->get();

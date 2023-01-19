@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Board extends Model
 {
@@ -36,6 +37,19 @@ class Board extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+    /**
+     *Генерирует qr ссылку
+     */
+    public static function generateQr($id = '00000')
+    {
+        return 'qr-' . rand(1000, 9999) . $id. Str::lower(Str::random(5));
+    }
+
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     /**
      * Связь с таблицей

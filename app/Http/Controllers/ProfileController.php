@@ -28,19 +28,21 @@ class ProfileController extends Controller
             'name' => 'required|string|max:50|min:2',
             'tel' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
             'tel2' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
-            'password' => 'nullable|confirmed|min:6'
+            'password' => 'nullable|confirmed|min:6',
+            'image' => 'image|max:2000|mimes:jpeg,png,bmp',
         ], [
             'email.email' => 'Поле EMAIL не соответствует действительности!',
             'password.confirmed' => 'Пароли должны совпадать!',
             'password.min' => 'Минимальная длина пароля 6 символов!',
+            'image.max' => 'Максимальный размер фотографии 2 Мб!',
         ]);
         $data = $request->all();
+        // сохраняем фото при наличии
         if ($request->hasFile('image')) {
             $newFileName = time() . '.' . $data['image']->extension();
             Image::make($data['image'])->widen(300)->save(Storage::path('/public/avatars/300/') . $newFileName);
             Image::make($data['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
-
         }
 
         if ($request->password && $request->password_confirmation && ($request->password_confirmation == $request->password)) {

@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
+
 //use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
-     //use  HasApiTokens;
+
+    //use  HasApiTokens;
     use SoftDeletes;
 
 
@@ -62,6 +65,16 @@ class User extends Authenticatable
     public function getFoto()
     {
         return ($this->foto) ?: '000.png';
+    }
+
+    /**
+     * Генерирует login  для массового присвоения <br>
+     * mr000000 - 6 цыфр
+     * @return string
+     */
+    public function generateLogin()
+    {
+        return 'mr' . sprintf('%06d', $this->id);
     }
 
     /**

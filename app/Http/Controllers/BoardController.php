@@ -84,8 +84,11 @@ class BoardController extends Controller
 
     public function qr($slug)
     {
-        // $board = DB::table('boards')->where('slug', $slug)->first();
         $board = Board::where('slug', $slug)->firstOrFail();
+        if (!$board->user->email) {
+            // если не указа email показать 404
+            abort(404);
+        }
         return view('frontend.board.index', compact('board'));
     }
 
@@ -113,14 +116,14 @@ class BoardController extends Controller
 
     public function update(Request $request, $id)
     {
-          $request->validate([
-             // 'name' => 'required|max:255|min:3'
-              'image' => 'image|max:2000|mimes:jpeg,png,bmp',
-             // 'image' => 'file|mimetypes:image/png,image/bmp,image/jpeg'
-          ], [
-              'image.max' => 'Максимальный размер фото 2 Мб!',
-             // 'name.min' => 'Минимальная длина поля 3 символа!',
-          ]);
+        $request->validate([
+            // 'name' => 'required|max:255|min:3'
+            'image' => 'image|max:2000|mimes:jpeg,png,bmp',
+            // 'image' => 'file|mimetypes:image/png,image/bmp,image/jpeg'
+        ], [
+            'image.max' => 'Максимальный размер фото 2 Мб!',
+            // 'name.min' => 'Минимальная длина поля 3 символа!',
+        ]);
 
 
         $board = Board::find($id);
@@ -144,7 +147,7 @@ class BoardController extends Controller
 
     public function insert(Request $request)
     {
-       // TODOO Удалить этот блок?
+        // TODOO Удалить этот блок?
         /*  $request->validate([
               'name' => 'required|max:255|min:3'
           ], [

@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('qr1', function ()
+{
+    return QRCode::text('QR Code Generator for !')->png();
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');;
 Route::get('/agreement', [AgreementController::class, 'index'])->name('agreement');;
 Route::get('/contact', [AgreementController::class, 'contact'])->name('contact');;

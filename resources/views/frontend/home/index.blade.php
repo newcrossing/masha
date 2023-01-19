@@ -12,6 +12,7 @@
 
 @section('content')
     <!-- START HOME -->
+
     <section class="bg-home3" id="home">
         <div class="container">
             <div class="row align-items-center">

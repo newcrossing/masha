@@ -92,7 +92,13 @@
                                         </a>
                                     @endif
 
-
+                                    @auth()
+                                        @if($board->user_id== Auth::user()->id )
+                                            <a href="{{route('board.edit',$board->id)}}" class="btn btn-success btn-hover w-100 mt-4">
+                                                <i class="uil uil-file-edit-alt"></i> Редактировать
+                                            </a>
+                                        @endif
+                                    @endauth
                                 </div>
                             </div><!--end card-body-->
                         </div><!--end job-overview-->
@@ -112,9 +118,15 @@
                                                 @foreach($board->fotos as $foto)
                                                     <div class="swiper-slide">
                                                         <img src="{{ Storage::url('/boards/1400/'.$foto->file) }}"
-                                                             alt="" class="img-fluid rounded-3" height="300">
+                                                             class="img-fluid rounded-3" height="300">
                                                     </div><!--end swiper-slide-->
                                                 @endforeach
+                                                @if(!count($board->fotos))
+                                                    <div class="swiper-slide">
+                                                        <img src="{{ Storage::url('/boards/1400/000.jpg') }}"
+                                                            class="img-fluid rounded-3" height="300">
+                                                    </div><!--end swiper-slide-->
+                                                @endif
                                             </div>
                                             <!--end swiper-wrapper-->
                                             <div class="swiper-pagination"></div>
@@ -125,67 +137,6 @@
 
                         </div><!-- end col -->
                         <div class="card-body p-4">
-                            <div>
-                                <div class="row">
-                                    <ul class="list-inline mb-0 mt-3 text-muted">
-                                        <li class="list-inline-item">
-                                            <div class="d-flex align-items-center">
-                                                <h1 class="mb-0">{{$board->name}}</h1>
-                                            </div>
-
-                                        </li>
-                                        @auth()
-                                            @if($board->user_id== Auth::user()->id )
-                                                <li class="list-inline-item">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="flex-shrink-0">
-                                                            <i class="uil uil-edit"></i>
-                                                        </div>
-                                                        <div class="ms-2">
-                                                            <a href="{{route('board.edit',$board->id)}}">Изменить </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            @endif
-                                        @endauth
-                                    </ul>
-
-                                    <div class="col-lg-2">
-                                        <ul class="list-inline mb-0 text-lg-end mt-3 mt-lg-0">
-                                            <li class="list-inline-item">
-                                                <div class="favorite-icon">
-                                                    @auth()
-
-
-                                                    @endauth
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div><!--end col-->
-                                </div><!--end row-->
-                            </div>
-
-                            <div class="mt-4">
-                                <div class="row g-2">
-                                    @isset($board->money)
-                                        <div class="col-lg-4">
-                                            <div class="border rounded-start p-3">
-                                                <p class="text-muted mb-0 fs-13">Вознаграждение</p>
-                                                <p class="fw-medium fs-15 mb-0">{{$board->money}} руб.</p>
-                                            </div>
-                                        </div>
-                                    @endisset
-                                    {{---
-                                    <div class="col-lg-4">
-                                         <div class="border p-3">
-                                             <p class="text-muted fs-13 mb-0">Дата размещения</p>
-                                             <p class="fw-medium mb-0">{{$board->created_at->translatedFormat('j F Y').' г.'}}</p>
-                                         </div>
-                                     </div>
-                                     ---}}
-
-                                </div>
-                            </div><!--end Experience-->
                             @if($board->text)
                                 <div class="mt-4">
                                     <h5 class="mb-3">Описание</h5>
@@ -194,6 +145,14 @@
                                     </div>
                                 </div>
                             @endif
+                            @isset($board->money)
+                                <div class="mt-4">
+                                    <h6 class="mb-3">Вознаграждение</h6>
+                                    <div class="job-detail-desc">
+                                        <p class="text-muted mb-0">{{$board->money}} руб.</p>
+                                    </div>
+                                </div>
+                            @endisset
 
 
                         </div><!--end card-body-->

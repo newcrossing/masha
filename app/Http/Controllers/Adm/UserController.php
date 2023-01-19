@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Adm;
 
 use App\Helpers\Activity;
 use App\Http\Controllers\Controller;
-
+use App\Models\Board;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -55,19 +55,22 @@ class UserController extends Controller
             $user = new User();
 
             $user->login = 'mr' . $temp;
-            $ar['login'] = $user->login;
 
-            $pass = Str::random(8);
+            $pass = Str::lower(Str::random(8));
             $user->password = Hash::make($pass);
             $ar['password'] = $pass;
-
             $user->name = 'mr' . $temp;
-
-
-            //$user->fill($request->all());
             $user->save();
-            $q = 'qr-' . rand(1000, 9999) . $user->id . Str::lower(Str::random(5));
+
+            $user->login = $user->generateLogin();
+            $user->name = $user->login;
+            $ar['login'] = $user->login;
+            $ar['name'] = $user->name;
+            $user->save();
+
+            $q = Board::generateQr($user->id);
             $ar['qr'] = $q;
+
             $user->board()->create([
                 'name' => 'Моя страница',
                 'active' => 1,

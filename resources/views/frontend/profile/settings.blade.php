@@ -28,16 +28,7 @@
     </section>
     <!-- end home -->
 
-    <!-- START SHAPE -->
-    <div class="position-relative" style="z-index: 1">
-        <div class="shape">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1"
-                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
-            </svg>
-        </div>
-    </div>
-    <!-- END SHAPE -->
+
 
 
     <!-- START PROFILE -->
@@ -48,45 +39,57 @@
                     <div class="card profile-sidebar me-lg-4">
                         <div class="card-body p-4">
                             <div class="text-center pb-4 border-bottom">
-                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}" class="avatar-lg img-thumbnail rounded-circle mb-4">
+                                <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}"
+                                     class="avatar-lg img-thumbnail  mb-4" style="height: auto; width: 10rem">
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
                                 <p class="text-muted">{{Auth::user()->login}}</p>
                             </div>
                             <!--end profile-->
 
-                            <div class="mt-4">
-                                <h5 class="fs-17 fw-bold mb-3">Контакты</h5>
-                                <div class="profile-contact">
+
+
+                                <div class="candidate-contact-details card-body p-4 border-top">
+                                    <h6 class="fs-17 fw-semibold mb-3">Контакты</h6>
                                     <ul class="list-unstyled mb-0">
                                         <li>
-                                            <div class="d-flex">
-                                                <label>E-mail</label>
-                                                <div>
-                                                    <p class="text-muted text-break mb-0">
-                                                        {{Auth::user()->email}}
-                                                    </p>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <div class="icon bg-soft-primary flex-shrink-0">
+                                                    <i class="uil uil-envelope-alt"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h6 class="fs-14 mb-1">E-mail</h6>
+                                                    <p class="text-muted mb-0">{{Auth::user()->email}}</p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="d-flex">
-                                                <label>Телефон</label>
-                                                <div>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <div class="icon bg-soft-primary flex-shrink-0">
+                                                    <i class="uil uil-phone"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h6 class="fs-14 mb-1">Телефон</h6>
                                                     <p class="text-muted mb-0">{{Auth::user()->tel}}</p>
+                                                    <p class="text-muted mb-0">{{Auth::user()->tel2}}</p>
                                                 </div>
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="d-flex">
-                                                <label>Город</label>
-                                                <div>
+                                            <div class="d-flex align-items-center mt-4">
+                                                <div class="icon bg-soft-primary flex-shrink-0">
+                                                    <i class="uil uil-map-marker"></i>
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h6 class="fs-14 mb-1">Город</h6>
                                                     <p class="text-muted mb-0">{{Auth::user()->city}}</p>
                                                 </div>
                                             </div>
                                         </li>
+
+
                                     </ul>
                                 </div>
-                            </div>
+
                             <!--end contact-details-->
                         </div>
                         <!--end card-body-->
@@ -117,8 +120,10 @@
                         <div>
                             <h5 class="fs-17 fw-semibold mb-3 mb-0">Мой профиль #{{Auth::user()->login}}</h5>
                             @empty(Auth::user()->email)
-                                <div class="alert  bg-soft-warning" role="alert">
+                                <div class="alert  bg-soft-danger" role="alert">
+                                    <br>
                                     Для начала публикации объявления необходимо указать e-mail.
+                                    <br><br>
                                 </div>
                             @endempty
 
@@ -127,7 +132,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}"/>
+                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}" autofocus/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -250,12 +255,20 @@
                             </div>
                             <!--end row-->
                         </div>
-                        <!--end Change-password-->
-                        <div class="mt-4 text-end">
-                            <button type="submit" class="btn btn-primary">Сохранить</button>
-                            <a href="{{route('board.edit')}}" class="btn btn-info btn-hover w-100 mt-2">
-                                Перейти к объявлению <i class="uil uil-arrow-right"></i>
-                            </a>
+                        <div class="row mt-4 ">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="uil uil-file-check-alt"></i>
+                                    Сохранить
+                                </button>
+                            </div>
+                            <div class="col-lg-6 text-end">
+                                @if(Auth::user()->email)
+                                    <a href="{{route('board.edit')}}" class="btn btn-info btn-hover w-100 ">
+                                        Перейти к объявлению <i class="uil uil-arrow-right"></i>
+                                    </a>
+                                @endif
+                            </div>
                         </div>
                     </form>
                 </div>

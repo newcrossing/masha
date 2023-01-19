@@ -45,7 +45,7 @@
             </div><!--end col-->
             <div class="col-lg-3">
                 <a href="{{route('public-offer')}}" class="text-white-50 mb-0">
-                    Пуьличная оферта
+                    Публичная оферта
                 </a>
             </div><!--end col-->
             <div class="col-lg-3">

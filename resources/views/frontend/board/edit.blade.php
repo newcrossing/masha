@@ -73,6 +73,15 @@
                                         </div>
                                     </li>
                                 @endforeach
+                                @if(!count($board->fotos))
+                                    <li class="mb-3 align-items-center pb-3 border-bottom text-center">
+                                        <img src="{{ Storage::url('/boards/200/000.jpg') }}"
+                                             class="rounded justify-content-center avatar-lg img-thumbnail  mb-4" style="width: 200px; height: auto">
+
+                                    </li>
+
+                                @endif
+
                             </ul>
                             {{-- {!! QrCode::size(300)->color(255, 0, 0)->style('dot')->eye('circle')->encoding('UTF-8')->generate('https://маша-растеряша.рф/'.$board->slug) !!} --}}
                         </div>
@@ -148,17 +157,29 @@
 
 
                         <!--end Change-password-->
-                        <div class="mt-4 text-end">
-                            <a href="{{route('profile.settings')}}" class="btn btn-info">Перейти в настройки
-                                <i class="mdi mdi-cog"></i></a>
-                            <button type="submit"
-                                    class="btn btn-primary"> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}</button>
-                            @isset($board->id)
-                                <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success">
-                                    Просмотреть <i class="mdi mdi-send"></i>
+                        <div class="row mt-4 ">
+                            <div class="col-lg-4">
+                                <button type="submit" class="btn btn-primary btn-hover">
+                                    <i class="uil uil-file-check-alt"></i> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}
+                                </button>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="{{route('profile.settings')}}" class="btn btn-info">
+                                    Перейти в настройки <i class="mdi mdi-cog"></i>
                                 </a>
-                            @endisset
+                            </div>
+                            <div class="col-lg-4 text-end">
+
+                                @isset($board->id)
+                                    <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success btn-hover">
+                                        Просмотреть <i class="mdi mdi-send"></i>
+                                    </a>
+                                @endisset
+                            </div>
                         </div>
+
+
+
                     </form>
                 </div>
 
