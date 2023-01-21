@@ -28,7 +28,16 @@
     </section>
     <!-- end home -->
 
-
+    <!-- START SHAPE -->
+    <div class="position-relative" style="z-index: 1">
+        <div class="shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
+                <path fill="#FFFFFF" fill-opacity="1"
+                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+            </svg>
+        </div>
+    </div>
+    <!-- END SHAPE -->
 
 
     <!-- START PROFILE -->
@@ -44,52 +53,64 @@
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
                                 <p class="text-muted">{{Auth::user()->login}}</p>
                             </div>
+
+
                             <!--end profile-->
-
-
-
-                                <div class="candidate-contact-details card-body p-4 border-top">
-                                    <h6 class="fs-17 fw-semibold mb-3">Контакты</h6>
-                                    <ul class="list-unstyled mb-0">
-                                        <li>
-                                            <div class="d-flex align-items-center mt-4">
-                                                <div class="icon bg-soft-primary flex-shrink-0">
-                                                    <i class="uil uil-envelope-alt"></i>
-                                                </div>
-                                                <div class="ms-3">
-                                                    <h6 class="fs-14 mb-1">E-mail</h6>
-                                                    <p class="text-muted mb-0">{{Auth::user()->email}}</p>
-                                                </div>
+                            <div class="candidate-contact-details card-body border-bottom  p-4 border-top">
+                                <h6 class="fs-17 fw-semibold mb-3">Контакты</h6>
+                                <ul class="list-unstyled mb-0">
+                                    <li>
+                                        <div class="d-flex align-items-center mt-4">
+                                            <div class="icon bg-soft-primary flex-shrink-0">
+                                                <i class="uil uil-envelope-alt"></i>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center mt-4">
-                                                <div class="icon bg-soft-primary flex-shrink-0">
-                                                    <i class="uil uil-phone"></i>
-                                                </div>
-                                                <div class="ms-3">
-                                                    <h6 class="fs-14 mb-1">Телефон</h6>
-                                                    <p class="text-muted mb-0">{{Auth::user()->tel}}</p>
-                                                    <p class="text-muted mb-0">{{Auth::user()->tel2}}</p>
-                                                </div>
+                                            <div class="ms-3">
+                                                <h6 class="fs-14 mb-1">E-mail</h6>
+                                                <p class="text-muted mb-0">{{Auth::user()->email}}</p>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <div class="d-flex align-items-center mt-4">
-                                                <div class="icon bg-soft-primary flex-shrink-0">
-                                                    <i class="uil uil-map-marker"></i>
-                                                </div>
-                                                <div class="ms-3">
-                                                    <h6 class="fs-14 mb-1">Город</h6>
-                                                    <p class="text-muted mb-0">{{Auth::user()->city}}</p>
-                                                </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center mt-4">
+                                            <div class="icon bg-soft-primary flex-shrink-0">
+                                                <i class="uil uil-phone"></i>
                                             </div>
-                                        </li>
+                                            <div class="ms-3">
+                                                <h6 class="fs-14 mb-1">Телефон</h6>
+                                                <p class="text-muted mb-0">{{Auth::user()->tel}}</p>
+                                                <p class="text-muted mb-0">{{Auth::user()->tel2}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center mt-4">
+                                            <div class="icon bg-soft-primary flex-shrink-0">
+                                                <i class="uil uil-map-marker"></i>
+                                            </div>
+                                            <div class="ms-3">
+                                                <h6 class="fs-14 mb-1">Город</h6>
+                                                <p class="text-muted mb-0">{{Auth::user()->city}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
 
 
-                                    </ul>
-                                </div>
+                                </ul>
+                            </div>
+                            <div class="text-center pb-4 border-bottom mt-4">
+                                @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
+                                    <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}"
+                                         class="avatar-lg img-thumbnail  mb-4" style="height: auto; width: 10rem">
+                                @else
+                                    {{QRCode::url(env('APP_URL').'/'.Auth::user()->board->slug)->setSize(7)->setMargin(1)->svg()}}
+                                    {{QRCode::url(env('APP_URL') . '/' . Auth::user()->board->slug)
+                                    ->setSize(10)
+                                    ->setOutfile(Storage::path('/public/qr/') . Auth::user()->login  . '.png')
+                                    ->setMargin(1)
+                                    ->png()}}
+                                @endif
 
+                            </div>
                             <!--end contact-details-->
                         </div>
                         <!--end card-body-->
@@ -171,7 +192,7 @@
                             <h5 class="fs-17 fw-semibold mb-3">Уведомления</h5>
                             <div class="row">
                                 <!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_email"
                                                id="notify_email" {{ Auth::user()->notify_email  ? 'checked' : '' }}>
@@ -179,14 +200,14 @@
 
                                     </div>
                                 </div><!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_tel"
                                                id="notify_tel" {{ Auth::user()->notify_tel ? 'checked' : '' }}>
                                         <label class="form-check-label" for="notify_tel">Звонок на телефон</label>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_sms"
                                                id="notify_sms" {{ Auth::user()->notify_sms ? 'checked' : '' }}>
@@ -194,7 +215,7 @@
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_whatsup"
                                                id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
@@ -203,7 +224,7 @@
                                 </div>
                                 <!--end col-->
                                 <!--end col-->
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_telegram"
                                                id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
@@ -239,7 +260,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Новый пароль</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="false"/>
+                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="off"/>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -257,7 +278,7 @@
                         </div>
                         <div class="row mt-4 ">
                             <div class="col-lg-6">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     <i class="uil uil-file-check-alt"></i>
                                     Сохранить
                                 </button>

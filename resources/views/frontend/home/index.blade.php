@@ -1,6 +1,6 @@
 @extends('frontend.layouts.index')
 
-@section('title','Маша-растеряша.рф - бюро находок пропавших вещей по QR коду')
+@section('title','Бюро находок пропавших вещей по QR коду')
 
 @section('vendor-styles')
 

@@ -159,7 +159,7 @@
                         <!--end Change-password-->
                         <div class="row mt-4 ">
                             <div class="col-lg-4">
-                                <button type="submit" class="btn btn-primary btn-hover">
+                                <button type="submit" class="btn btn-success btn-hover">
                                     <i class="uil uil-file-check-alt"></i> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}
                                 </button>
                             </div>
@@ -171,7 +171,7 @@
                             <div class="col-lg-4 text-end">
 
                                 @isset($board->id)
-                                    <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-success btn-hover">
+                                    <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-primary btn-hover">
                                         Просмотреть <i class="mdi mdi-send"></i>
                                     </a>
                                 @endisset

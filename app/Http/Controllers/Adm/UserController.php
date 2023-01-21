@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use LaravelQRCode\Facades\QRCode;
 
 class UserController extends Controller
 {
@@ -73,13 +74,21 @@ class UserController extends Controller
 
             $user->board()->create([
                 'name' => 'Моя страница',
+                'text' => 'Если Вы нашли мою вещь убедительно прошу вас связаться со мной одним из указанных способов.',
                 'active' => 1,
                 'slug' => $q,
                 'user_id' => $user->id
             ]);
 
-            // добил роль
+            // добавил роль
             $user->assignRole('user');
+
+            // создать qr
+            QRCode::url(env('APP_URL') . '/' . $q)
+                ->setSize(10)
+                ->setOutfile(Storage::path('/public/qr/') . $user->login . '.png')
+                ->setMargin(1)
+                ->png();
 
             $arr[] = $ar;
         }

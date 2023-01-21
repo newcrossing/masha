@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use App\Classes\Smsc;
 use Mail;
 use Validator;
 
@@ -100,8 +99,6 @@ class BoardController extends Controller
 
     public function edit()
     {
-
-
         $user = User::find(Auth::user()->id);
         $board = $user->board;
 
@@ -117,12 +114,9 @@ class BoardController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'name' => 'required|max:255|min:3'
             'image' => 'image|max:2000|mimes:jpeg,png,bmp',
-            // 'image' => 'file|mimetypes:image/png,image/bmp,image/jpeg'
         ], [
             'image.max' => 'Максимальный размер фото 2 Мб!',
-            // 'name.min' => 'Минимальная длина поля 3 символа!',
         ]);
 
 
@@ -142,7 +136,7 @@ class BoardController extends Controller
         $board->text = $request->text;
         $board->save();
         Activity::add('Пользователь изменил объявление');
-        return redirect()->back()->with('success', 'Объявление изменено');
+        return redirect()->back()->with('success', 'Сохранено');
     }
 
     public function insert(Request $request)

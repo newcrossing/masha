@@ -182,6 +182,9 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+
+
 
 
     ],
@@ -238,6 +241,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
        // 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'LogActivity' => App\Helpers\LogActivity::class,
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,
 
     ],
 

@@ -16,6 +16,7 @@ class ProfileController extends Controller
 {
     public function settings()
     {
+        //dd(Storage::exists('/public/qr/'. Auth::user()->login . '.png'));
         return view('frontend.profile.settings');
     }
 
