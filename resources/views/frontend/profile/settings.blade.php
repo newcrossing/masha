@@ -32,8 +32,7 @@
     <div class="position-relative" style="z-index: 1">
         <div class="shape">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1"
-                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+                <path fill="#FFFFFF" fill-opacity="1" d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
             </svg>
         </div>
     </div>
@@ -53,8 +52,6 @@
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
                                 <p class="text-muted">{{Auth::user()->login}}</p>
                             </div>
-
-
                             <!--end profile-->
                             <div class="candidate-contact-details card-body border-bottom  p-4 border-top">
                                 <h6 class="fs-17 fw-semibold mb-3">Контакты</h6>
@@ -100,7 +97,7 @@
                             <div class="text-center pb-4 border-bottom mt-4">
                                 @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
                                     <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}"
-                                         class="avatar-lg img-thumbnail  mb-4" style="height: auto; width: 10rem">
+                                         class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
                                 @else
                                     {{QRCode::url(env('APP_URL').'/'.Auth::user()->board->slug)->setSize(7)->setMargin(1)->svg()}}
                                     {{QRCode::url(env('APP_URL') . '/' . Auth::user()->board->slug)
@@ -109,6 +106,13 @@
                                     ->setMargin(1)
                                     ->png()}}
                                 @endif
+                                <p class="text-muted">
+                                    <a href="/down-qr/{{Auth::user()->login . '.png'}}">
+                                        <span class="badge bg-success">
+                                            <i class="uil uil-image-download"></i>  Скачать</span>
+                                    </a>
+                                </p>
+
 
                             </div>
                             <!--end contact-details-->

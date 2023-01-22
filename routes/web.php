@@ -22,10 +22,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('qr1', function ()
-{
-    return QRCode::text('QR Code Generator for !')->png();
-});
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');;
 Route::get('/agreement', [AgreementController::class, 'index'])->name('agreement');;
@@ -45,6 +42,9 @@ Route::post('forgot-password', [UserController::class, 'resetPassword'])->name('
 
 Route::put('reset-password', [UserController::class, 'updatePassword'])->name('reset-password');
 
+Route::get('/down-qr/{id}', function ($id) {
+    return Storage::download('public/qr/' . $id);
+});
 
 Route::middleware(['role:admin|user'])->group(
     function () {
