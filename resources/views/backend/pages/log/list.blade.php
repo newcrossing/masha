@@ -18,60 +18,74 @@
 @section('content')
 
 
-    <!-- Zero configuration table -->
-    <section id="basic-datatable">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Активность </h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body card-dashboard">
-                            <div class="table-responsive">
-                                <table class="table zero-configuration">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Логин</th>
-                                        <th>Действие</th>
+    <!-- invoice list -->
+    <section class="invoice-list-wrapper">
+        <!-- create invoice button-->
+        <div class="invoice-create-btn mb-1">
+            <a href="app-invoice-add.html" class="btn btn-primary glow invoice-create" role="button" aria-pressed="true">Create
+                Invoice</a>
+        </div>
+        <!-- Options and filter dropdown button-->
+        <div class="table-responsive">
+            <table class="table invoice-data-table dt-responsive nowrap" style="width:100%">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <span class="align-middle">#ID</span>
+                    </th>
+                    <th>Логин</th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                    <th>IP</th>
+                    <th>Метод</th>
+                    <th>Параметры</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($logs as $log)
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="">{{$log->id }}</a>
+                        </td>
+                        <td>
+                            @isset($log->user_login)
+                                <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
+                                    <i class="bx bx-user    font-size-small mr-25"></i>
+                                    <span>{{$log->user_login}}</span>
+                                </div>
+                            @endisset
+                        </td>
+                        <td><small class="text-muted">{{$log->created_at->format('H:m:s   d-m-Y ')}}</small></td>
+                        <td>
 
-                                        <th>Дата</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                            <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
+                            <small class="">{{$log->url}}</small>
 
-                                    @foreach ($logs as $log)
-                                        <tr>
-                                            <td>{{$log->id }}</td>
-                                            <td>
-                                                @isset($log->user_login)
-                                                    <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
-                                                        <i class="bx bx-user    font-size-small mr-25"></i>
-                                                        <span>{{$log->user_login}}</span>
-                                                    </div>
-                                                @endisset
-
-                                            </td>
-                                            <td>
-                                                <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
-                                                <small class="">{{$log->url}}</small>
-                                                <a href="#" class="font-small-1 basic-alert"
-                                                   dtext = "IP:{{$log->ip}}, Метод:{{$log->method}}, Браузер: {{$log->agent}}, {{$log->parametrs}}">параметры</a>
-                                            </td>
-                                            <td class="font-small-1">{{$log->created_at->format('H:m:s d.m.Y ')}}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tfoot>
-                                </table>
+                        </td>
+                        <td>
+                            <span class="bullet bullet-success bullet-sm"></span>
+                            <small class="text-muted">{{$log->ip}}</small>
+                        </td>
+                        <td><span class="badge badge-light-danger badge-pill">{{$log->method}}</span></td>
+                        <td>
+                            <div class="invoice-action">
+                                Браузер: {{Str::limit($log->agent, 80) }}<br>  Переменные: {{$log->parametrs}}
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </td>
+                    </tr>
+
+                @endforeach
+
+
+                </tbody>
+            </table>
         </div>
     </section>
-    <!--/ Zero configuration table -->
+
 
 @endsection
 
@@ -83,28 +97,22 @@
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="/adm/app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
-    <script src="/adm/app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+
+
+
+
+    <script src="/adm/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="/adm/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="/adm/app-assets/vendors/js/tables/datatable/responsive.bootstrap.min.js"></script>
 
 
 @endsection
 {{-- page scripts --}}
 @section('page-scripts')
-    <script src="/adm/app-assets/js/datatable-log.js"></script>
 
-    <script src="/adm/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.basic-alert').on('click', function () {
-                var text = $(this).attr('dtext')
-                Swal.fire({
-                    title: 'Параметры',
-                    text: text,
-                    confirmButtonClass: 'btn btn-primary',
-                    buttonsStyling: false,
-                })
-            });
-        });
-    </script>
+    <script src="/adm/app-assets/js/app-invoice-log.js"></script>
+
+
+
 
 @endsection

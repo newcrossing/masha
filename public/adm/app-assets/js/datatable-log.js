@@ -10,6 +10,40 @@
 
 $(document).ready(function () {
 
+    if ($(".invoice-data-table").length) {
+        var dataListView = $(".invoice-data-table").DataTable({
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: "control"
+                },
+
+                {
+                    targets: [0, 1, 2],
+                    orderable: false
+                },
+            ],
+            order: [2, 'desc'],
+            dom:
+                '<"top d-flex flex-wrap"<"action-filters flex-grow-1"f><"actions action-btns d-flex align-items-center">><"clear">rt<"bottom"p>',
+            language: {
+                search: "",
+                searchPlaceholder: "Поиск"
+            },
+            select: {
+                style: "multi",
+                selector: "td:first-child",
+                items: "row"
+            },
+            responsive: {
+                details: {
+                    type: "column",
+                    target: 0
+                }
+            }
+        });
+    }
+
     /****************************************
      *       js of zero configuration        *
      ****************************************/

@@ -3,4 +3,4 @@
 
 ### 24.02.2023
 
-- Добавлен модуль vCard 
+- Добавлен модуль vCard  `composer require jeroendesloovere/vcard`
