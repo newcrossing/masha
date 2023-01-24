@@ -96,23 +96,14 @@
                             </div>
                             <div class="text-center pb-4 border-bottom mt-4">
                                 @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
-                                    <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}"
-                                         class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
-                                @else
-                                    {{QRCode::url(env('APP_URL').'/'.Auth::user()->board->slug)->setSize(7)->setMargin(1)->svg()}}
-                                    {{QRCode::url(env('APP_URL') . '/' . Auth::user()->board->slug)
-                                    ->setSize(10)
-                                    ->setOutfile(Storage::path('/public/qr/') . Auth::user()->login  . '.png')
-                                    ->setMargin(1)
-                                    ->png()}}
-                                @endif
-                                <p class="text-muted">
-                                    <a href="/down-qr/{{Auth::user()->login . '.png'}}">
+                                    <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}" class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
+                                    <p class="text-muted">
+                                        <a href="/down-qr/{{Auth::user()->login . '.png'}}">
                                         <span class="badge bg-success">
                                             <i class="uil uil-image-download"></i>  Скачать</span>
-                                    </a>
-                                </p>
-
+                                        </a>
+                                    </p>
+                                @endif
 
                             </div>
                             <!--end contact-details-->
