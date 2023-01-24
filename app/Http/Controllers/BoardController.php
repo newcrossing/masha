@@ -15,10 +15,47 @@ use Validator;
 
 use App\Mail\NotifyMail;
 use Illuminate\Support\Facades\DB;
+use JeroenDesloovere\VCard\VCard;
 
 
 class BoardController extends Controller
 {
+
+    /**
+     * Генерирует для скачивания  vcard
+     * @param $id
+     */
+    public function vcard($id)
+    {
+        $board = Board::where('slug', '=', $id)->firstOrFail();
+        $user = $board->user;
+
+        $vcard = new VCard();
+
+        $lastname = ($user->name) ?: $user->login;
+
+        $vcard->addName($lastname);
+
+        $vcard->addCompany('Маша-растеряша.рф');
+        $vcard->addEmail($user->email);
+
+        if ($user->tel) {
+            $vcard->addPhoneNumber($user->tel, 'PREF;WORK');
+        }
+        if ($user->tel2) {
+            $vcard->addPhoneNumber($user->tel2, 'WORK');
+        }
+
+        $vcard->addURL('https://маша-растеряша.рф');
+
+        //$vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+
+// return vcard as a string
+//return $vcard->getOutput();
+
+// return vcard as a download
+        return $vcard->download();
+    }
 
     /***
      * @param Request $request

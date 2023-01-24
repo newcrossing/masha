@@ -11,12 +11,21 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use LaravelQRCode\Facades\QRCode;
 
 class ProfileController extends Controller
 {
     public function settings()
     {
-        //dd(Storage::exists('/public/qr/'. Auth::user()->login . '.png'));
+        // если нет файла qr надо создать
+        if (!Storage::exists('/public/qr/' . Auth::user()->login . '.png')) {
+            QRCode::url(env('APP_URL') . '/' . Auth::user()->board->slug)
+                ->setSize(10)
+                ->setOutfile(Storage::path('/public/qr/') . Auth::user()->login . '.png')
+                ->setMargin(1)
+                ->png();
+        }
+
         return view('frontend.profile.settings');
     }
 

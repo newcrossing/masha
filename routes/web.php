@@ -45,6 +45,7 @@ Route::put('reset-password', [UserController::class, 'updatePassword'])->name('r
 Route::get('/down-qr/{id}', function ($id) {
     return Storage::download('public/qr/' . $id);
 });
+Route::get('/down-vcard/{id}', [BoardController::class, 'vcard'])->name('vcard');
 
 Route::middleware(['role:admin|user'])->group(
     function () {

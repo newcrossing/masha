@@ -92,6 +92,12 @@
                                         </a>
                                     @endif
 
+                                    @if(isset($board->user->tel) || isset($board->user->email) )
+                                        <a href="{{route('vcard',$board->slug)}}" class="btn btn-info btn-hover w-100 mt-2">
+                                            <i class="uil uil-mobile-android-alt"></i> Скачать контакт vCard
+                                        </a>
+                                    @endif
+
                                     @auth()
                                         @if($board->user_id== Auth::user()->id )
                                             <a href="{{route('board.edit',$board->id)}}" class="btn btn-success btn-hover w-100 mt-4">
@@ -124,7 +130,7 @@
                                                 @if(!count($board->fotos))
                                                     <div class="swiper-slide">
                                                         <img src="{{ Storage::url('/boards/1400/000.jpg') }}"
-                                                            class="img-fluid rounded-3" height="300">
+                                                             class="img-fluid rounded-3" height="300">
                                                     </div><!--end swiper-slide-->
                                                 @endif
                                             </div>
