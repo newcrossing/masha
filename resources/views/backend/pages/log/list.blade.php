@@ -20,11 +20,7 @@
 
     <!-- invoice list -->
     <section class="invoice-list-wrapper">
-        <!-- create invoice button-->
-        <div class="invoice-create-btn mb-1">
-            <a href="app-invoice-add.html" class="btn btn-primary glow invoice-create" role="button" aria-pressed="true">Create
-                Invoice</a>
-        </div>
+
         <!-- Options and filter dropdown button-->
         <div class="table-responsive">
             <table class="table invoice-data-table dt-responsive nowrap" style="width:100%">
