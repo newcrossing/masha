@@ -144,44 +144,46 @@
                                                     </div>
 
                                                     <h6 class="m-1">Уведомления</h6>
-                                                    <div class="col-12 mb-1">
-                                                        <div class="custom-control custom-switch custom-control-inline">
-                                                            <input type="checkbox" name="notify_tel"
-                                                                   class="custom-control-input"
-                                                                   id="accountSwitchTel" {{ $user->notify_tel  ? 'checked' : '' }}>
-                                                            <label class="custom-control-label mr-1"
-                                                                   for="accountSwitchTel"></label>
-                                                            <span class="switch-label w-100">Уведомление по телефону</span>
+                                                    <div class="row ml-2">
+                                                        <div class="col-6 mb-1">
+                                                            <div class="custom-control custom-switch custom-control-inline">
+                                                                <input type="checkbox" name="notify_tel"
+                                                                       class="custom-control-input"
+                                                                       id="accountSwitchTel" {{ $user->notify_tel  ? 'checked' : '' }}>
+                                                                <label class="custom-control-label mr-1"
+                                                                       for="accountSwitchTel"></label>
+                                                                <span class="switch-label w-100">Уведомление по телефону</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 mb-1">
-                                                        <div class="custom-control custom-switch custom-control-inline">
-                                                            <input type="checkbox" name="notify_email"
-                                                                   class="custom-control-input"
-                                                                   id="accountSwitchEmail" {{ $user->notify_email  ? 'checked' : '' }} >
-                                                            <label class="custom-control-label mr-1"
-                                                                   for="accountSwitchEmail"></label>
-                                                            <span class="switch-label w-100">Уведомление по Email</span>
+                                                        <div class="col-6 mb-1">
+                                                            <div class="custom-control custom-switch custom-control-inline">
+                                                                <input type="checkbox" name="notify_email"
+                                                                       class="custom-control-input"
+                                                                       id="accountSwitchEmail" {{ $user->notify_email  ? 'checked' : '' }} >
+                                                                <label class="custom-control-label mr-1"
+                                                                       for="accountSwitchEmail"></label>
+                                                                <span class="switch-label w-100">Уведомление по Email</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 mb-1">
-                                                        <div class="custom-control custom-switch custom-control-inline">
-                                                            <input type="checkbox" name="notify_whatsup"
-                                                                   class="custom-control-input"
-                                                                   id="accountSwitchwhatsup" {{ $user->notify_whatsup  ? 'checked' : '' }} >
-                                                            <label class="custom-control-label mr-1"
-                                                                   for="accountSwitchwhatsup"></label>
-                                                            <span class="switch-label w-100">Уведомление по Whats Up</span>
+                                                        <div class="col-6 mb-1">
+                                                            <div class="custom-control custom-switch custom-control-inline">
+                                                                <input type="checkbox" name="notify_whatsup"
+                                                                       class="custom-control-input"
+                                                                       id="accountSwitchwhatsup" {{ $user->notify_whatsup  ? 'checked' : '' }} >
+                                                                <label class="custom-control-label mr-1"
+                                                                       for="accountSwitchwhatsup"></label>
+                                                                <span class="switch-label w-100">Уведомление по Whats Up</span>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 mb-1">
-                                                        <div class="custom-control custom-switch custom-control-inline">
-                                                            <input type="checkbox" name="notify_telegram"
-                                                                   class="custom-control-input"
-                                                                   id="accountSwitchtelegram" {{ $user->notify_telegram  ? 'checked' : '' }} >
-                                                            <label class="custom-control-label mr-1"
-                                                                   for="accountSwitchtelegram"></label>
-                                                            <span class="switch-label w-100">Уведомление по Telegram </span>
+                                                        <div class="col-6 mb-1">
+                                                            <div class="custom-control custom-switch custom-control-inline">
+                                                                <input type="checkbox" name="notify_telegram"
+                                                                       class="custom-control-input"
+                                                                       id="accountSwitchtelegram" {{ $user->notify_telegram  ? 'checked' : '' }} >
+                                                                <label class="custom-control-label mr-1"
+                                                                       for="accountSwitchtelegram"></label>
+                                                                <span class="switch-label w-100">Уведомление по Telegram </span>
+                                                            </div>
                                                         </div>
                                                     </div>
 

@@ -153,8 +153,8 @@ class UserController extends Controller
         $request['password'] = Hash::make($request['password']);
         $request['name'] = ($request['name']) ?: $request['login'];
 
-        $user->fill($request->all());
-        $user->save();
+
+        $user->fill($request->all())->save();
         $user->board()->create([
             'name' => 'Моя страница',
             'active' => 1,
@@ -233,14 +233,14 @@ class UserController extends Controller
             Image::make($request['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
         }
+
         $request['notify_email'] = $request['notify_email'] ? '1' : null;
         $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
         $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
         $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
         $request['password'] = Hash::make($request['password']);
 
-        $user->fill($request->all());
-        $user->save();
+        $user->fill($request->all())->save();
 
         if ($request->redirect == 'apply') {
             return redirect()->back()->with('success', 'Сохранено');

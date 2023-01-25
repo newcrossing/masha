@@ -20,7 +20,6 @@
 
     <!-- invoice list -->
     <section class="invoice-list-wrapper">
-
         <!-- Options and filter dropdown button-->
         <div class="table-responsive">
             <table class="table invoice-data-table dt-responsive nowrap" style="width:100%">
@@ -44,10 +43,8 @@
                         <td></td>
                         <td></td>
                         <td>
-
                             <a href="">{{$log->id }}</a>
                         </td>
-
                         <td>
                             @isset($log->user_login)
                                 <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
@@ -57,10 +54,8 @@
                             @endisset <br>
                             <small class="text-muted">{{$log->created_at->format('H:m:s   d-m-Y ')}}</small></td>
                         <td>
-
                             <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
                             <small class="">{{Str::replace('http://xn----7sbaba3a8b9acil0ei1h.xn--p1ai', '', $log->url)}}</small>
-
                         </td>
                         <td>
                             <span class="bullet bullet-success bullet-sm"></span>
@@ -73,16 +68,11 @@
                             </div>
                         </td>
                     </tr>
-
                 @endforeach
-
-
                 </tbody>
             </table>
         </div>
     </section>
-
-
 @endsection
 
 {{-- vendor scripts --}}
@@ -94,21 +84,11 @@
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
 
-
-
-
     <script src="/adm/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/responsive.bootstrap.min.js"></script>
-
-
 @endsection
 {{-- page scripts --}}
 @section('page-scripts')
-
     <script src="/adm/app-assets/js/app-invoice-log.js"></script>
-
-
-
-
 @endsection

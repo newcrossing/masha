@@ -25,7 +25,6 @@ class ProfileController extends Controller
                 ->setMargin(1)
                 ->png();
         }
-
         return view('frontend.profile.settings');
     }
 
