@@ -35,7 +35,6 @@
                     <th>
                         <span class="align-middle">#ID</span>
                     </th>
-                    <th>Логин</th>
                     <th>Дата</th>
                     <th>Действие</th>
                     <th>IP</th>
@@ -49,21 +48,22 @@
                         <td></td>
                         <td></td>
                         <td>
+
                             <a href="">{{$log->id }}</a>
                         </td>
+
                         <td>
                             @isset($log->user_login)
                                 <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
                                     <i class="bx bx-user    font-size-small mr-25"></i>
                                     <span>{{$log->user_login}}</span>
                                 </div>
-                            @endisset
-                        </td>
-                        <td><small class="text-muted">{{$log->created_at->format('H:m:s   d-m-Y ')}}</small></td>
+                            @endisset <br>
+                            <small class="text-muted">{{$log->created_at->format('H:m:s   d-m-Y ')}}</small></td>
                         <td>
 
                             <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
-                            <small class="">{{$log->url}}</small>
+                            <small class="">{{Str::replace('http://xn----7sbaba3a8b9acil0ei1h.xn--p1ai', '', $log->url)}}</small>
 
                         </td>
                         <td>
