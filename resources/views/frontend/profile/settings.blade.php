@@ -98,7 +98,8 @@
                                 @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
                                     <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}" class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
                                     <p class="text-muted">
-                                        <a href="/down-qr/{{Auth::user()->login . '.png'}}">
+
+                                        <a href="{{route('qr-download',Auth::user()->login . '.png')}}">
                                         <span class="badge bg-success">
                                             <i class="uil uil-image-download"></i>  Скачать</span>
                                         </a>

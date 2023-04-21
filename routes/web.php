@@ -39,13 +39,13 @@ Route::post('/sendorder', [BoardController::class, 'sendorder'])->name('board.se
 Route::get('forgot-password', [UserController::class, 'forgotPassword'])->name('forgot-password');
 Route::get('forgot-password/{token}', [UserController::class, 'forgotPasswordValidate']);
 Route::post('forgot-password', [UserController::class, 'resetPassword'])->name('forgot-password');
-
 Route::put('reset-password', [UserController::class, 'updatePassword'])->name('reset-password');
 
-Route::get('/down-qr/{id}', function ($id) {
+Route::get('/qr/{id}', function ($id) {
     return Storage::download('public/qr/' . $id);
-});
-Route::get('/down-vcard/{id}', [BoardController::class, 'vcard'])->name('vcard');
+})->name('qr-download');
+
+Route::get('/vcard/{id}', [BoardController::class, 'vcard'])->name('vcard');
 
 Route::middleware(['role:admin|user'])->group(
     function () {
