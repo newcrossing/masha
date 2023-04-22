@@ -50,28 +50,32 @@
 
                                             <div class="mb-4">
                                                 <div class="form-check">
-                                                    <a href="{{route('forgot-password')}}" class="float-end text-white">Забыли пароль?</a>
+                                                    <a href="{{route('forgot-password')}}" class="float-end text-white">Забыли
+                                                        пароль?</a>
                                                 </div>
                                             </div>
 
                                             <div class="mb-4">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="privacy_policy" name="privacy_policy" required>
-                                                    <label class="form-check-label" for="privacy_policy">Согласен с
-                                                        <a href="{{route('privacy-policy')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">
-                                                            политикой конфиденциальности
-                                                        </a>
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="agreement" name="agreement" required>
-                                                    <label class="form-check-label" for="agreement">Согласен с
+                                                    <label class="form-check-label" for="privacy_policy">
+                                                        Ознакомлен и полностью принимаю условия
                                                         <a href="{{route('agreement')}}" target="_blank"
-                                                           style="color: #f7ffef; text-decoration: #fffdfe  solid underline">
-                                                            пользовательским соглашением
-                                                        </a>
+                                                           style="color: #f7ffef; text-decoration: #fffdfe  solid underline">Пользовательского
+                                                            соглашения</a>,
+                                                        условия
+                                                        <a href="{{route('privacy-policy')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
+                                                            конфиденциальности</a>,
+                                                        условия
+                                                        <a href="{{route('public-offer')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной оферты</a>,
+                                                        даю согласие на обработку своих персональных данных
+                                                        и получение информационных сообщений, связанных с оказанием
+                                                        услуг
+
+
                                                     </label>
                                                 </div>
+
 
                                             </div>
                                             <div class="text-center">
