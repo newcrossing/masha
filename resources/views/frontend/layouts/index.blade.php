@@ -7,9 +7,10 @@
     <meta charset="utf-8"/>
     <title>@yield('title') / Маша-растеряша</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=" "/>
-    <meta name="keywords" content=""/>
-    <meta content="Themesdesign" name="author"/>
+    <meta name="description" content="Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду.">
+    <meta name="keywords" content="Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи">
+    <meta content="" name="author"/>
+    <meta name="yandex-verification" content="a6bf96ae76fba42e" />
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
