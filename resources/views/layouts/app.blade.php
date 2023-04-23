@@ -8,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду.">
+    <meta name="keywords" content="Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
