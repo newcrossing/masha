@@ -7,8 +7,8 @@
     <meta charset="utf-8" />
     <title>Авторизация / Маша-растеряша  </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=" " />
-    <meta name="keywords" content="" />
+    <meta name="description" content="Авторизация на сайте Бюро находок по QR-коду. ">
+    <meta name="keywords" content="Авторизация ,Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи">
     <meta content="Themesdesign" name="author" />
 
     <!-- App favicon -->

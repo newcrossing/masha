@@ -2,8 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
-
     <meta charset="utf-8"/>
     <title>@yield('title') / Маша-растеряша</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,6 +102,7 @@
 
 <!-- BEGIN: Page JS-->
 @yield('page-scripts')
+@include('frontend.moduls.metrika')
 <!-- END: Page JS-->
 <script src="/assets/js/app.js"></script>
 
