@@ -50,15 +50,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         // todoo реализовать проверку чекбоксов на сервере
-//        $request->validate([
-//            'login' => 'required|min:6',
-//            'password' => 'required|max:50|min:2',
-//            'check' => 'required',
-//        ], [
-//            'email.email' => 'Поле EMAIL не соответствует действительности!',
-//            'password.min' => 'Минимальная длина пароля 6 символов!',
-//            'image.max' => 'Максимальный размер фотографии 2 Мб!',
-//        ]);
+        $request->validate([
+            'login' => 'required|min:3',
+            'password' => 'required|max:50|min:6',
+            'check' => 'required',
+        ], [
+            'login.min' => 'Минимальная длина логина 6 символов',
+            'password.min' => 'Минимальная длина пароля 6 символов',
+            'password.max' => 'Максимальная длина пароля 50 символов!',
+            'check.required' => 'Согласие с условиями обязательно',
+        ]);
 
         $credentials = $request->only('login', 'password');
 

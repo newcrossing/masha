@@ -25,6 +25,16 @@
                                             <h5>Добро пожаловать</h5>
                                             <p class="text-white-70">в бюро находок по QR-коду</p>
                                         </div>
+                                        @if ($errors->any())
+                                            <div class="alert  alert-danger text-center mb-4" role="alert">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
                                         @if (Session::has("success"))
                                             <div class="alert alert-success text-center mb-4" role="alert">{{ Session::get('success') }}</div>
                                         @endif
@@ -57,7 +67,7 @@
 
                                             <div class="mb-4">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="privacy_policy" name="privacy_policy" required>
+                                                    <input class="form-check-input" type="checkbox" id="privacy_policy" name="check" required>
                                                     <label class="form-check-label" for="privacy_policy">
                                                         Ознакомлен и полностью принимаю условия
                                                         <a href="{{route('agreement')}}" target="_blank"
@@ -67,7 +77,8 @@
                                                         <a href="{{route('privacy-policy')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
                                                             конфиденциальности</a>,
                                                         условия
-                                                        <a href="{{route('public-offer')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной оферты</a>,
+                                                        <a href="{{route('public-offer')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной
+                                                            оферты</a>,
                                                         даю согласие на обработку своих персональных данных
                                                         и получение информационных сообщений, связанных с оказанием
                                                         услуг

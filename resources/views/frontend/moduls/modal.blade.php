@@ -32,10 +32,22 @@
                             <div class="mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="flexCheckDefault" required>
-                                    <label class="form-check-label" for="flexCheckDefault">Согласен с
-                                        <a href="{{route('privacy-policy')}}" target="_blank" class="text-primary form-text text-decoration-underline">
-                                            Политикой конфиденциальности
-                                        </a>
+                                    <label class="form-check-label" for="privacy_policy">
+                                        Ознакомлен и полностью принимаю условия
+                                        <a href="{{route('agreement')}}" target="_blank"
+                                           style=" text-decoration: #fffdfe  solid underline">Пользовательского
+                                            соглашения</a>,
+                                        условия
+                                        <a href="{{route('privacy-policy')}}" target="_blank" style=" text-decoration: #fffdfe solid underline">Политики
+                                            конфиденциальности</a>,
+                                        условия
+                                        <a href="{{route('public-offer')}}" target="_blank" style=" text-decoration: #fffdfe solid underline">Публичной
+                                            оферты</a>,
+                                        даю согласие на обработку своих персональных данных
+                                        и получение информационных сообщений, связанных с оказанием
+                                        услуг
+
+
                                     </label>
                                 </div>
                             </div>
