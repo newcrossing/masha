@@ -128,13 +128,16 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'login' => 'required|string|max:255|min:3|regex:/^[a-z][a-z0-9]+$/i|unique:users',
+            'login' => 'required|string|max:50|min:3|regex:/^[a-z][a-z0-9]+$/|unique:users',
             'password' => 'required|max:30|min:3',
         ], [
             'login.unique' => 'Поле ЛОГИН должно быть уникально!',
             'login.required' => 'Поле ЛОГИН обязательно!',
             'login.min' => 'Минимальная длина поля 3 символа!',
             'login.max' => 'Максимальная длина поля 255 символов!',
+            'login.regex' => 'ЛОГИН не соответствует шаблону имени.
+                Первый знак должен быть символом, далее допускаются цифры.
+                Все символы маленькими буквами.',
             'password.min' => 'Минимальная длина пароля 3 символа!',
             'password.max' => 'Максимальная длина пароля 30 символов!',
         ]);
