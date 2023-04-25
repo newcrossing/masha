@@ -87,6 +87,8 @@ class ContentController extends Controller
 
         $content->name = $request->name;
         $content->text = $request->text;
+        $content->meta_key = $request->meta_key;
+        $content->meta_desc = $request->meta_desc;
         $content->save();
 
         if ($request->redirect == 'apply') {

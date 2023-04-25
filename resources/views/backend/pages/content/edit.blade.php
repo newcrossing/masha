@@ -82,12 +82,27 @@
 													</div>
 												</div>
 
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label>Мета ключи</label>
+                                                                <input type="text" class="form-control" name="meta_key" value="{{old('meta_key',$content->meta_key)}}" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label>Мета описание</label>
+                                                                <input type="text" class="form-control" name="meta_desc" value="{{old('meta_desc',$content->meta_desc)}}" >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
 												<div class="row">
-
-
-
-
 
 													<div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
 														<button type="submit" name="redirect" value="apply" class="btn btn-primary glow mr-sm-1 mb-1">
@@ -97,8 +112,6 @@
 														<button type="submit" name="redirect" value="save" class="btn btn-primary glow mr-sm-1 mb-1">
 															Сохранить & Выйти
 														</button>
-
-
 
 														<button type="submit" name="redirect" value="cancel" class="btn btn-light glow mr-sm-1 mb-1">
 															Отменить
