@@ -168,6 +168,8 @@ class UserController extends Controller
         // добил роль
         $user->assignRole('user');
 
+        Activity::add('Добавил пользователя ' . $request['login']);
+
 
         if ($request->redirect == 'apply') {
             return redirect()->route('user.edit', $user->id)->with('success', 'Сохранено');
