@@ -1,14 +1,14 @@
 @extends('frontend.layouts.index')
 
 @section('title',$agreement->name )
+@section('meta_description',$agreement->meta_desc )
+@section('meta_keywords',$agreement->meta_key )
 
 @section('vendor-styles')
-
 @endsection
 
 @section('page-styles')
 @endsection
-
 
 @section('content')
     <section class="page-title-box">
@@ -17,7 +17,6 @@
                 <div class="col-md-6">
                     <div class="text-center text-white">
                         <h3 class="mb-4">{!! $agreement->name  !!}</h3>
-
                     </div>
                 </div>
                 <!--end col-->
@@ -46,14 +45,7 @@
             </div>
         </div>
     </section>
-
-
 @endsection
-
-
-
-
-
 
 @section('vendor-scripts')
 @endsection
@@ -61,4 +53,3 @@
 
 @section('page-scripts')
 @endsection
-

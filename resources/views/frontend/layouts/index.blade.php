@@ -5,10 +5,10 @@
     <meta charset="utf-8"/>
     <title>@yield('title') / Маша-растеряша</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду.">
-    <meta name="keywords" content="Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи">
+    <meta name="description" content="@yield('meta_description','Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду')">
+    <meta name="keywords" content="@yield('meta_keywords','Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи')">
     <meta content="" name="author"/>
-    <meta name="yandex-verification" content="a6bf96ae76fba42e" />
+    <meta name="yandex-verification" content="a6bf96ae76fba42e"/>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
@@ -26,46 +26,37 @@
     <!-- App Css-->
     <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
     <!--Custom Css-->
-    @yield('vendor-styles')
+@yield('vendor-styles')
 
-    <!-- END: Page CSS-->
-    @yield('page-styles')
-    <!-- END: Page CSS-->
-
+<!-- END: Page CSS-->
+@yield('page-styles')
+<!-- END: Page CSS-->
 </head>
 
 <body>
-
 
 <!-- Begin page -->
 <div>
 
     <!-- START TOP-BAR -->
-    @include('frontend.moduls.top-bar')
-    <!-- END TOP-BAR -->
+@include('frontend.moduls.top-bar')
+<!-- END TOP-BAR -->
 
     <!--Navbar Start-->
-    @include('frontend.moduls.navbar')
-    <!-- Navbar End -->
+@include('frontend.moduls.navbar')
+<!-- Navbar End -->
 
     @include('frontend.moduls.modal')
 
-
     <div class="main-content">
-
         <div class="page-content">
             @yield('content')
         </div>
         <!-- End Page-content -->
 
-
         <!-- START FOOTER -->
-        @include('frontend.moduls.footer')
-
-        <!-- END FOOTER -->
-
-
-
+    @include('frontend.moduls.footer')
+    <!-- END FOOTER -->
 
         <!--start back-to-top-->
         <button onclick="topFunction()" id="back-to-top">
@@ -74,14 +65,12 @@
         <!--end back-to-top-->
     </div>
     <!-- end main content-->
-
 </div>
 <!-- END layout-wrapper -->
 
 <!-- JAVASCRIPT -->
 <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://unicons.iconscout.com/release/v4.0.0/script/monochrome/bundle.js"></script>
-
 
 <!-- Choice Js-->
 <script src="/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -98,7 +87,6 @@
 
 <!--App Js -->
 <script src="/assets/js/pages/index.init.js"></script>
-
 
 <!-- BEGIN: Page JS-->
 @yield('page-scripts')
