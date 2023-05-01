@@ -11,7 +11,12 @@
     <meta name="yandex-verification" content="a6bf96ae76fba42e"/>
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="icon" href="favicon.ico"> <!-- 32×32 -->
+    <link rel="icon" href="/assets/favicon/favicon-3.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/favicon/logo.png">  <!-- 180×180 -->
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="yandex-tableau-widget" href="/tableau.json">
 
     <!-- Choise Css -->
     <link rel="stylesheet" href="/assets/libs/choices.js/public/assets/styles/choices.min.css">
