@@ -24,7 +24,7 @@ class AgreementController extends Controller
     public function help()
     {
         $agreement = DB::table('contents')->where('type', 'help')->first();
-        return view('frontend.help.index', compact('agreement'));
+        return view('frontend.agreement.index', compact('agreement'));
     }
 
 
