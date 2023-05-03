@@ -1,9 +1,9 @@
 {
-    "version": "1.0",
+    "version": "1.1",
     "api_version": 3,
     "layout": {
-        "logo": "https://xn----7sbaba3a8b9acil0ei1h.xn--p1ai/assets/favicon/yandex.png",
-        "color": "#0035FF",
-        "show_title": "Маша"
+        "logo": "/assets/favicon/yandex.png",
+        "color": "#FFFFFF",
+        "show_title": "Маша-растеряша.рф"
     }
 }
