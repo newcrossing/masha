@@ -121,8 +121,8 @@ class BoardController extends Controller
     public function qr($slug)
     {
         $board = Board::where('slug', $slug)->firstOrFail();
-        if (!$board->user->email) {
-            // если не указа email показать 404
+        if (!$board->user->email || !$board->user->last_password ) {
+            // если не указан email или не сменили пароль показать 404
             abort(404);
         }
         return view('frontend.board.index', compact('board'));

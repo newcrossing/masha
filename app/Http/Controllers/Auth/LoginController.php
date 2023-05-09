@@ -68,7 +68,7 @@ class LoginController extends Controller
 
             Activity::add('Авторизация на сайте');
 
-            if (Auth::user()->email) {
+            if (Auth::user()->email && Auth::user()->last_password) {
                 return redirect()->intended('/board/edit/');
             } else {
                 return redirect()->intended('/profile/settings/');

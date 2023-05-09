@@ -11,16 +11,10 @@
     <meta name="yandex-verification" content="a6bf96ae76fba42e"/>
 
     <!-- App favicon -->
-    <link rel="apple-touch-icon" href="/assets/favicon/logo.png">  <!-- 180×180 -->
-    <!-- 180x180 - ставим первым для safari -->
+@include('frontend.moduls.favicon')
 
-    <link rel="icon" href="/assets/favicon/favicon-3.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon.ico" sizes="any"><!-- 32x32 -->
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="yandex-tableau-widget" href="/tableau.json">
-    <meta content="https://xn----7sbaba3a8b9acil0ei1h.xn--p1ai/assets/favicon/yandex.png" color=#fff" name="yandex-tableau-widget">
 
-    <!-- Choise Css -->
+<!-- Choise Css -->
     <link rel="stylesheet" href="/assets/libs/choices.js/public/assets/styles/choices.min.css">
 
     <!-- Swiper Css -->
@@ -46,12 +40,12 @@
 <div>
 
     <!-- START TOP-BAR -->
-@include('frontend.moduls.top-bar')
-<!-- END TOP-BAR -->
+    @include('frontend.moduls.top-bar')
 
-    <!--Navbar Start-->
-@include('frontend.moduls.navbar')
-<!-- Navbar End -->
+
+
+    @include('frontend.moduls.navbar')
+
 
     @include('frontend.moduls.modal')
 

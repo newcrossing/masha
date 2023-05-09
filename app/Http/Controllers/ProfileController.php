@@ -15,6 +15,9 @@ use LaravelQRCode\Facades\QRCode;
 
 class ProfileController extends Controller
 {
+    /** Отрисовывает форму настроек пользователя
+     *
+     */
     public function settings()
     {
         // если нет файла qr надо создать
@@ -32,6 +35,7 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
+
         $request->validate([
             'email' => 'sometimes|nullable|email:rfc,dns',
             'name' => 'required|string|max:50|min:2',
@@ -46,6 +50,7 @@ class ProfileController extends Controller
             'image.max' => 'Максимальный размер фотографии 2 Мб!',
         ]);
         $data = $request->all();
+
         // сохраняем фото при наличии
         if ($request->hasFile('image')) {
             $newFileName = time() . '.' . $data['image']->extension();
@@ -53,10 +58,15 @@ class ProfileController extends Controller
             Image::make($data['image'])->widen(100)->save(Storage::path('/public/avatars/50/') . $newFileName);
             $user->foto = $newFileName;
         }
+        if ($request->last_password) {
+            $user->last_password = 1;
+            Activity::add('Установил чекбокс "Оставить старый пароль"');
+        }
 
         if ($request->password && $request->password_confirmation && ($request->password_confirmation == $request->password)) {
             $user->password = Hash::make($request->password);
-            Activity::add('Пользователь изменил пароль');
+            $user->last_password = 2;
+            Activity::add('Изменил пароль');
         }
         $user->name = $request->name;
         $user->city = $request->city;

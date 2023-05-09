@@ -70,14 +70,14 @@
                                                     <input class="form-check-input" type="checkbox" id="privacy_policy" name="check" required>
                                                     <label class="form-check-label" for="privacy_policy">
                                                         Ознакомлен и полностью принимаю условия
-                                                        <a href="{{route('agreement')}}" target="_blank"
+                                                        <a href="{{route('contents',['s' => 'agreement'])}}" target="_blank"
                                                            style="color: #f7ffef; text-decoration: #fffdfe  solid underline">Пользовательского
                                                             соглашения</a>,
                                                         условия
-                                                        <a href="{{route('privacy-policy')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
+                                                        <a href="{{route('contents',['s' => 'privacy-policy'])}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
                                                             конфиденциальности</a>,
                                                         условия
-                                                        <a href="{{route('public-offer')}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной
+                                                        <a href="{{route('contents',['s' => 'public-offer'])}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной
                                                             оферты</a>,
                                                         даю согласие на обработку своих персональных данных
                                                         и получение информационных сообщений, связанных с оказанием

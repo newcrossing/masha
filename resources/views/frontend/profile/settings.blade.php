@@ -136,13 +136,22 @@
                         @csrf
                         <div>
                             <h5 class="fs-17 fw-semibold mb-3 mb-0">Мой профиль #{{Auth::user()->login}}</h5>
-                            @empty(Auth::user()->email)
+                            @if (!Auth::user()->email || !Auth::user()->last_password)
                                 <div class="alert  bg-soft-danger" role="alert">
                                     <br>
-                                    Для начала публикации объявления необходимо указать e-mail.
-                                    <br><br>
+                                    Для начала публикации объявления необходимо:<br>
+                                    @empty(Auth::user()->email)
+                                        - указать e-mail.
+                                        <br>
+                                    @endempty
+
+                                    @empty(Auth::user()->last_password)
+                                        - установить новый пароль или установить чекбокс "Оставить старый пароль"
+                                        <br>
+                                    @endempty
+                                    <br>
                                 </div>
-                            @endempty
+                            @endif
 
                             <div class="row">
                                 <!--end col-->
@@ -224,7 +233,8 @@
                                     <div class="mb-3">
                                         <input class="form-check-input" type="checkbox" name="notify_telegram"
                                                id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_telegram">Сообщение в Telegramm</label>
+                                        <label class="form-check-label" for="notify_telegram">Сообщение в
+                                            Telegramm</label>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -252,7 +262,28 @@
                                 Изменение пароля </h5>
                             <div class="row">
 
-                                <!--end col-->
+
+                                @if(!Auth::user()->last_password )
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+
+                                            <input class="form-check-input" type="checkbox" name="last_password"
+                                                   id="last_password">
+                                            <label class="form-check-label" for="notify_tel">Оставить старый
+                                                пароль</label>
+                                            {{--
+                                            0 - пароль не меняли,
+                                            1 - поставили галку пароль оставить старый
+                                            2 - изменили пароль
+                                             --}}
+                                        </div>
+                                    </div>
+                            @endif
+
+
+
+
+                            <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Новый пароль</label>

@@ -21,12 +21,15 @@
                         <div class="arrow-down"></div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
-                        <li><a class="dropdown-item" href="{{route('public-offer')}}">Публичная оферта</a></li>
-                        <li><a class="dropdown-item" href="{{route('security')}}">Безопасность</a></li>
-                        <li><a class="dropdown-item" href="{{route('agreement')}}">Пользовательское соглашение</a></li>
-                        <li><a class="dropdown-item" href="{{route('privacy-policy')}}">Политика конфиденциальности</a>
+                        <li><a class="dropdown-item" href="{{route('contents',['s' => 'public-offer'])}}">Публичная оферта</a></li>
+                        <li><a class="dropdown-item" href="{{route('contents',['s' => 'security'])}}">Безопасность</a></li>
+                        <li><a class="dropdown-item" href="{{route('contents',['s' => 'agreement'])}}">Пользовательское
+                                соглашение</a></li>
+                        <li><a class="dropdown-item" href="{{route('contents',['s' => 'privacy-policy'])}}">Политика
+                                конфиденциальности</a>
                         </li>
-                        <li><a class="dropdown-item" href="{{route('help')}}">Служба поддержки</a></li>
+                        <li><a class="dropdown-item" href="{{route('contents',['s' => 'help'])}}">Служба
+                                поддержки</a></li>
 
                     </ul>
                 </li><!--end dropdown-->
@@ -52,7 +55,8 @@
 
                         @role('admin')
                         <li>
-                            <a class="dropdown-item text-primary" href="{{route('admin.home')}}" target="_blank">Перейти в админку</a>
+                            <a class="dropdown-item text-primary" href="{{route('admin.home')}}" target="_blank">Перейти
+                                в админку</a>
                         </li>
                         @endrole
                         <li><a class="dropdown-item text-danger" href="{{route('logout')}}">Выйти</a></li>

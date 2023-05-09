@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="footer-item mt-4 mt-lg-0 me-lg-5">
-                    <h4 class="text-white mb-4">Маша-растеряша</h4>
+                    <h4 class="text-white mb-4">Маша-растеряша.рф</h4>
                     <p class="text-white-50">Поиск пропавших вещей</p>
                 </div>
             </div><!--end col-->
@@ -34,17 +34,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <a href="{{route('agreement')}}" class="text-white-50 mb-0">
-                  Пользовательское соглашение
+                <a href="{{route('contents',['s' => 'agreement'])}}" class="text-white-50 mb-0">
+                    Пользовательское соглашение
                 </a>
             </div><!--end col-->
             <div class="col-lg-3">
-                <a href="{{route('privacy-policy')}}" class="text-white-50 mb-0">
+                <a href="{{route('contents',['s' => 'privacy-policy'])}}" class="text-white-50 mb-0">
                     Политика конфиденциальности
                 </a>
             </div><!--end col-->
             <div class="col-lg-3">
-                <a href="{{route('public-offer')}}" class="text-white-50 mb-0">
+                <a href="{{route('contents',['s' => 'public-offer'])}}" class="text-white-50 mb-0">
                     Публичная оферта
                 </a>
             </div><!--end col-->

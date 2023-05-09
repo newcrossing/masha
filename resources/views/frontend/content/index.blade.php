@@ -1,8 +1,8 @@
 @extends('frontend.layouts.index')
 
-@section('title',$agreement->name )
-@section('meta_description',$agreement->meta_desc )
-@section('meta_keywords',$agreement->meta_key )
+@section('title',$content->name )
+@section('meta_description',$content->meta_desc )
+@section('meta_keywords',$content->meta_key )
 
 @section('vendor-styles')
 @endsection
@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="text-center text-white">
-                        <h3 class="mb-4">{!! $agreement->name  !!}</h3>
+                        <h3 class="mb-4">{{$content->name }}  </h3>
                     </div>
                 </div>
                 <!--end col-->
@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    {!! $agreement->text !!}
+                    {!! $content->text !!}
                 </div>
             </div>
         </div>
