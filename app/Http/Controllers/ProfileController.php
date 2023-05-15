@@ -72,6 +72,7 @@ class ProfileController extends Controller
         $user->city = $request->city;
         $user->tel = !empty(Str::remove(['(', ')', '-', ' '], $request->tel)) ? Str::remove(['(', ')', '-', ' '], $request->tel) : null;
         $user->tel2 = !empty(Str::remove(['(', ')', '-', ' '], $request->tel2)) ? Str::remove(['(', ')', '-', ' '], $request->tel2) : null;
+        $user->tel_alert = !empty(Str::remove(['(', ')', '-', ' '], $request->tel_alert)) ? Str::remove(['(', ')', '-', ' '], $request->tel_alert) : null;
         $user->email = $request->email;
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');

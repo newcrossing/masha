@@ -92,6 +92,12 @@
                                         </a>
                                     @endif
 
+                                    @if(isset($board->user->tel_alert) )
+                                        <a href="tel:{{$board->user->tel_alert}}" class="btn btn-danger btn-hover w-100 mt-2">
+                                            <i class="uil uil-exclamation-triangle"></i> Экстренный контакт
+                                        </a>
+                                    @endif
+
                                     @if(isset($board->user->tel) || isset($board->user->email) )
                                         <a href="{{route('vcard',$board->slug)}}" class="btn btn-info btn-hover w-100 mt-2">
                                             <i class="uil uil-mobile-android-alt"></i> Скачать контакт vCard

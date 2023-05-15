@@ -184,6 +184,13 @@
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
+                                        <label for="city" class="form-label">Телефон для экстренной связи</label>
+                                        <input type="text" class="form-control" name="tel_alert" id="phone_33" value="{{Auth::user()->tel_alert}}"/>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
                                         <label for="city" class="form-label">Город</label>
                                         <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
                                     </div>
@@ -358,6 +365,7 @@
         $(document).ready(function () {
             $("#phone_2").mask("+7(999)999-99-99");
             $("#phone_22").mask("+7(999)999-99-99");
+            $("#phone_33").mask("+7(999)999-99-99");
         });
     </script>
 
