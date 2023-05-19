@@ -47,7 +47,13 @@ class BoardController extends Controller
         }
 
         $vcard->addURL('https://маша-растеряша.рф');
+        if ($user->vk) {
+            $vcard->addURL('https://vk.com/' . $user->vk);
+        }
 
+        if ($user->instagram) {
+            $vcard->addURL('https://www.instagram.com/' . $user->instagram);
+        }
         //$vcard->addPhoto(__DIR__ . '/landscape.jpeg');
 
 // return vcard as a string
@@ -121,7 +127,7 @@ class BoardController extends Controller
     public function qr($slug)
     {
         $board = Board::where('slug', $slug)->firstOrFail();
-        if (!$board->user->email || !$board->user->last_password ) {
+        if (!$board->user->email || !$board->user->last_password) {
             // если не указан email или не сменили пароль показать 404
             abort(404);
         }

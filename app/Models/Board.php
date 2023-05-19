@@ -7,6 +7,44 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
+/**
+ * App\Models\Board
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $slug
+ * @property string $name
+ * @property string|null $text
+ * @property int|null $money
+ * @property string|null $city
+ * @property string|null $date
+ * @property bool|null $active
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Foto[] $fotos
+ * @property-read int|null $fotos_count
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Board newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Board newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Board onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Board query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereMoney($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Board whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|Board withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Board withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Board extends Model
 {
     use HasFactory;

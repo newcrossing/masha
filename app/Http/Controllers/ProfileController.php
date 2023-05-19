@@ -70,6 +70,8 @@ class ProfileController extends Controller
         }
         $user->name = $request->name;
         $user->city = $request->city;
+        $user->instagram = $request->instagram;
+        $user->vk = $request->vk;
         $user->tel = !empty(Str::remove(['(', ')', '-', ' '], $request->tel)) ? Str::remove(['(', ')', '-', ' '], $request->tel) : null;
         $user->tel2 = !empty(Str::remove(['(', ')', '-', ' '], $request->tel2)) ? Str::remove(['(', ')', '-', ' '], $request->tel2) : null;
         $user->tel_alert = !empty(Str::remove(['(', ')', '-', ' '], $request->tel_alert)) ? Str::remove(['(', ')', '-', ' '], $request->tel_alert) : null;

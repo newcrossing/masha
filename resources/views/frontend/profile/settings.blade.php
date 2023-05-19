@@ -195,9 +195,38 @@
                                         <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
                                     </div>
                                 </div>
+
                                 <!--end col-->
                             </div>
                             <!--end row-->
+                        </div>
+
+                        <div class="mt-4">
+                            <h5 class="fs-17 fw-semibold mb-3">Настройки профиля V-card</h5>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="instagram" class="form-label">Инстаграмм</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="uil uil-instagram-alt"></i></span>
+                                            <input type="text" class="form-control" name="instagram" value="{{Auth::user()->instagram}}"/>
+                                        </div>
+                                        <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">ВК</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text"><i class="uil uil-vk"></i></span>
+                                            <input type="text" class="form-control" name="vk" value="{{Auth::user()->vk}}"/>
+                                        </div>
+                                        <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                         <!--end account-->
                         <div class="mt-4">
