@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Activity;
+use App\Mail\NotifyMail;
 use App\Mail\OrderShipped;
 use App\Models\Board;
 use App\Models\User;
@@ -10,12 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use JeroenDesloovere\VCard\VCard;
 use Mail;
 use Validator;
-
-use App\Mail\NotifyMail;
-use Illuminate\Support\Facades\DB;
-use JeroenDesloovere\VCard\VCard;
 
 
 class BoardController extends Controller
@@ -60,7 +58,11 @@ class BoardController extends Controller
 //return $vcard->getOutput();
 
 // return vcard as a download
-        return $vcard->download();
+
+        return response($vcard->getOutput())
+            ->header('Content-Type', 'text/vcard')
+            ->header('Content-disposition', 'attachment; filename="' . $user->login . '.vcf"');
+        //return $vcard->download();
     }
 
     /***
@@ -148,12 +150,6 @@ class BoardController extends Controller
         return view('frontend.board.edit', compact('user', 'board'));
     }
 
-    public function create()
-    {
-        $boards = new Board();
-        return view('frontend.board.edit', compact('boards'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -180,6 +176,12 @@ class BoardController extends Controller
         $board->save();
         Activity::add('Пользователь изменил объявление');
         return redirect()->back()->with('success', 'Сохранено');
+    }
+
+    public function create()
+    {
+        $boards = new Board();
+        return view('frontend.board.edit', compact('boards'));
     }
 
     public function insert(Request $request)
