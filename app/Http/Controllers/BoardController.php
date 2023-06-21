@@ -2,19 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Activity;
-use App\Mail\OrderShipped;
 use App\Models\Board;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use Mail;
-use Validator;
-
-use App\Mail\NotifyMail;
-use Illuminate\Support\Facades\DB;
 use JeroenDesloovere\VCard\VCard;
 
 
@@ -60,7 +48,12 @@ class BoardController extends Controller
 //return $vcard->getOutput();
 
 // return vcard as a download
-        return $vcard->download();
+
+        //$vcard->setSavePath("/");
+        //$vcard->save();
+        //return $vcard->download();
+        return response($vcard->download())
+            ->header('Content-Type', 'text/vcard');
     }
 
     /***
@@ -72,7 +65,7 @@ class BoardController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required',
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required | email',
             'text' => 'required',
         ]);
 
@@ -110,7 +103,7 @@ class BoardController extends Controller
                 'text' => $request->text,
             ];
 
-            Mail::to(env('MAIL_SUPPORT', 'support@masha-rasteryasha.online'))
+            Mail::to(env('MAIL_SUPPORT', 'support@masha - rasteryasha . online'))
                 ->send(new OrderShipped($data));
             Activity::add('Выполнен заказ на сайте');
             return response()->json(['success' => 'Заказ отправлен']);
@@ -121,7 +114,7 @@ class BoardController extends Controller
     public function single($id)
     {
         $board = Board::find($id);
-        return view('frontend.board.index', compact('board'));
+        return view('frontend . board . index', compact('board'));
     }
 
     public function qr($slug)
@@ -131,13 +124,13 @@ class BoardController extends Controller
             // если не указан email или не сменили пароль показать 404
             abort(404);
         }
-        return view('frontend.board.index', compact('board'));
+        return view('frontend . board . index', compact('board'));
     }
 
     public function list()
     {
         $boards = Board::where('user_id', Auth::user()->id)->limit(1)->get();
-        return view('frontend.board.list', compact('boards'));
+        return view('frontend . board . list', compact('boards'));
     }
 
     public function edit()
@@ -145,33 +138,27 @@ class BoardController extends Controller
         $user = User::find(Auth::user()->id);
         $board = $user->board;
 
-        return view('frontend.board.edit', compact('user', 'board'));
-    }
-
-    public function create()
-    {
-        $boards = new Board();
-        return view('frontend.board.edit', compact('boards'));
+        return view('frontend . board . edit', compact('user', 'board'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'image' => 'image|max:2000|mimes:jpeg,png,bmp',
+            'image' => 'image | max:2000 | mimes:jpeg,png,bmp',
         ], [
-            'image.max' => 'Максимальный размер фото 2 Мб!',
+            'image . max' => 'Максимальный размер фото 2 Мб!',
         ]);
 
 
         $board = Board::find($id);
         if ($request->hasFile('image')) {
-            $newFileName = time() . '.' . $request['image']->extension();
+            $newFileName = time() . ' . ' . $request['image']->extension();
             $thumbnail = Image::make($request['image']);
             $thumbnail->widen(1400);
-            $thumbnail->save(Storage::path('/public/boards/1400/') . $newFileName);
+            $thumbnail->save(Storage::path(' /public/boards / 1400 / ') . $newFileName);
             $thumbnail = Image::make($request['image']);
             $thumbnail->widen(200);
-            $thumbnail->save(Storage::path('/public/boards/200/') . $newFileName);
+            $thumbnail->save(Storage::path(' /public/boards / 200 / ') . $newFileName);
             $board->fotos()->create(['file' => $newFileName]);
         }
         $board->name = $request->name;
@@ -182,15 +169,21 @@ class BoardController extends Controller
         return redirect()->back()->with('success', 'Сохранено');
     }
 
+    public function create()
+    {
+        $boards = new Board();
+        return view('frontend . board . edit', compact('boards'));
+    }
+
     public function insert(Request $request)
     {
         // TODOO Удалить этот блок?
         /*  $request->validate([
-              'name' => 'required|max:255|min:3'
+              'name' => 'required | max:255 | min:3'
           ], [
-              'name.required' => 'Название должно быть заполнено!',
-              'name.min' => 'Минимальная длина поля 3 символа!',
-              'name.max' => 'Максимальная длина поля 255 символов!',
+              'name . required' => 'Название должно быть заполнено!',
+              'name . min' => 'Минимальная длина поля 3 символа!',
+              'name . max' => 'Максимальная длина поля 255 символов!',
           ]);*/
         $board = new Board();
 
@@ -200,17 +193,17 @@ class BoardController extends Controller
         $board->user_id = Auth::user()->id;
         $board->save();
         if ($request->hasFile('image')) {
-            $newFileName = time() . '.' . $request['image']->extension();
+            $newFileName = time() . ' . ' . $request['image']->extension();
             $thumbnail = Image::make($request['image']);
             $thumbnail->widen(1400);
-            $thumbnail->save(Storage::path('/public/boards/1400/') . $newFileName);
+            $thumbnail->save(Storage::path(' /public/boards / 1400 / ') . $newFileName);
             $thumbnail = Image::make($request['image']);
             $thumbnail->widen(200);
-            $thumbnail->save(Storage::path('/public/boards/200/') . $newFileName);
+            $thumbnail->save(Storage::path(' /public/boards / 200 / ') . $newFileName);
             $board->fotos()->create(['file' => $newFileName]);
         }
 
         //Log::info('Дата ' . $post->date_public);
-        return redirect()->route('board.edit', $board->id)->with('success', 'Объявление добавлено.');
+        return redirect()->route('board . edit', $board->id)->with('success', 'Объявление добавлено . ');
     }
 }
