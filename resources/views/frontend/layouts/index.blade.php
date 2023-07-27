@@ -5,16 +5,18 @@
     <meta charset="utf-8"/>
     <title>@yield('title') / Маша-растеряша</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="@yield('meta_description','Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду')">
-    <meta name="keywords" content="@yield('meta_keywords','Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи')">
+    <meta name="description"
+          content="@yield('meta_description','Бюро находок по QR-коду. Сервис поиска пропавших вещей по QR-коду')">
+    <meta name="keywords"
+          content="@yield('meta_keywords','Поиск вещей, подарок, брелок, бюро находок, пропавшие вещи')">
     <meta content="" name="author"/>
     <meta name="yandex-verification" content="a6bf96ae76fba42e"/>
 
     <!-- App favicon -->
-@include('frontend.moduls.favicon')
+    @include('frontend.moduls.favicon')
 
 
-<!-- Choise Css -->
+    <!-- Choise Css -->
     <link rel="stylesheet" href="/assets/libs/choices.js/public/assets/styles/choices.min.css">
 
     <!-- Swiper Css -->
@@ -27,11 +29,11 @@
     <!-- App Css-->
     <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
     <!--Custom Css-->
-@yield('vendor-styles')
+    @yield('vendor-styles')
 
-<!-- END: Page CSS-->
-@yield('page-styles')
-<!-- END: Page CSS-->
+    <!-- END: Page CSS-->
+    @yield('page-styles')
+    <!-- END: Page CSS-->
 </head>
 
 <body>
@@ -56,8 +58,8 @@
         <!-- End Page-content -->
 
         <!-- START FOOTER -->
-    @include('frontend.moduls.footer')
-    <!-- END FOOTER -->
+        @include('frontend.moduls.footer')
+        <!-- END FOOTER -->
 
         <!--start back-to-top-->
         <button onclick="topFunction()" id="back-to-top">

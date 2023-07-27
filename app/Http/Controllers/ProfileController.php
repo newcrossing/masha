@@ -35,12 +35,13 @@ class ProfileController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-
         $request->validate([
             'email' => 'sometimes|nullable|email:rfc,dns',
             'name' => 'required|string|max:50|min:2',
             'tel' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
             'tel2' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
+            'vk' => 'sometimes|nullable|regex:/^[0-9a-zA-Z.\-]*$/',
+            'instagram' => 'sometimes|nullable|regex:/^[0-9a-zA-Z.\-]*$/',
             'password' => 'nullable|confirmed|min:6',
             'image' => 'image|max:2000|mimes:jpeg,png,bmp',
         ], [
@@ -48,6 +49,8 @@ class ProfileController extends Controller
             'password.confirmed' => 'Пароли должны совпадать!',
             'password.min' => 'Минимальная длина пароля 6 символов!',
             'image.max' => 'Максимальный размер фотографии 2 Мб!',
+            'vk.regex' => 'Недопустимые символы в профиле ВК',
+            'instagram.regex' => 'Недопустимые в профиле Instagram',
         ]);
         $data = $request->all();
 

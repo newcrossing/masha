@@ -122,10 +122,10 @@
                 <div class="col-lg-8">
                     <div class="card job-detail overflow-hidden">
                         <div class="col-lg-12">
-                            <div class="candidate-portfolio mb-5">
+                            <div class="candidate-portfolio mb-3">
                                 <div class="row g-3">
                                     <div class="col-lg-12">
-                                        <div class="swiper testimonialSlider pb-5">
+                                        <div class="swiper testimonialSlider ">
                                             <div class="swiper-wrapper">
                                                 @foreach($board->fotos as $foto)
                                                     <div class="swiper-slide">

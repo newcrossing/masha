@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function index()
     {
        // QrCodeQRCode::text('QR Code Generator for !')->setOutfile('/dd.svg');
-        $users_chek = DB::table('users')->where('deleted_at', '!=', null)->whereNotNull('tel')->count();
+        $users_chek = DB::table('users')->whereNotNull('tel')->count();
         $sliders = Slider::where('active', 1)->get();
         $socials = Social::where('active', 1)->get();
         return view('frontend.home.index', compact('users_chek', 'sliders', 'socials'));

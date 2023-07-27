@@ -20,7 +20,7 @@ class BoardController extends Controller
 {
 
     /**
-     * Генерирует для скачивания  vcard
+     * Генерирует для скачивания vcard
      * @param $id
      */
     public function vcard($id)

@@ -12,7 +12,7 @@
 
 @section('content')
     <!-- Start home -->
-    <section class="page-title-box">
+    <section class="page-title-box" style="padding-top: 200px; padding-bottom: 90px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
