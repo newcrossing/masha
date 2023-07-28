@@ -112,16 +112,29 @@ class User extends Authenticatable
         'email',
         'tel',
         'tel2',
+        'tel_alert',
         'city',
+        'vk',
+        'instagram',
         'foto',
         'notify_email',
         'notify_tel',
+        'notify_sms',
         'notify_whatsup',
         'notify_telegram',
         'active',
-        'password',
+     //   'password',
         'token',
         'is_verified',
+    ];
+
+    /**
+     * Атрибуты, для которых НЕ разрешено массовое присвоение значений.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'password',
     ];
 
     /**
@@ -133,6 +146,7 @@ class User extends Authenticatable
         // 'password',
         'remember_token',
     ];
+
 
     /**
      * The attributes that should be cast to native types.

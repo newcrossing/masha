@@ -135,6 +135,20 @@
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="form-group">
+                                                            <label>Телефон рабочий</label>
+                                                            <input type="text" class="form-control" name="tel2"
+                                                                   value="{{old('tel2',$user->tel2)}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>Телефон экстренный </label>
+                                                            <input type="text" class="form-control" name="tel_alert"
+                                                                   value="{{old('tel_alert',$user->tel_alert)}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
                                                             <div class="controls">
                                                                 <label>E-mail</label>
                                                                 <input type="email" class="form-control" name="email"
@@ -142,7 +156,22 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>Инстаграмм</label>
+                                                            <input type="text" class="form-control" name="instagram"
+                                                                   value="{{old('instagram',$user->instagram)}}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>ВК</label>
+                                                            <input type="text" class="form-control" name="vk"
+                                                                   value="{{old('vk',$user->vk)}}">
+                                                        </div>
+                                                    </div>
 
+                                                    <div class="col-12">
                                                     <h6 class="m-1">Уведомления</h6>
                                                     <div class="row ml-2">
                                                         <div class="col-6 mb-1">
@@ -153,6 +182,16 @@
                                                                 <label class="custom-control-label mr-1"
                                                                        for="accountSwitchTel"></label>
                                                                 <span class="switch-label w-100">Уведомление по телефону</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 mb-1">
+                                                            <div class="custom-control custom-switch custom-control-inline">
+                                                                <input type="checkbox" name="notify_sms"
+                                                                       class="custom-control-input"
+                                                                       id="accountSwitchSms" {{ $user->notify_sms  ? 'checked' : '' }}>
+                                                                <label class="custom-control-label mr-1"
+                                                                       for="accountSwitchSms"></label>
+                                                                <span class="switch-label w-100">Уведомление по СМС</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 mb-1">
@@ -186,7 +225,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    </div>
 
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit" name="redirect" value="apply"
@@ -223,6 +262,61 @@
     </section>
     <!-- account setting page ends -->
 
+    <section class="invoice-list-wrapper">
+        <!-- Options and filter dropdown button-->
+        <div class="table-responsive">
+            <table class="table invoice-data-table dt-responsive nowrap" style="width:100%">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <span class="align-middle">#ID</span>
+                    </th>
+                    <th>Дата</th>
+                    <th>Действие</th>
+                    <th>IP</th>
+                    <th>Метод</th>
+                    <th>Параметры</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($logs as $log)
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="">{{$log->id }}</a>
+                        </td>
+                        <td>
+                            @isset($log->user_login)
+                                <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
+                                    <i class="bx bx-user    font-size-small mr-25"></i>
+                                    <span>{{$log->user_login}}</span>
+                                </div>
+                            @endisset <br>
+                            <small class="text-muted">{{$log->created_at->format('H:i:s   d-m-Y ')}}</small></td>
+                        <td>
+                            <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
+                            <small class="">{{Str::replace('http://xn----7sbaba3a8b9acil0ei1h.xn--p1ai', '', $log->url)}}</small>
+                        </td>
+                        <td>
+                            <span class="bullet bullet-success bullet-sm"></span>
+                            <small class="text-muted">{{$log->ip}}</small>
+                        </td>
+                        <td><span class="badge badge-light-danger badge-pill">{{$log->method}}</span></td>
+                        <td>
+                            <div class="invoice-action">
+                                Браузер: {{Str::limit($log->agent, 80) }}<br>  Переменные: {{$log->parametrs}}
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </section>
+
 
 
 
@@ -236,13 +330,23 @@
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
     <script src="/adm/app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-    <script src="/adm/app-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
-    <script src="/adm/app-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+
+    <script src="/adm/app-assets/vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="/adm/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="/adm/app-assets/vendors/js/tables/datatable/responsive.bootstrap.min.js"></script>
+
+    <script src="{{asset('/adm/app-assets/vendors/js/pickers/daterange/moment.min.js')}}"></script>
+    <script src="{{asset('/adm/app-assets/vendors/js/pickers/daterange/daterangepicker.js')}}"></script>
+    <script src="{{asset('/adm/app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('/adm/app-assets/vendors/js/extensions/dragula.min.js')}}"></script>
+    <script src="{{asset('/adm/app-assets/vendors/js/extensions/swiper.min.js')}}"></script>
 
 
 @endsection
 {{-- page scripts --}}
 @section('page-scripts')
     <script src="/adm/app-assets/js/scripts/datatables/datatable.js"></script>
+    <script src="{{asset('/adm/app-assets/js/scripts/cards/widgets.js')}}"></script>
+    <script src="/adm/app-assets/js/app-invoice-log.js"></script>
 
 @endsection

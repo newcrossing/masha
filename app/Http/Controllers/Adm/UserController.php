@@ -151,11 +151,10 @@ class UserController extends Controller
         }
         $request['notify_email'] = $request['notify_email'] ? '1' : null;
         $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
+        $request['notify_sms'] = $request['notify_sms'] ? '1' : null;
         $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
         $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
-        $request['password'] = Hash::make($request['password']);
         $request['name'] = ($request['name']) ?: $request['login'];
-
 
         $user->fill($request->all())->save();
         $user->board()->create([
@@ -164,6 +163,8 @@ class UserController extends Controller
             'slug' => 'qr-' . rand(1000, 9999) . $user->id . Str::lower(Str::random(5)),
             'user_id' => $user->id
         ]);
+        $user->password = Hash::make($request['password']);
+        $user->save();
 
         // добил роль
         $user->assignRole('user');
@@ -204,8 +205,8 @@ class UserController extends Controller
             ['link' => "/admin/user", 'name' => "Пользователи"],
             ['name' => " Изменить пользователь"]
         ];
-
-        return view('backend.pages.user.edit', compact('user', 'breadcrumbs'));
+        $logs = \App\Models\Activity::where('user_id',$user->id)->orderByDesc('created_at')->get();
+        return view('backend.pages.user.edit', compact('user','logs', 'breadcrumbs'));
     }
 
     /**
@@ -241,9 +242,14 @@ class UserController extends Controller
 
         $request['notify_email'] = $request['notify_email'] ? '1' : null;
         $request['notify_tel'] = $request['notify_tel'] ? '1' : null;
+        $request['notify_sms'] = $request['notify_sms'] ? '1' : null;
         $request['notify_whatsup'] = $request['notify_whatsup'] ? '1' : null;
         $request['notify_telegram'] = $request['notify_telegram'] ? '1' : null;
-        $request['password'] = Hash::make($request['password']);
+
+        if ($request['password']) {
+            $user->password = Hash::make($request['password']);
+            $user->save();
+        }
 
         $user->fill($request->all())->save();
 

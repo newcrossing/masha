@@ -15,10 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $breadcrumbs = [
-
-
-        ];
+        $breadcrumbs = [];
         $users = DB::table('users')->count();
         $users_chek = DB::table('users')->whereNotNull('tel')->count();
         $users_no_chek = DB::table('users')->whereNull('tel')->count();
