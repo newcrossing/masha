@@ -55,8 +55,9 @@
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
                                              aria-labelledby="account-pill-general" aria-expanded="true">
-                                            <form action="{{ (isset($user->id))? route('user.update',$user->id):route('user.store')  }}"
-                                                  method="POST" enctype="multipart/form-data">
+                                            <form
+                                                action="{{ (isset($user->id))? route('user.update',$user->id):route('user.store')  }}"
+                                                method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @if(isset($user->id))
                                                     @method('PUT')
@@ -64,11 +65,13 @@
                                                 <div class="media">
 
                                                     <a href="javascript: void(0);">
-                                                        <img src="{{ Storage::url('/avatars/300/'.(!empty($user->foto)?$user->foto:'000.png')) }}"
-                                                             class="rounded mr-75" alt="profile image" height="64">
+                                                        <img
+                                                            src="{{ Storage::url('/avatars/300/'.(!empty($user->foto)?$user->foto:'000.png')) }}"
+                                                            class="rounded mr-75" alt="profile image" height="64">
                                                     </a>
                                                     <div class="media-body mt-25">
-                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                        <div
+                                                            class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                             <label for="select-files"
                                                                    class="btn btn-sm btn-light-primary ml-50 mb-50 mb-sm-0">
                                                                 <span>Загрузить фото</span>
@@ -172,62 +175,69 @@
                                                     </div>
 
                                                     <div class="col-12">
-                                                    <h6 class="m-1">Уведомления</h6>
-                                                    <div class="row ml-2">
-                                                        <div class="col-6 mb-1">
-                                                            <div class="custom-control custom-switch custom-control-inline">
-                                                                <input type="checkbox" name="notify_tel"
-                                                                       class="custom-control-input"
-                                                                       id="accountSwitchTel" {{ $user->notify_tel  ? 'checked' : '' }}>
-                                                                <label class="custom-control-label mr-1"
-                                                                       for="accountSwitchTel"></label>
-                                                                <span class="switch-label w-100">Уведомление по телефону</span>
+                                                        <h6 class="m-1">Уведомления</h6>
+                                                        <div class="row ml-2">
+                                                            <div class="col-6 mb-1">
+                                                                <div
+                                                                    class="custom-control custom-switch custom-control-inline">
+                                                                    <input type="checkbox" name="notify_tel"
+                                                                           class="custom-control-input"
+                                                                           id="accountSwitchTel" {{ $user->notify_tel  ? 'checked' : '' }}>
+                                                                    <label class="custom-control-label mr-1"
+                                                                           for="accountSwitchTel"></label>
+                                                                    <span class="switch-label w-100">Уведомление по телефону</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mb-1">
+                                                                <div
+                                                                    class="custom-control custom-switch custom-control-inline">
+                                                                    <input type="checkbox" name="notify_sms"
+                                                                           class="custom-control-input"
+                                                                           id="accountSwitchSms" {{ $user->notify_sms  ? 'checked' : '' }}>
+                                                                    <label class="custom-control-label mr-1"
+                                                                           for="accountSwitchSms"></label>
+                                                                    <span
+                                                                        class="switch-label w-100">Уведомление по СМС</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mb-1">
+                                                                <div
+                                                                    class="custom-control custom-switch custom-control-inline">
+                                                                    <input type="checkbox" name="notify_email"
+                                                                           class="custom-control-input"
+                                                                           id="accountSwitchEmail" {{ $user->notify_email  ? 'checked' : '' }} >
+                                                                    <label class="custom-control-label mr-1"
+                                                                           for="accountSwitchEmail"></label>
+                                                                    <span class="switch-label w-100">Уведомление по Email</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mb-1">
+                                                                <div
+                                                                    class="custom-control custom-switch custom-control-inline">
+                                                                    <input type="checkbox" name="notify_whatsup"
+                                                                           class="custom-control-input"
+                                                                           id="accountSwitchwhatsup" {{ $user->notify_whatsup  ? 'checked' : '' }} >
+                                                                    <label class="custom-control-label mr-1"
+                                                                           for="accountSwitchwhatsup"></label>
+                                                                    <span class="switch-label w-100">Уведомление по Whats Up</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mb-1">
+                                                                <div
+                                                                    class="custom-control custom-switch custom-control-inline">
+                                                                    <input type="checkbox" name="notify_telegram"
+                                                                           class="custom-control-input"
+                                                                           id="accountSwitchtelegram" {{ $user->notify_telegram  ? 'checked' : '' }} >
+                                                                    <label class="custom-control-label mr-1"
+                                                                           for="accountSwitchtelegram"></label>
+                                                                    <span class="switch-label w-100">Уведомление по Telegram </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6 mb-1">
-                                                            <div class="custom-control custom-switch custom-control-inline">
-                                                                <input type="checkbox" name="notify_sms"
-                                                                       class="custom-control-input"
-                                                                       id="accountSwitchSms" {{ $user->notify_sms  ? 'checked' : '' }}>
-                                                                <label class="custom-control-label mr-1"
-                                                                       for="accountSwitchSms"></label>
-                                                                <span class="switch-label w-100">Уведомление по СМС</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 mb-1">
-                                                            <div class="custom-control custom-switch custom-control-inline">
-                                                                <input type="checkbox" name="notify_email"
-                                                                       class="custom-control-input"
-                                                                       id="accountSwitchEmail" {{ $user->notify_email  ? 'checked' : '' }} >
-                                                                <label class="custom-control-label mr-1"
-                                                                       for="accountSwitchEmail"></label>
-                                                                <span class="switch-label w-100">Уведомление по Email</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 mb-1">
-                                                            <div class="custom-control custom-switch custom-control-inline">
-                                                                <input type="checkbox" name="notify_whatsup"
-                                                                       class="custom-control-input"
-                                                                       id="accountSwitchwhatsup" {{ $user->notify_whatsup  ? 'checked' : '' }} >
-                                                                <label class="custom-control-label mr-1"
-                                                                       for="accountSwitchwhatsup"></label>
-                                                                <span class="switch-label w-100">Уведомление по Whats Up</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 mb-1">
-                                                            <div class="custom-control custom-switch custom-control-inline">
-                                                                <input type="checkbox" name="notify_telegram"
-                                                                       class="custom-control-input"
-                                                                       id="accountSwitchtelegram" {{ $user->notify_telegram  ? 'checked' : '' }} >
-                                                                <label class="custom-control-label mr-1"
-                                                                       for="accountSwitchtelegram"></label>
-                                                                <span class="switch-label w-100">Уведомление по Telegram </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     </div>
 
-                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                    <div
+                                                        class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                         <button type="submit" name="redirect" value="apply"
                                                                 class="btn btn-primary glow mr-sm-1 mb-1">
                                                             Применить
@@ -281,44 +291,44 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($logs as $log)
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="">{{$log->id }}</a>
-                        </td>
-                        <td>
-                            @isset($log->user_login)
-                                <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
-                                    <i class="bx bx-user    font-size-small mr-25"></i>
-                                    <span>{{$log->user_login}}</span>
+                @isset($logs)
+                    @foreach ($logs as $log)
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a href="">{{$log->id }}</a>
+                            </td>
+                            <td>
+                                @isset($log->user_login)
+                                    <div class="badge badge-primary d-inline-flex align-items-center mr-1 mb-1">
+                                        <i class="bx bx-user    font-size-small mr-25"></i>
+                                        <span>{{$log->user_login}}</span>
+                                    </div>
+                                @endisset <br>
+                                <small class="text-muted">{{$log->created_at->format('H:i:s   d-m-Y ')}}</small></td>
+                            <td>
+                                <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
+                                <small
+                                    class="">{{Str::replace('http://xn----7sbaba3a8b9acil0ei1h.xn--p1ai', '', $log->url)}}</small>
+                            </td>
+                            <td>
+                                <span class="bullet bullet-success bullet-sm"></span>
+                                <small class="text-muted">{{$log->ip}}</small>
+                            </td>
+                            <td><span class="badge badge-light-danger badge-pill">{{$log->method}}</span></td>
+                            <td>
+                                <div class="invoice-action">
+                                    Браузер: {{Str::limit($log->agent, 80) }}<br> Переменные: {{$log->parametrs}}
                                 </div>
-                            @endisset <br>
-                            <small class="text-muted">{{$log->created_at->format('H:i:s   d-m-Y ')}}</small></td>
-                        <td>
-                            <div class="@if ($log->result == "error") text-danger @endif  ">{{$log->subject}}</div>
-                            <small class="">{{Str::replace('http://xn----7sbaba3a8b9acil0ei1h.xn--p1ai', '', $log->url)}}</small>
-                        </td>
-                        <td>
-                            <span class="bullet bullet-success bullet-sm"></span>
-                            <small class="text-muted">{{$log->ip}}</small>
-                        </td>
-                        <td><span class="badge badge-light-danger badge-pill">{{$log->method}}</span></td>
-                        <td>
-                            <div class="invoice-action">
-                                Браузер: {{Str::limit($log->agent, 80) }}<br>  Переменные: {{$log->parametrs}}
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
+                            </td>
+                        </tr>
+                    @endforeach
+                @endisset
                 </tbody>
             </table>
         </div>
     </section>
-
-
-
 
 @endsection
 
@@ -340,7 +350,6 @@
     <script src="{{asset('/adm/app-assets/vendors/js/charts/apexcharts.min.js')}}"></script>
     <script src="{{asset('/adm/app-assets/vendors/js/extensions/dragula.min.js')}}"></script>
     <script src="{{asset('/adm/app-assets/vendors/js/extensions/swiper.min.js')}}"></script>
-
 
 @endsection
 {{-- page scripts --}}
