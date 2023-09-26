@@ -32,7 +32,8 @@
     <div class="position-relative" style="z-index: 1">
         <div class="shape">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1" d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+                <path fill="#FFFFFF" fill-opacity="1"
+                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
             </svg>
         </div>
     </div>
@@ -96,7 +97,8 @@
                             </div>
                             <div class="text-center pb-4 border-bottom mt-4">
                                 @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
-                                    <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}" class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
+                                    <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}"
+                                         class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
                                     <p class="text-muted">
 
                                         <a href="{{route('qr-download',Auth::user()->login . '.png')}}">
@@ -158,26 +160,30 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}" autofocus/>
+                                        <input type="email" class="form-control" name="email"
+                                               value="{{Auth::user()->email}}" autofocus/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Имя</label>
-                                        <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}"/>
+                                        <input type="text" class="form-control" name="name"
+                                               value="{{Auth::user()->name}}"/>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="tel" class="form-label">Телефон </label>
-                                        <input type="tel" class="form-control" name="tel" id="phone_2" value="{{Auth::user()->tel}}"/>
+                                        <input type="tel" class="form-control" name="tel" id="phone_2"
+                                               value="{{Auth::user()->tel}}"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="tel2" class="form-label">Рабочий телефон </label>
-                                        <input type="tel" class="form-control" name="tel2" id="phone_22" value="{{Auth::user()->tel2}}"/>
+                                        <input type="tel" class="form-control" name="tel2" id="phone_22"
+                                               value="{{Auth::user()->tel2}}"/>
                                     </div>
                                 </div>
 
@@ -185,14 +191,16 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="city" class="form-label">Телефон для экстренной связи</label>
-                                        <input type="text" class="form-control" name="tel_alert" id="phone_33" value="{{Auth::user()->tel_alert}}"/>
+                                        <input type="text" class="form-control" name="tel_alert" id="phone_33"
+                                               value="{{Auth::user()->tel_alert}}"/>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="city" class="form-label">Город</label>
-                                        <input type="text" class="form-control" name="city" value="{{Auth::user()->city}}"/>
+                                        <input type="text" class="form-control" name="city"
+                                               value="{{Auth::user()->city}}"/>
                                     </div>
                                 </div>
 
@@ -200,7 +208,6 @@
                             </div>
                             <!--end row-->
                         </div>
-
                         <div class="mt-4">
                             <h5 class="fs-17 fw-semibold mb-3">Настройки профиля V-card</h5>
                             <div class="row">
@@ -209,7 +216,8 @@
                                         <label for="instagram" class="form-label">Инстаграмм</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text"><i class="uil uil-instagram-alt"></i></span>
-                                            <input type="text" class="form-control" name="instagram" value="{{Auth::user()->instagram}}"/>
+                                            <input type="text" class="form-control" name="instagram"
+                                                   value="{{Auth::user()->instagram}}"/>
                                         </div>
                                         <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
                                     </div>
@@ -220,7 +228,8 @@
                                         <label for="vk" class="form-label">ВК</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text"><i class="uil uil-vk"></i></span>
-                                            <input type="text" class="form-control" name="vk" value="{{Auth::user()->vk}}"/>
+                                            <input type="text" class="form-control" name="vk"
+                                                   value="{{Auth::user()->vk}}"/>
                                         </div>
                                         <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
                                     </div>
@@ -314,23 +323,25 @@
                                              --}}
                                         </div>
                                     </div>
-                            @endif
+                                @endif
 
 
 
 
-                            <!--end col-->
+                                <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Новый пароль</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Новый пароль" autocomplete="off"/>
+                                        <input type="password" class="form-control" name="password"
+                                               placeholder="Новый пароль" autocomplete="off"/>
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label class="form-label">Повторите пароль</label>
-                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Повторите пароль" autocomplete="false"/>
+                                        <input type="password" class="form-control" name="password_confirmation"
+                                               placeholder="Повторите пароль" autocomplete="false"/>
                                     </div>
                                 </div>
                                 <!--end col-->

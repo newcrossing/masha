@@ -40,8 +40,8 @@ class ProfileController extends Controller
             'name' => 'required|string|max:50|min:2',
             'tel' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
             'tel2' => 'sometimes|nullable|regex:/^(\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2})$/',
-            'vk' => 'sometimes|nullable|regex:/^[0-9a-zA-Z.\-]*$/',
-            'instagram' => 'sometimes|nullable|regex:/^[0-9a-zA-Z.\-]*$/',
+            'vk' => 'sometimes|nullable|regex:/^[0-9a-zA-Z._\-]*$/',
+            'instagram' => 'sometimes|nullable|regex:/^[0-9a-zA-Z._\-]*$/',
             'password' => 'nullable|confirmed|min:6',
             'image' => 'image|max:2000|mimes:jpeg,png,bmp',
         ], [
