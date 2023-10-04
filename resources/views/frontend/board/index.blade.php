@@ -11,7 +11,7 @@
 
 @section('content')
     <!-- Start home  уменьшить title-->
-    <section class="page-title-box" style="padding-top: 150px; padding-bottom: 85px">
+    <section class="page-title-box" style="padding-top: 170px; padding-bottom: 55px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -28,19 +28,19 @@
     <!-- end home -->
 
     <!-- START SHAPE -->
-    <div class="position-relative" style="z-index: 1">
-        <div class="shape">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1"
-                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
-            </svg>
-        </div>
-    </div>
+    {{--    <div class="position-relative" style="z-index: 1">--}}
+    {{--        <div class="shape">--}}
+    {{--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">--}}
+    {{--                <path fill="#FFFFFF" fill-opacity="1"--}}
+    {{--                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>--}}
+    {{--            </svg>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     <!-- END SHAPE -->
 
 
     <!-- START JOB-DEATILS -->
-    <section class="section">
+    <section class="section" style="margin-top: 0px;padding-top: 0px; ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mt-4 mt-lg-0">
@@ -53,19 +53,22 @@
                                     <h4 class="fs-22 " style="text-align: center">Связаться с хозяином</h4>
                                     <br>
                                     @if(isset($board->user->tel) && $board->user->notify_tel)
-                                        <a href="tel:{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="tel:{{$board->user->tel}}"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-phone"></i> Позвонить
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel2) && $board->user->notify_tel)
-                                        <a href="tel:{{$board->user->tel2}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="tel:{{$board->user->tel2}}"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-phone"></i> Позвонить на рабочий номер
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel) && $board->user->notify_sms)
-                                        <a href="sms:{{$board->user->tel}}?body=Здравствуйте, я нашел вашу вещь" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="sms:{{$board->user->tel}}?body=Здравствуйте, я нашел вашу вещь"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil  uil-comment-alt-lines"></i> Написать СМС
                                         </a>
                                     @endif
@@ -73,7 +76,8 @@
 
 
                                     @if(isset($board->user->email) && $board->user->notify_email)
-                                        <a href="#applyNow" data-bs-toggle="modal" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="#applyNow" data-bs-toggle="modal"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-envelope"></i> Написать автору
                                         </a>
                                     @endif
@@ -87,26 +91,30 @@
 
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
-                                        <a href="https://t.me/{{$board->user->tel}}" class="btn btn-primary btn-hover w-100 mt-2">
+                                        <a href="https://t.me/{{$board->user->tel}}"
+                                           class="btn btn-primary btn-hover w-100 mt-2">
                                             <i class="uil uil-telegram"></i> Написать в Telegram
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel_alert) )
-                                        <a href="tel:{{$board->user->tel_alert}}" class="btn btn-danger btn-hover w-100 mt-2">
+                                        <a href="tel:{{$board->user->tel_alert}}"
+                                           class="btn btn-danger btn-hover w-100 mt-2">
                                             <i class="uil uil-exclamation-triangle"></i> Экстренный контакт
                                         </a>
                                     @endif
 
                                     @if(isset($board->user->tel) || isset($board->user->email) )
-                                        <a href="{{route('vcard',$board->slug)}}" class="btn btn-info btn-hover w-100 mt-2">
+                                        <a href="{{route('vcard',$board->slug)}}"
+                                           class="btn btn-info btn-hover w-100 mt-2">
                                             <i class="uil uil-mobile-android-alt"></i> Скачать контакт vCard
                                         </a>
                                     @endif
 
                                     @auth()
                                         @if($board->user_id== Auth::user()->id )
-                                            <a href="{{route('board.edit',$board->id)}}" class="btn btn-success btn-hover w-100 mt-4">
+                                            <a href="{{route('board.edit',$board->id)}}"
+                                               class="btn btn-success btn-hover w-100 mt-4">
                                                 <i class="uil uil-file-edit-alt"></i> Редактировать
                                             </a>
                                         @endif
@@ -126,7 +134,7 @@
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="swiper testimonialSlider ">
-                                            <div class="swiper-wrapper">
+                                            <div class=" @if(count($board->fotos)>1)swiper-wrapper  @endif">
                                                 @foreach($board->fotos as $foto)
                                                     <div class="swiper-slide">
                                                         <img src="{{ Storage::url('/boards/1400/'.$foto->file) }}"
