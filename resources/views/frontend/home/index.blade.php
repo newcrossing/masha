@@ -19,11 +19,29 @@
                 <div class="col-lg-8">
                     <div class="mb-4 pb-3 me-lg-5">
                         <h6 class="sub-title">Нас уже {{$users_chek + 1000}} человек</h6>
-                        <h1 class="display-5 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
+                        <h1 class="display-6 fw-semibold mb-3">{!! \App\Models\Content::where('type', 'slidertext1')->first()->text!!}</h1>
                         <p class="fs-18 text-muted mb-0">{!! \App\Models\Content::where('type', 'slidertext2')->first()->text!!}</p>
 
-                        <a href="#signupModal" data-bs-toggle="modal" class="btn btn-info">Заказать набор с доставкой
-                            <i class="uil uil-message ms-1"></i></a>
+
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="#signupModal" data-bs-toggle="modal" class="btn btn-info">
+                                Заказать набор с доставкой <i class="uil uil-message ms-1"></i>
+                            </a>
+                            <div class="dropdown">
+                                <button class="btn btn-success" type="button" id="dropdownMenusuccess"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    Заказать на площадке <i class="uil uil-message ms-1"></i>
+                                    <span class="arrow-down"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenusuccess">
+                                    <li><a class="dropdown-item" href="javascript:void(0)">Wildberries</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)">Озон</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)">Яндекс.Маркет</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <!--end col-->
@@ -62,7 +80,8 @@
                         <div class="process-menu nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
                             @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
-                                <a class="nav-link @if ($loop->first) active @endif" id="v-pills-{{$step->id}}-tab" data-bs-toggle="pill" href="#v-pills-{{$step->id}}"
+                                <a class="nav-link @if ($loop->first) active @endif" id="v-pills-{{$step->id}}-tab"
+                                   data-bs-toggle="pill" href="#v-pills-{{$step->id}}"
                                    role="tab" aria-controls="v-pills-{{$step->id}}" aria-selected="true">
                                     <div class="d-flex">
                                         <div class="number flex-shrink-0">{{$step->number}}</div>
@@ -79,7 +98,8 @@
                 <div class="col-lg-6">
                     <div class="tab-content" id="v-pills-tabContent">
                         @foreach (\App\Models\Step::where('active', 1)->orderBy('number')->get() as $step)
-                            <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}" role="tabpanel" aria-labelledby="v-pills-{{$step->id}}-tab">
+                            <div class="tab-pane fade show @if ($loop->first) active @endif" id="v-pills-{{$step->id}}"
+                                 role="tabpanel" aria-labelledby="v-pills-{{$step->id}}-tab">
                                 @if($step->image)
                                     <img src="{{ Storage::url('/steps/'.$step->image) }}" alt="" class="img-fluid">
                                 @endif

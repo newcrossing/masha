@@ -10,7 +10,7 @@
             <div class="col-lg-4">
                 <div class="footer-item mt-4 mt-lg-0 me-lg-5">
                     <p class="fs-16 text-white mb-4">Контакты</p>
-                    <p class="text-white-50">support@masha-rasteryasha.online</p>
+                    <p class="text-white-50">support@masha-rasteryasha.com</p>
                 </div>
             </div><!--end col-->
             <div class="col-lg-4 col-6">

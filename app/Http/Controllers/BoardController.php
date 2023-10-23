@@ -153,9 +153,9 @@ class BoardController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'image' => 'image|max:2000|mimes:jpeg,png,bmp',
+            'image' => 'image|max:5000|mimes:jpeg,png,bmp',
         ], [
-            'image.max' => 'Максимальный размер фото 2 Мб!',
+            'image.max' => 'Максимальный размер фото 5 Мб!',
         ]);
 
 

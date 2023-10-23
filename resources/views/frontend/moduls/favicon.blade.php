@@ -1,9 +1,10 @@
 <!-- App favicon -->
-<link rel="apple-touch-icon" href="/assets/favicon/logo.png">  <!-- 180×180 -->
-<!-- 180x180 - ставим первым для safari -->
-
-<link rel="icon" href="/assets/favicon/favicon-3.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon.ico" sizes="any"><!-- 32x32 -->
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="yandex-tableau-widget" href="/tableau.json">
-<meta content="https://xn----7sbaba3a8b9acil0ei1h.xn--p1ai/assets/favicon/yandex.png" color=#fff" name="yandex-tableau-widget">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#1f5aad">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#5ca4ff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">

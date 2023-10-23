@@ -43,7 +43,7 @@ class ProfileController extends Controller
             'vk' => 'sometimes|nullable|regex:/^[0-9a-zA-Z._\-]*$/',
             'instagram' => 'sometimes|nullable|regex:/^[0-9a-zA-Z._\-]*$/',
             'password' => 'nullable|confirmed|min:6',
-            'image' => 'image|max:2000|mimes:jpeg,png,bmp',
+            'image' => 'image|max:5000|mimes:jpeg,png,bmp',
         ], [
             'email.email' => 'Поле EMAIL не соответствует действительности!',
             'password.confirmed' => 'Пароли должны совпадать!',
