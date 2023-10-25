@@ -71,20 +71,31 @@ class ProfileController extends Controller
             $user->last_password = 2;
             Activity::add('Изменил пароль');
         }
-        $user->name = $request->name;
-        $user->city = $request->city;
-        $user->instagram = $request->instagram;
-        $user->vk = $request->vk;
+
         $user->tel = !empty(Str::remove(['(', ')', '-', ' '], $request->tel)) ? Str::remove(['(', ')', '-', ' '], $request->tel) : null;
         $user->tel2 = !empty(Str::remove(['(', ')', '-', ' '], $request->tel2)) ? Str::remove(['(', ')', '-', ' '], $request->tel2) : null;
         $user->tel_alert = !empty(Str::remove(['(', ')', '-', ' '], $request->tel_alert)) ? Str::remove(['(', ')', '-', ' '], $request->tel_alert) : null;
-        $user->email = $request->email;
+
         $user->notify_email = $request->boolean('notify_email');
         $user->notify_tel = $request->boolean('notify_tel');
         $user->notify_sms = $request->boolean('notify_sms');
         $user->notify_whatsup = $request->boolean('notify_whatsup');
         $user->notify_telegram = $request->boolean('notify_telegram');
+
+        $user->fill($request->only([
+            'name',
+            'city',
+            'instagram',
+            'vk',
+            'email',
+            'telegram',
+            'tiktok',
+            'odnoklassniki',
+            'organization',
+            'youtube'
+        ]));
         $user->save();
+
         Activity::add('Пользователь изменил профиль');
 
         return redirect()->back()->with('success', 'Сохранено');

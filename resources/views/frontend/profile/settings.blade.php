@@ -190,7 +190,10 @@
                                 <!--end col-->
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="city" class="form-label">Телефон для экстренной связи <i class="uil uil-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="В случае утери телефона и ухудшения самочувствия владельца."></i></label>
+                                        <label for="city" class="form-label">Телефон для экстренной связи <i
+                                                class="uil uil-question-circle" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title=""
+                                                data-bs-original-title="В случае утери телефона и ухудшения самочувствия владельца."></i></label>
                                         <input type="text" class="form-control" name="tel_alert" id="phone_33"
                                                value="{{Auth::user()->tel_alert}}"/>
                                     </div>
@@ -211,16 +214,18 @@
                             <!--end row-->
                         </div>
                         <div class="mt-4">
-                            <h5 class="fs-17 fw-semibold mb-3">Настройки профиля V-card</h5>
+                            <h5 class="fs-17 fw-semibold mb-1">Настройки профиля V-card</h5>
+                            <figcaption class="figure-caption mb-3">Данные отображаются в v-card</figcaption>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="instagram" class="form-label">Инстаграмм</label>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon3">https://instagramm.com/@</span>
-                                            <input type="text" class="form-control" name="instagram" value="{{Auth::user()->instagram}}">
+                                            <span class="input-group-text"
+                                                  id="basic-addon3">https://instagramm.com/@</span>
+                                            <input type="text" class="form-control" name="instagram"
+                                                   value="{{Auth::user()->instagram}}">
                                         </div>
-                                        <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
                                     </div>
                                 </div>
 
@@ -228,11 +233,63 @@
                                     <div class="mb-3">
                                         <label for="vk" class="form-label">ВК</label>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" >https://vk.com/</span>
+                                            <span class="input-group-text">https://vk.com/</span>
                                             <input type="text" class="form-control" name="vk"
                                                    value="{{Auth::user()->vk}}"/>
                                         </div>
-                                        <figcaption class="figure-caption">Данные отображаются в v-card</figcaption>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">Telegram</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">https://t.me/</span>
+                                            <input type="text" class="form-control" name="telegram"
+                                                   value="{{Auth::user()->telegram}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">TikTok</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">https://www.tiktok.com/@</span>
+                                            <input type="text" class="form-control" name="tiktok"
+                                                   value="{{Auth::user()->tiktok}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">YouTube</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="youtube"
+                                                   value="{{Auth::user()->youtube}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">Одноклассники</label>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">https://ok.ru/</span>
+                                            <input type="text" class="form-control" name="odnoklassniki"
+                                                   value="{{Auth::user()->odnoklassniki}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">Организация</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="organization"
+                                                   value="{{Auth::user()->organization}}"/>
+                                        </div>
                                     </div>
                                 </div>
 

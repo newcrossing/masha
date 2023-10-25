@@ -33,31 +33,41 @@ class BoardController extends Controller
         $lastname = ($user->name) ?: $user->login;
 
         $vcard->addName($lastname);
-
-        $vcard->addCompany('Маша-растеряша.рф');
         $vcard->addEmail($user->email);
 
+        if ($user->organization) {
+            $vcard->addCompany($user->organization);
+        }
         if ($user->tel) {
             $vcard->addPhoneNumber($user->tel, 'PREF;WORK');
         }
         if ($user->tel2) {
             $vcard->addPhoneNumber($user->tel2, 'WORK');
         }
-
-        $vcard->addURL('https://маша-растеряша.рф');
+        //$vcard->addURL('https://маша-растеряша.рф');
         if ($user->vk) {
             $vcard->addURL('https://vk.com/' . $user->vk);
         }
-
         if ($user->instagram) {
             $vcard->addURL('https://www.instagram.com/' . $user->instagram);
         }
-        //$vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+        if ($user->telegram) {
+            $vcard->addURL('https://t.me/' . $user->telegram);
+        }
+        if ($user->tiktok) {
+            $vcard->addURL('https://www.tiktok.com/@' . $user->tiktok);
+        }
+        if ($user->youtube) {
+            $vcard->addURL($user->youtube);
+        }
+        if ($user->odnoklassniki) {
+            $vcard->addURL('https://ok.ru/' . $user->odnoklassniki);
+        }
 
-// return vcard as a string
-//return $vcard->getOutput();
-
-// return vcard as a download
+        // $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
+        // return vcard as a string
+        // return $vcard->getOutput();
+        // return vcard as a download
 
         return response($vcard->getOutput())
             ->header('Content-Type', 'text/vcard')

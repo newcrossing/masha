@@ -36,7 +36,8 @@
                                         @endif
 
                                         @if (Session::has("success"))
-                                            <div class="alert alert-success text-center mb-4" role="alert">{{ Session::get('success') }}</div>
+                                            <div class="alert alert-success text-center mb-4"
+                                                 role="alert">{{ Session::get('success') }}</div>
                                         @endif
 
                                         <form action="{{ route('login') }}" method="POST" class="auth-form">
@@ -67,18 +68,31 @@
 
                                             <div class="mb-4">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="privacy_policy" name="check" required>
-                                                    <label class="form-check-label" for="privacy_policy" style="text-align: justify;">
-                                                        Ознакомлен и полностью принимаю условия
-                                                        <a href="{{route('contents',['s' => 'agreement'])}}" target="_blank"
-                                                           style="color: #f7ffef; text-decoration: #fffdfe  solid underline">Пользовательского
-                                                            соглашения</a>,
-                                                        условия
-                                                        <a href="{{route('contents',['s' => 'privacy-policy'])}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
+                                                    <input class="form-check-input" type="checkbox" id="privacy_policy"
+                                                           name="check" required>
+                                                    <label class="form-check-label" for="privacy_policy"
+                                                           style="text-align: justify;">
+                                                        Ознакомлен и полностью принимаю
+                                                        <div>
+                                                            условия
+                                                            <a href="{{route('contents',['s' => 'agreement'])}}"
+                                                               target="_blank"
+                                                               style="color: #f7ffef; text-decoration: #fffdfe  solid underline">Пользовательского
+                                                                соглашения</a>,
+                                                        </div>
+                                                        <div>
+                                                            условия
+                                                        <a href="{{route('contents',['s' => 'privacy-policy'])}}"
+                                                           target="_blank"
+                                                           style="color: #f7ffef; text-decoration: #fffdfe solid underline">Политики
                                                             конфиденциальности</a>,
-                                                        условия
-                                                        <a href="{{route('contents',['s' => 'public-offer'])}}" target="_blank" style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной
+                                                        </div>
+                                                        <div>условия
+                                                        <a href="{{route('contents',['s' => 'public-offer'])}}"
+                                                           target="_blank"
+                                                           style="color: #f7ffef; text-decoration: #fffdfe solid underline">Публичной
                                                             оферты</a>,
+                                                        </div>
                                                         даю согласие на обработку своих персональных данных
                                                         и получение информационных сообщений, связанных с оказанием
                                                         услуг
