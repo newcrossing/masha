@@ -111,7 +111,7 @@
                                 @if(isset(Auth::user()->tel) || isset(Auth::user()->email) )
                                     <a href="{{route('vcard',Auth::user()->board->slug)}}"
                                        class="btn btn-outline-success btn-sm w-100 mt-2">
-                                        <i class="uil uil-postcard"></i> Скачать визитку vCard
+                                        <i class="uil uil-postcard"></i> Скачать электронную визитку
                                     </a>
                                 @endif
                             </div>

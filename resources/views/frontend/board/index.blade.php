@@ -107,7 +107,7 @@
                                     @if(isset($board->user->tel) || isset($board->user->email) )
                                         <a href="{{route('vcard',$board->slug)}}"
                                            class="btn btn-info btn-hover w-100 mt-2">
-                                            <i class="uil uil-mobile-android-alt"></i> Скачать контакт vCard
+                                            <i class="uil uil-mobile-android-alt"></i> Скачать электронную визитку
                                         </a>
                                     @endif
 
