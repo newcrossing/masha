@@ -162,6 +162,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Название файла аватара для отображения
+     * @return string
+     */
     public function getFoto()
     {
         return ($this->foto) ?: '000.png';

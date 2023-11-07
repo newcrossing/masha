@@ -63,6 +63,10 @@ class BoardController extends Controller
         if ($user->odnoklassniki) {
             $vcard->addURL('https://ok.ru/' . $user->odnoklassniki);
         }
+        if ($user->foto) {
+            $vcard->addPhoto(Storage::disk('public')->path('avatars/300/' . $user->getFoto()));
+        }
+
 
         // $vcard->addPhoto(__DIR__ . '/landscape.jpeg');
         // return vcard as a string
