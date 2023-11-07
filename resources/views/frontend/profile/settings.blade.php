@@ -99,8 +99,8 @@
                                 @if(Storage::exists('/public/qr/' . Auth::user()->login . '.png'))
                                     <img src="{{ Storage::url('/qr/'.Auth::user()->login . '.png') }}"
                                          class="avatar-lg img-thumbnail " style="height: auto; width: 10rem">
-                                    <p class="text-muted">
 
+                                    <p class="text-muted">
                                         <a href="{{route('qr-download',Auth::user()->login . '.png')}}">
                                         <span class="badge bg-success">
                                             <i class="uil uil-image-download"></i>  Скачать</span>
@@ -108,6 +108,12 @@
                                     </p>
                                 @endif
 
+                                @if(isset(Auth::user()->tel) || isset(Auth::user()->email) )
+                                    <a href="{{route('vcard',Auth::user()->board->slug)}}"
+                                       class="btn btn-outline-success btn-sm w-100 mt-2">
+                                        <i class="uil uil-postcard"></i> Скачать визитку vCard
+                                    </a>
+                                @endif
                             </div>
                             <!--end contact-details-->
                         </div>
