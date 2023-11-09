@@ -73,8 +73,6 @@
                                         </a>
                                     @endif
 
-
-
                                     @if(isset($board->user->email) && $board->user->notify_email)
                                         <a href="#applyNow" data-bs-toggle="modal"
                                            class="btn btn-primary btn-hover w-100 mt-2">
@@ -87,8 +85,6 @@
                                             <i class="uil uil-whatsapp"></i> Написать в WhatsUp
                                         </a>
                                     @endif
-
-
 
                                     @if(isset($board->user->tel) && $board->user->notify_telegram)
                                         <a href="https://t.me/{{$board->user->tel}}"

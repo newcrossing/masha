@@ -299,6 +299,16 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="vk" class="form-label">День рождения</label>
+                                        <div class="input-group mb-3">
+                                            <input type="date" class="form-control" name="birthday_at"
+                                                   value="{{Auth::user()->birthday_at}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <!--end account-->

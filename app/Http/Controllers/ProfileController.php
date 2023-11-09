@@ -81,6 +81,7 @@ class ProfileController extends Controller
         $user->notify_sms = $request->boolean('notify_sms');
         $user->notify_whatsup = $request->boolean('notify_whatsup');
         $user->notify_telegram = $request->boolean('notify_telegram');
+        //$user->birthday_at = $request->boolean('notify_whatsup');
 
         $user->fill($request->only([
             'name',
@@ -91,6 +92,7 @@ class ProfileController extends Controller
             'telegram',
             'tiktok',
             'odnoklassniki',
+            'birthday_at',
             'organization',
             'youtube'
         ]));
