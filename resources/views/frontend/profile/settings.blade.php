@@ -51,7 +51,7 @@
                                 <img src="{{ Storage::url('/avatars/300/'.Auth::user()->getFoto()) }}"
                                      class="avatar-lg img-thumbnail  mb-4" style="height: auto; width: 10rem">
                                 <h5 class="mb-0">{{Auth::user()->name}}</h5>
-                                <p class="text-muted">{{Auth::user()->login}}</p>
+                                <p class="text-muted">#{{Auth::user()->login}}</p>
                             </div>
                             <!--end profile-->
                             <div class="candidate-contact-details card-body border-bottom  p-4 border-top">
@@ -143,7 +143,7 @@
                     <form action="{{route('profile.settings')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div>
-                            <h5 class="fs-17 fw-semibold mb-3 mb-0">Мой профиль #{{Auth::user()->login}}</h5>
+                            {{--                            <h5 class="fs-17 fw-semibold mb-3 mb-0">Мой профиль #{{Auth::user()->login}}</h5>--}}
                             @if (!Auth::user()->email || !Auth::user()->last_password)
                                 <div class="alert  bg-soft-danger" role="alert">
                                     <br>
@@ -161,280 +161,298 @@
                                 </div>
                             @endif
 
-                            <div class="row">
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">E-mail</label>
-                                        <input type="email" class="form-control" name="email"
-                                               value="{{Auth::user()->email}}" autofocus/>
+                            <nav class="mb-4">
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                            aria-selected="true"><b>Основные настройки</b>
+                                    </button>
+                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-profile" type="button" role="tab"
+                                            aria-controls="nav-profile" aria-selected="false"><b>Электронная визитка</b>
+                                    </button>
+                                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-contact" type="button" role="tab"
+                                            aria-controls="nav-contact" aria-selected="false"><b>Уведомления</b>
+                                    </button>
+                                    <button class="nav-link" id="nav-noty-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-noty" type="button" role="tab"
+                                            aria-controls="nav-noty" aria-selected="false"><b>Пароль</b>
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                     aria-labelledby="nav-home-tab">
+                                    <div class="row ">
+                                        <!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="mb-3">
+                                                <label for="attachmentscv" class="form-label">Фото профиля</label>
+                                                <input class="form-control" type="file" name="image"
+                                                       id="attachmentscv" accept="image/png, image/bmp, image/jpeg"/>
+                                            </div>
+
+                                            <!--end col-->
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">E-mail</label>
+                                                <input type="email" class="form-control" name="email"
+                                                       value="{{Auth::user()->email}}" autofocus/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Имя</label>
+                                                <input type="text" class="form-control" name="name"
+                                                       value="{{Auth::user()->name}}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="tel" class="form-label">Телефон </label>
+                                                <input type="tel" class="form-control" name="tel" id="phone_2"
+                                                       value="{{Auth::user()->tel}}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="tel2" class="form-label">Рабочий телефон </label>
+                                                <input type="tel" class="form-control" name="tel2"  id="phone_22"
+                                                       value="{{Auth::user()->tel2}}"/>
+                                            </div>
+                                        </div>
+
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="city" class="form-label">Телефон для экстренной связи <i
+                                                        class="uil uil-question-circle" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title=""
+                                                        data-bs-original-title="В случае утери телефона и ухудшения самочувствия владельца."></i></label>
+                                                <input type="text" class="form-control" name="tel_alert" id="phone_33"
+                                                       value="{{Auth::user()->tel_alert}}"/>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="city" class="form-label">Город</label>
+                                                <input type="text" class="form-control" name="city"
+                                                       value="{{Auth::user()->city}}"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Имя</label>
-                                        <input type="text" class="form-control" name="name"
-                                               value="{{Auth::user()->name}}"/>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="tel" class="form-label">Телефон </label>
-                                        <input type="tel" class="form-control" name="tel" id="phone_2"
-                                               value="{{Auth::user()->tel}}"/>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="tel2" class="form-label">Рабочий телефон </label>
-                                        <input type="tel" class="form-control" name="tel2" id="phone_22"
-                                               value="{{Auth::user()->tel2}}"/>
-                                    </div>
-                                </div>
-
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="city" class="form-label">Телефон для экстренной связи <i
-                                                class="uil uil-question-circle" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title=""
-                                                data-bs-original-title="В случае утери телефона и ухудшения самочувствия владельца."></i></label>
-                                        <input type="text" class="form-control" name="tel_alert" id="phone_33"
-                                               value="{{Auth::user()->tel_alert}}"/>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="city" class="form-label">Город</label>
-                                        <input type="text" class="form-control" name="city"
-                                               value="{{Auth::user()->city}}"/>
-                                    </div>
-                                </div>
-
-                                <!--end col-->
-                            </div>
-                            <!--end row-->
-                        </div>
-                        <div class="mt-4">
-                            <h5 class="fs-17 fw-semibold mb-1">Настройки профиля V-card</h5>
-                            <figcaption class="figure-caption mb-3">Данные отображаются в v-card</figcaption>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="instagram" class="form-label">Инстаграмм</label>
-                                        <div class="input-group mb-3">
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                     aria-labelledby="nav-profile-tab">
+                                    <figcaption class="figure-caption mb-3">
+                                        Данные отображаются в электронной визитке
+                                    </figcaption>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="instagram" class="form-label">Инстаграмм</label>
+                                                <div class="input-group mb-3">
                                             <span class="input-group-text"
                                                   id="basic-addon3">https://instagramm.com/@</span>
-                                            <input type="text" class="form-control" name="instagram"
-                                                   value="{{Auth::user()->instagram}}">
+                                                    <input type="text" class="form-control" name="instagram"
+                                                           value="{{Auth::user()->instagram}}">
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">ВК</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">https://vk.com/</span>
+                                                    <input type="text" class="form-control" name="vk"
+                                                           value="{{Auth::user()->vk}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">Telegram</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">https://t.me/</span>
+                                                    <input type="text" class="form-control" name="telegram"
+                                                           value="{{Auth::user()->telegram}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">TikTok</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">https://www.tiktok.com/@</span>
+                                                    <input type="text" class="form-control" name="tiktok"
+                                                           value="{{Auth::user()->tiktok}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">YouTube</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="youtube"
+                                                           value="{{Auth::user()->youtube}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">Одноклассники</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">https://ok.ru/</span>
+                                                    <input type="text" class="form-control" name="odnoklassniki"
+                                                           value="{{Auth::user()->odnoklassniki}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">Организация</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" name="organization"
+                                                           value="{{Auth::user()->organization}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="vk" class="form-label">День рождения</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="date" class="form-control" name="birthday_at"
+                                                           value="{{Auth::user()->birthday_at}}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                     aria-labelledby="nav-contact-tab">
+                                    <div class="row">
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <input class="form-check-input" type="checkbox" name="notify_email"
+                                                       id="notify_email" {{ Auth::user()->notify_email  ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="notify_email">Уведомление на
+                                                    e-mail</label>
 
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">ВК</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">https://vk.com/</span>
-                                            <input type="text" class="form-control" name="vk"
-                                                   value="{{Auth::user()->vk}}"/>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <input class="form-check-input" type="checkbox" name="notify_tel"
+                                                       id="notify_tel" {{ Auth::user()->notify_tel ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="notify_tel">Звонок на
+                                                    телефон</label>
+                                            </div>
                                         </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <input class="form-check-input" type="checkbox" name="notify_sms"
+                                                       id="notify_sms" {{ Auth::user()->notify_sms ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="notify_sms">СМС на телефон</label>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <input class="form-check-input" type="checkbox" name="notify_whatsup"
+                                                       id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="notify_whatsup">Сообщение в
+                                                    WhatsUp</label>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <input class="form-check-input" type="checkbox" name="notify_telegram"
+                                                       id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="notify_telegram">Сообщение в
+                                                    Telegramm</label>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="nav-noty" role="tabpanel"
+                                     aria-labelledby="nav-noty-tab">
+                                    <div class="row">
 
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">Telegram</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">https://t.me/</span>
-                                            <input type="text" class="form-control" name="telegram"
-                                                   value="{{Auth::user()->telegram}}"/>
+
+                                        @if(!Auth::user()->last_password )
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+
+                                                    <input class="form-check-input" type="checkbox" name="last_password"
+                                                           id="last_password">
+                                                    <label class="form-check-label" for="notify_tel">Оставить старый
+                                                        пароль</label>
+                                                    {{--
+                                                    0 - пароль не меняли,
+                                                    1 - поставили галку пароль оставить старый
+                                                    2 - изменили пароль
+                                                     --}}
+                                                </div>
+                                            </div>
+                                        @endif
+
+
+
+
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Новый пароль</label>
+                                                <input type="password" class="form-control" name="password"
+                                                       placeholder="Новый пароль" autocomplete="off"/>
+                                            </div>
                                         </div>
+                                        <!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Повторите пароль</label>
+                                                <input type="password" class="form-control" name="password_confirmation"
+                                                       placeholder="Повторите пароль" autocomplete="false"/>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+
+                                        <!--end col-->
                                     </div>
                                 </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">TikTok</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">https://www.tiktok.com/@</span>
-                                            <input type="text" class="form-control" name="tiktok"
-                                                   value="{{Auth::user()->tiktok}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">YouTube</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="youtube"
-                                                   value="{{Auth::user()->youtube}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">Одноклассники</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">https://ok.ru/</span>
-                                            <input type="text" class="form-control" name="odnoklassniki"
-                                                   value="{{Auth::user()->odnoklassniki}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">Организация</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" name="organization"
-                                                   value="{{Auth::user()->organization}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="vk" class="form-label">День рождения</label>
-                                        <div class="input-group mb-3">
-                                            <input type="date" class="form-control" name="birthday_at"
-                                                   value="{{Auth::user()->birthday_at}}"/>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
-                        <!--end account-->
-                        <div class="mt-4">
-                            <h5 class="fs-17 fw-semibold mb-3">Уведомления</h5>
-                            <div class="row">
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="notify_email"
-                                               id="notify_email" {{ Auth::user()->notify_email  ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_email">Уведомление на e-mail</label>
-
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="notify_tel"
-                                               id="notify_tel" {{ Auth::user()->notify_tel ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_tel">Звонок на телефон</label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="notify_sms"
-                                               id="notify_sms" {{ Auth::user()->notify_sms ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_sms">СМС на телефон</label>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="notify_whatsup"
-                                               id="notify_whatsup" {{ Auth::user()->notify_whatsup ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_whatsup">Сообщение в WhatsUp</label>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <input class="form-check-input" type="checkbox" name="notify_telegram"
-                                               id="notify_telegram" {{ Auth::user()->notify_telegram ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="notify_telegram">Сообщение в
-                                            Telegramm</label>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                            </div>
-                            <!--end row-->
-                        </div> <!--end account-->
-                        <div class="mt-4">
-                            <h5 class="fs-17 fw-semibold mb-3">Фото профиля</h5>
-                            <div class="row">
-                                <!--end col-->
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label for="attachmentscv" class="form-label">Прикрепите фото</label>
-                                        <input class="form-control" type="file" name="image" id="attachmentscv"
-                                               accept="image/png, image/bmp, image/jpeg"/>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                            </div>
-                            <!--end row-->
-                        </div>
-
-                        <div class="mt-4">
-                            <h5 class="fs-17 fw-semibold mb-3 mb-3">
-                                Изменение пароля </h5>
-                            <div class="row">
 
 
-                                @if(!Auth::user()->last_password )
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-
-                                            <input class="form-check-input" type="checkbox" name="last_password"
-                                                   id="last_password">
-                                            <label class="form-check-label" for="notify_tel">Оставить старый
-                                                пароль</label>
-                                            {{--
-                                            0 - пароль не меняли,
-                                            1 - поставили галку пароль оставить старый
-                                            2 - изменили пароль
-                                             --}}
-                                        </div>
-                                    </div>
-                                @endif
-
-
-
-
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Новый пароль</label>
-                                        <input type="password" class="form-control" name="password"
-                                               placeholder="Новый пароль" autocomplete="off"/>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Повторите пароль</label>
-                                        <input type="password" class="form-control" name="password_confirmation"
-                                               placeholder="Повторите пароль" autocomplete="false"/>
-                                    </div>
-                                </div>
-                                <!--end col-->
-
-                                <!--end col-->
-                            </div>
-                            <!--end row-->
-                        </div>
                         <div class="row mt-4 ">
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <button type="submit" class="btn btn-success">
-                                    <i class="uil uil-file-check-alt"></i>
                                     Сохранить
                                 </button>
                             </div>
-                            <div class="col-lg-6 text-end">
+                            <div class="col-6 text-end">
                                 @if(Auth::user()->email)
-                                    <a href="{{route('board.edit')}}" class="btn btn-info btn-hover w-100 ">
-                                        Перейти к объявлению <i class="uil uil-arrow-right"></i>
+                                    <a href="{{route('board.edit')}}" class="btn btn-info btn-hover ">
+                                         К объявлению
                                     </a>
                                 @endif
                             </div>
