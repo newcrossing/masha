@@ -41,7 +41,8 @@
     <div class="position-relative" style="z-index: 1">
         <div class="shape">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
-                <path fill="#FFFFFF" fill-opacity="1" d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+                <path fill="#FFFFFF" fill-opacity="1"
+                      d="M0,192L120,202.7C240,213,480,235,720,234.7C960,235,1200,213,1320,202.7L1440,192L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
             </svg>
         </div>
     </div>
@@ -76,7 +77,8 @@
                                 @if(!count($board->fotos))
                                     <li class="mb-3 align-items-center pb-3 border-bottom text-center">
                                         <img src="{{ Storage::url('/boards/200/000.jpg') }}"
-                                             class="rounded justify-content-center avatar-lg img-thumbnail  mb-4" style="width: 200px; height: auto">
+                                             class="rounded justify-content-center avatar-lg img-thumbnail  mb-4"
+                                             style="width: 200px; height: auto">
 
                                     </li>
 
@@ -135,7 +137,8 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="city" class="form-label">Вознаграждение</label>
-                                        <input type="number" class="form-control" name="money" value="{{$board->money}}"/>
+                                        <input type="number" class="form-control" name="money"
+                                               value="{{$board->money}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -155,31 +158,27 @@
                             <!--end row-->
                         </div>
 
-
                         <!--end Change-password-->
                         <div class="row mt-4 ">
-                            <div class="col-lg-4">
-                                <button type="submit" class="btn btn-success btn-hover">
+                            <div class="col-md-4 col-sm-12 col-12 mt-1">
+                                <button type="submit" class="btn btn-success btn-hover w-100">
                                     <i class="uil uil-file-check-alt"></i> {{ (isset($board->id))? 'Сохранить ':'Создать'  }}
                                 </button>
                             </div>
-                            <div class="col-lg-4">
-                                <a href="{{route('profile.settings')}}" class="btn btn-info">
-                                    Перейти в настройки <i class="mdi mdi-cog"></i>
+                            <div class="col-md-4 col-sm-12 col-12 text-end mt-1">
+                                <a href="{{route('profile.settings')}}" class="btn btn-info w-100">
+                                    <i class="mdi mdi-cog"></i> Настройки
                                 </a>
                             </div>
-                            <div class="col-lg-4 text-end">
-
+                            <div class="col-md-4 col-sm-12 col-12 text-end mt-1">
                                 @isset($board->id)
-                                    <a href="{{route('qr',$board->slug)}}" target="_blank" class="btn btn-primary btn-hover">
+                                    <a href="{{route('qr',$board->slug)}}" target="_blank"
+                                       class="btn btn-primary btn-hover w-100">
                                         Просмотреть <i class="mdi mdi-send"></i>
                                     </a>
                                 @endisset
                             </div>
                         </div>
-
-
-
                     </form>
                 </div>
 
