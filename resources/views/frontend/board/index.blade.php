@@ -123,10 +123,10 @@
                     </div>
                     <!--end side-bar-->
                 </div><!--end col-->
-                <div class="col-lg-8">
+                <div class="col-lg-8" style="margin-top: 20px">
                     <div class="card job-detail overflow-hidden">
                         <div class="col-lg-12">
-                            <div class="candidate-portfolio mb-3">
+                            <div class="candidate-portfolio ">
                                 <div class="row g-3">
                                     <div class="col-lg-12">
                                         <div class="swiper testimonialSlider ">
@@ -152,26 +152,28 @@
                             </div><!-- end portfolio -->
 
                         </div><!-- end col -->
-                        <div class="card-body p-4">
-                            @if($board->text)
-                                <div class="mt-4">
-                                    <h5 class="mb-3">Описание</h5>
-                                    <div class="job-detail-desc">
-                                        <p class="text-muted mb-0">{{$board->text}}</p>
-                                    </div>
-                                </div>
-                            @endif
-                            @isset($board->money)
-                                <div class="mt-4">
-                                    <h6 class="mb-3">Вознаграждение</h6>
-                                    <div class="job-detail-desc">
-                                        <p class="text-muted mb-0">{{$board->money}} руб.</p>
-                                    </div>
-                                </div>
-                            @endisset
+
 
 
                         </div><!--end card-body-->
+                    <div class=" ">
+                        @if($board->text)
+                            <div class="mt-4">
+                                <h5 class="mb-3">Описание</h5>
+                                <div class="job-detail-desc">
+                                    <p class="text-muted mb-0">{{$board->text}}</p>
+                                </div>
+                            </div>
+                        @endif
+                        @isset($board->money)
+                            <div class="mt-4">
+                                <h6 class="mb-3">Вознаграждение</h6>
+                                <div class="job-detail-desc">
+                                    <p class="text-muted mb-0">{{$board->money}} руб.</p>
+                                </div>
+                            </div>
+                        @endisset
+                    </div><!--end card-body-->
                     </div><!--end job-detail-->
 
 
